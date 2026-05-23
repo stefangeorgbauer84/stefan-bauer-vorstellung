@@ -649,6 +649,28 @@
     /* Hide sticky top bar in presentation so slides start at true top */
     body.pres-mode .li-top-bar { display: none; }
 
+    /* Full-screen snap slides */
+    html.pres-mode {
+      scroll-snap-type: y mandatory;
+    }
+    body.pres-mode [id^="slide-"] {
+      min-height: 100dvh;
+      scroll-snap-align: start;
+      padding-bottom: 64px !important;
+      box-sizing: border-box;
+    }
+    /* Award hero fills full viewport in pres-mode */
+    body.pres-mode .award-hero-img {
+      height: calc(100dvh - 64px);
+    }
+    /* Hide inter-slide filler */
+    body.pres-mode .divider,
+    body.pres-mode .wave-transition,
+    body.pres-mode .ticker-wrap,
+    body.pres-mode .award-caption {
+      display: none !important;
+    }
+
     /* Floating "▶ Präsentation" button */
     .pres-fab {
       position: fixed; bottom: 28px; right: 28px; z-index: 900;
@@ -1521,7 +1543,7 @@
 <div class="pres-bar" id="pres-bar" role="toolbar" aria-label="Präsentation Navigation">
   <div class="pres-nav">
     <button class="pres-btn" id="pres-prev" title="Zurück (←)" aria-label="Vorherige Folie">&#8592;</button>
-    <div class="pres-counter" id="pres-counter">1<span class="pc-total"> / 15</span></div>
+    <div class="pres-counter" id="pres-counter">1<span class="pc-total"> / 14</span></div>
     <button class="pres-btn" id="pres-next" title="Weiter (→ oder Leertaste)" aria-label="Nächste Folie">&#8594;</button>
   </div>
   <div class="pres-dots" id="pres-dots" aria-hidden="true"></div>
@@ -1609,7 +1631,10 @@
     if (index < 0 || index >= SLIDES.length) return;
     current = index;
     var el = document.getElementById(SLIDES[index].id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (el) {
+      // In pres-mode use instant then snap; outside pres-mode smooth scroll
+      el.scrollIntoView({ behavior: active ? 'smooth' : 'smooth', block: 'start' });
+    }
     updateUI();
   }
 
@@ -1622,16 +1647,23 @@
     active = true;
     bar.classList.add('pres-active');
     document.body.classList.add('pres-mode');
+    document.documentElement.classList.add('pres-mode');
     fab.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg> Beenden';
     findCurrentSlide();
     updateUI();
     showHint();
+    // Snap immediately to current slide once layout has recalculated
+    setTimeout(function() {
+      var el = document.getElementById(SLIDES[current].id);
+      if (el) el.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }, 50);
   }
 
   function exitMode() {
     active = false;
     bar.classList.remove('pres-active');
     document.body.classList.remove('pres-mode');
+    document.documentElement.classList.remove('pres-mode');
     fab.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Präsentation';
   }
 
