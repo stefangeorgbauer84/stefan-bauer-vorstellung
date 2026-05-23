@@ -293,16 +293,24 @@
     .pm-total-bar .total-label { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5; }
     .pm-total-bar .total-label strong { display: block; font-size: 15px; color: #fff; }
 
-    .learning-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
-    @media (max-width: 680px) { .learning-grid { grid-template-columns: 1fr 1fr; } }
-    .learning-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.13);
-      border-radius: 10px; padding: 16px;
+    .learning-section-title {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 2px; color: rgba(255,255,255,0.45); margin: 28px 0 12px;
     }
-    .learning-card .lc-icon { font-size: 22px; margin-bottom: 8px; }
-    .learning-card .lc-title { font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 4px; }
-    .learning-card .lc-text  { font-size: 12px; color: rgba(255,255,255,0.62); line-height: 1.55; }
+    .learning-section-title:first-of-type { margin-top: 32px; }
+    .learning-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; }
+    @media (max-width: 700px) { .learning-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 440px) { .learning-grid { grid-template-columns: 1fr; } }
+    .learning-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 15px;
+      transition: background 0.18s;
+    }
+    .learning-card:hover { background: rgba(255,255,255,0.12); }
+    .learning-card .lc-icon { font-size: 20px; margin-bottom: 7px; }
+    .learning-card .lc-title { font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 5px; line-height: 1.3; }
+    .learning-card .lc-text  { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.6; }
 
     /* chips */
     .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0; }
@@ -969,41 +977,179 @@
       </div>
     </div>
 
-    <!-- Key Learnings -->
-    <div style="margin-top: 32px;">
-      <p style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.45); margin-bottom:14px;">Key Learnings from Leading Multi-Million Euro Projects</p>
+    <!-- Key Learnings — organized by theme -->
+    <div>
+
+      <p class="learning-section-title">🗺 Planning &amp; Scoping</p>
       <div class="learning-grid">
         <div class="learning-card">
-          <div class="lc-icon">🌍</div>
-          <div class="lc-title">Cross-Cultural Coordination</div>
-          <div class="lc-text">Managing teams across 7 countries and 6 languages requires cultural sensitivity, clear governance structures, and asynchronous communication that actually works.</div>
+          <div class="lc-icon">🎯</div>
+          <div class="lc-title">Scope Creep is the Silent Budget Killer</div>
+          <div class="lc-text">In every project I've led, the biggest threat wasn't the timeline — it was undefined scope. Work Packages in EU projects must have written boundaries. "That's a great idea" is not a project requirement.</div>
         </div>
         <div class="learning-card">
+          <div class="lc-icon">📋</div>
+          <div class="lc-title">Plan for What You Can't Plan</div>
+          <div class="lc-text">A 36-month EU project will see partner changes, regulation shifts, and tech disruption. Build explicit buffer zones and escalation paths before kick-off — not during the crisis.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🔍</div>
+          <div class="lc-title">Define "Done" Before You Start</div>
+          <div class="lc-text">In L2BGreen and PACE-DPP, each deliverable had a formal acceptance criterion. Without that, every output becomes a negotiation. Write your definition of done on day one.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">💰</div>
+          <div class="lc-title">Budget is a Communication Tool</div>
+          <div class="lc-text">How you allocate budget signals priorities. In multi-partner projects with €1.5M+ at stake, the budget spreadsheet is read more carefully than the project plan — use it consciously.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🏗</div>
+          <div class="lc-title">Work Packages Need Owners, Not Contributors</div>
+          <div class="lc-text">A WP with three "responsible" partners has zero accountability. Every deliverable needs a single named owner who answers for it. Distributed ownership is diffused ownership.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🗓</div>
+          <div class="lc-title">Milestones vs. Deadlines</div>
+          <div class="lc-text">Milestones prove progress; deadlines create pressure. The best projects I've managed used milestones as learning checkpoints — not just calendar markers for the funding authority.</div>
+        </div>
+      </div>
+
+      <p class="learning-section-title">👥 Team &amp; People</p>
+      <div class="learning-grid">
+        <div class="learning-card">
+          <div class="lc-icon">🤝</div>
+          <div class="lc-title">Trust is Built Before it's Needed</div>
+          <div class="lc-text">In L2BGreen, seven partner teams across Europe had to collaborate without ever being in the same room. Investing in relationship-building in month 1 paid dividends in crisis months 18 and 24.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🌍</div>
+          <div class="lc-title">Cultural Intelligence is a Hard Skill</div>
+          <div class="lc-text">Dutch directness, Austrian formality, Estonian speed, Greek relationship-orientation — they all show up in project meetings. Good PMs learn to read and bridge these differences, not ignore them.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🔥</div>
+          <div class="lc-title">Your Best Team Member is Also Your Biggest Risk</div>
+          <div class="lc-text">In every project, one person carries disproportionate load. If they leave or burn out, the project suffers. Knowledge transfer and documentation aren't optional — they're project insurance.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🎤</div>
+          <div class="lc-title">Silent Disagreement is Deferred Conflict</div>
+          <div class="lc-text">In multi-cultural consortia, silence in a meeting often means "I disagree but won't say so here." Build structured check-ins and anonymous feedback loops to surface real concerns before they become blockers.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🧩</div>
+          <div class="lc-title">Roles &gt; Titles</div>
+          <div class="lc-text">WP Lead, Project Coordinator, Task Leader — these titles mean different things to different organisations. Define responsibilities in concrete actions, not job titles. Who writes the draft? Who approves? Who decides?</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🪴</div>
+          <div class="lc-title">Motivation Decays — Replenish It</div>
+          <div class="lc-text">A three-year project runs through energy peaks and troughs. Celebrating small wins, sharing user impact stories (like Skills-UP!'s 90% behavior change), and connecting tasks to mission keeps teams engaged through year two.</div>
+        </div>
+      </div>
+
+      <p class="learning-section-title">📣 Stakeholder &amp; Communication</p>
+      <div class="learning-grid">
+        <div class="learning-card">
           <div class="lc-icon">🏛</div>
-          <div class="lc-title">Stakeholder Alignment</div>
-          <div class="lc-text">EU and FFG projects involve universities, governments, industry, and NGOs simultaneously. The hardest skill: finding the shared language between all of them.</div>
+          <div class="lc-title">The Funder is a Stakeholder, Not a Customer</div>
+          <div class="lc-text">EU and FFG reporting requirements exist to prove accountability — not to serve the project. Treat them professionally, deliver on time, but don't let reporting bureaucracy replace actual project work.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">📢</div>
+          <div class="lc-title">Communicate Early, Often, and in Writing</div>
+          <div class="lc-text">In PACE-DPP, every steering committee decision was documented the same day. Institutional memory in multi-partner projects is paper-thin — if it wasn't written, it didn't happen.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🎭</div>
+          <div class="lc-title">Different Audiences Need Different Narratives</div>
+          <div class="lc-text">The same project needs to be "cutting-edge research" for the academic partner, "regulatory compliance tool" for the industry partner, and "innovation in education" for the funder. Good PMs translate fluently between these frames.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🚦</div>
+          <div class="lc-title">Status Reports Nobody Reads Are Noise</div>
+          <div class="lc-text">I switched from weekly written updates to a simple RAG (Red/Amber/Green) dashboard in L2BGreen. Response rate doubled. Short, visual, actionable beats long, text-heavy, informational every time.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🧭</div>
+          <div class="lc-title">Politics is Project Management</div>
+          <div class="lc-text">Who champions the project internally at each partner organisation? In a consortium of 8 institutions, you're only as strong as your internal advocates. Identify and nurture them from day one.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🔔</div>
+          <div class="lc-title">No News is Bad News in Multi-Partner Projects</div>
+          <div class="lc-text">If a partner goes quiet for two weeks, something is wrong. Proactive check-ins matter more than formal meeting cadence. I learned this the hard way — silence usually means a problem that's grown too large to mention.</div>
+        </div>
+      </div>
+
+      <p class="learning-section-title">⚠️ Risk, Change &amp; Crisis</p>
+      <div class="learning-grid">
+        <div class="learning-card">
+          <div class="lc-icon">🌊</div>
+          <div class="lc-title">Risk Management Starts at the Proposal Stage</div>
+          <div class="lc-text">The risks in L2BGreen — partner capacity, technology dependencies, regulatory changes — were all visible at proposal stage. Log them, assign owners, and revisit quarterly. Most crises are slow-moving risks that were ignored.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🔧</div>
+          <div class="lc-title">Change Requests Aren't Admissions of Failure</div>
+          <div class="lc-text">In EU projects, formally requesting a change to scope or timeline is a professional process — not a sign the project is failing. What fails projects is managers who hide scope drift instead of surfacing it.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🧯</div>
+          <div class="lc-title">Crisis Response Reveals True PM Quality</div>
+          <div class="lc-text">When a key technology partner in PACE-DPP faced delays, the response was what mattered — transparent communication with the funder, fast replanning, and maintaining team morale. Plans are forgotten; how you handle breaks is remembered.</div>
         </div>
         <div class="learning-card">
           <div class="lc-icon">⚖️</div>
-          <div class="lc-title">Regulatory Complexity</div>
-          <div class="lc-text">EU Battery Regulation, ESG reporting requirements, Erasmus+ reporting standards — navigating regulatory frameworks is a core PM competency, not an afterthought.</div>
+          <div class="lc-title">Regulatory Changes are a Project Risk</div>
+          <div class="lc-text">The EU Battery Regulation evolved during PACE-DPP. ESG reporting requirements shifted mid-project at Sustainista. PMs in innovation must track the regulatory environment as closely as the technical environment.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">📉</div>
+          <div class="lc-title">Cutting Scope Early Saves Projects</div>
+          <div class="lc-text">Mid-project, Skills-UP! had to prioritise core financial literacy modules over additional features. Cutting scope decisively kept quality high. A project that delivers 80% brilliantly beats one that delivers 100% averagely.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🪞</div>
+          <div class="lc-title">Post-Mortems are Gifts to Your Future Self</div>
+          <div class="lc-text">Every project I've completed had a structured retrospective. Not blame sessions — learning sessions. The patterns that emerge (always communication, always scope, always one underperforming partner) are your next project's early warning system.</div>
+        </div>
+      </div>
+
+      <p class="learning-section-title">🚀 Innovation &amp; Execution</p>
+      <div class="learning-grid">
+        <div class="learning-card">
+          <div class="lc-icon">💡</div>
+          <div class="lc-title">From Research to Product is a Skill</div>
+          <div class="lc-text">Translating academic insights into deployable tools — the AI chatbot in L2BGreen, the DPP data layer in PACE-DPP — requires a PM who speaks both research and product. Most projects fail at this handover.</div>
         </div>
         <div class="learning-card">
           <div class="lc-icon">🔄</div>
-          <div class="lc-title">Agile in Research Projects</div>
-          <div class="lc-text">Applying agile thinking to multi-year EU projects means iterating deliverables within fixed milestone structures — and knowing when to protect the roadmap vs. adapt it.</div>
+          <div class="lc-title">Agile inside Waterfall is Possible</div>
+          <div class="lc-text">EU projects have fixed milestones but flexible methods. I run two-week sprints within each Work Package period. The milestone is the ship date; the sprint is how we get there. You don't have to choose between agility and compliance.</div>
         </div>
         <div class="learning-card">
-          <div class="lc-icon">💡</div>
-          <div class="lc-title">From Research to Product</div>
-          <div class="lc-text">The biggest PM challenge in innovation projects: translating academic insights into deployable tools without losing scientific rigor or practical usability.</div>
+          <div class="lc-icon">🧪</div>
+          <div class="lc-title">Prototype Early, Validate with Users</div>
+          <div class="lc-text">In Skills-UP!, we tested with real TGW apprentices before scaling. In L2BGreen, pilot courses ran in year one. Assumptions about what learners need are almost always wrong until tested. Build-measure-learn works in EU projects too.</div>
         </div>
         <div class="learning-card">
           <div class="lc-icon">📊</div>
-          <div class="lc-title">Impact Measurement</div>
-          <div class="lc-text">A €3M project is only successful if you can prove it worked. Defining KPIs upfront, tracking behavioral change (90% in Skills-UP!), and reporting with transparency builds credibility.</div>
+          <div class="lc-title">Impact Measurement is Non-Negotiable</div>
+          <div class="lc-text">90% behavioral change in Skills-UP!, €1.5M deployed in L2BGreen — numbers prove projects work. Define your impact KPIs before launch, track them continuously, and report them honestly. Funding follows demonstrated impact.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🤖</div>
+          <div class="lc-title">AI Accelerates Project Execution — If You Set it Up Right</div>
+          <div class="lc-text">Using AI for status summarisation, stakeholder communication drafts, and risk pattern recognition has cut coordination overhead in my current projects by ~30%. The bottleneck shifts from information processing to decision-making — exactly where human judgment belongs.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🌱</div>
+          <div class="lc-title">Sustainability of the Project Itself</div>
+          <div class="lc-text">The hardest question in any funded project: what happens after the money ends? Skills-UP! built a self-sustaining corporate partnership model. L2BGreen builds a community. PACE-DPP produces open-source tooling. Plan your exit strategy from day one.</div>
         </div>
       </div>
+
     </div>
 
     <div class="hl-btns">
