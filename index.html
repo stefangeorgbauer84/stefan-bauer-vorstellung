@@ -638,6 +638,127 @@
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
 
+    /* ── PRESENTATION MODE ──────────────────────────────────── */
+    [id^="slide-"] { scroll-margin-top: 0; }
+
+    /* Hide sticky top bar in presentation so slides start at true top */
+    body.pres-mode .li-top-bar { display: none; }
+
+    /* Floating "▶ Präsentation" button */
+    .pres-fab {
+      position: fixed; bottom: 28px; right: 28px; z-index: 900;
+      background: oklch(14% 0.018 258); color: #fff;
+      border: 1.5px solid oklch(30% 0.02 258);
+      cursor: pointer; padding: 11px 18px;
+      border-radius: 50px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px; font-weight: 700;
+      display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 24px oklch(0% 0 0 / 0.35);
+      transition: transform 0.18s ease-out, background 0.15s;
+      white-space: nowrap;
+    }
+    .pres-fab:hover { background: oklch(22% 0.025 258); transform: translateY(-2px); }
+    body.pres-mode .pres-fab { background: oklch(32% 0.022 258); }
+
+    /* Bottom control bar */
+    .pres-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+      background: oklch(11% 0.016 258 / 0.97);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid oklch(28% 0.016 258);
+      padding: 12px 24px;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 16px;
+      transform: translateY(100%);
+      transition: transform 0.22s ease-out;
+    }
+    .pres-bar.pres-active { transform: translateY(0); }
+
+    .pres-nav {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .pres-btn {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: oklch(22% 0.02 258);
+      border: 1px solid oklch(30% 0.016 258);
+      color: #fff; cursor: pointer; font-size: 15px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.14s;
+      flex-shrink: 0;
+    }
+    .pres-btn:hover:not(:disabled) { background: oklch(32% 0.022 258); }
+    .pres-btn:disabled { opacity: 0.28; cursor: not-allowed; }
+
+    .pres-counter {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px; font-weight: 900; color: #fff;
+      letter-spacing: -0.5px; min-width: 56px; text-align: center;
+    }
+    .pres-counter .pc-total {
+      font-size: 13px; font-weight: 400;
+      color: oklch(52% 0.01 258);
+    }
+
+    .pres-title {
+      font-size: 12.5px; font-weight: 600;
+      color: oklch(60% 0.012 258);
+      flex: 1; text-align: center;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      padding: 0 16px;
+    }
+    @media (max-width: 580px) { .pres-title { display: none; } }
+
+    .pres-dots {
+      display: flex; gap: 5px; align-items: center;
+      padding: 0 8px;
+    }
+    @media (max-width: 768px) { .pres-dots { display: none; } }
+    .pres-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: oklch(32% 0.016 258);
+      cursor: pointer; transition: all 0.15s; flex-shrink: 0;
+    }
+    .pres-dot.active {
+      background: #fff; transform: scale(1.4);
+    }
+    .pres-dot:hover { background: oklch(55% 0.015 258); }
+
+    .pres-exit {
+      background: transparent;
+      border: 1px solid oklch(28% 0.015 258);
+      color: oklch(52% 0.01 258);
+      padding: 7px 13px; border-radius: 6px;
+      font-size: 12px; font-weight: 600; cursor: pointer;
+      font-family: 'Barlow', sans-serif;
+      transition: all 0.15s; white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .pres-exit:hover { background: oklch(22% 0.018 258); color: #fff; }
+
+    /* Keyboard hint that fades in briefly on entry */
+    .pres-hint {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      background: oklch(11% 0.016 258 / 0.92);
+      border: 1px solid oklch(30% 0.016 258);
+      border-radius: 14px; padding: 24px 36px; z-index: 1100;
+      text-align: center; color: #fff;
+      font-family: 'Barlow', sans-serif;
+      pointer-events: none;
+      opacity: 0; transition: opacity 0.3s, transform 0.3s;
+    }
+    .pres-hint.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    .pres-hint .ph-title { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+    .pres-hint .ph-keys {
+      display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 8px;
+    }
+    .ph-key {
+      background: oklch(22% 0.02 258); border: 1px solid oklch(34% 0.018 258);
+      border-radius: 6px; padding: 4px 10px;
+      font-size: 12px; font-weight: 600; color: oklch(78% 0.012 258);
+    }
+
     /* ── FOOTER ─────────────────────────────────────────────── */
     footer {
       text-align: center; padding: 36px 24px;
@@ -661,7 +782,7 @@
 </div>
 
 <!-- ── HERO ────────────────────────────────────────────────── -->
-<header class="hero">
+<header class="hero" id="slide-hero">
   <div class="hero-inner">
     <div class="hero-text">
       <p class="hero-kicker">Course Introduction · Vienna, Austria</p>
@@ -715,7 +836,7 @@
 <!-- ══════════════════════════════════════════════════════════════
      AWARD MOMENT — TOP 3 MEGA Education Million 2025
 ═══════════════════════════════════════════════════════════════ -->
-<div class="award-hero">
+<div class="award-hero" id="slide-award">
   <img src="top3-bildungsmillion.jpg"
        alt="Skills-UP! gewinnt TOP 3 bei der MEGA Education Million 2025 — Dr. Stefan Bauers Team auf der Bühne mit €200.000-Schecks"
        class="award-hero-img" />
@@ -733,7 +854,7 @@
 </div>
 <div class="award-caption">Skills-UP! team on stage at the MEGA Education Million award ceremony — Austria's largest education prize pool</div>
 
-<main>
+<main id="slide-about">
 
   <!-- ── STATS ─────────────────────────────────────────────── -->
   <div class="stat-strip">
@@ -824,7 +945,7 @@
   <div class="divider"></div>
 
   <!-- ── CAREER TIMELINE ──────────────────────────────────── -->
-  <section>
+  <section id="slide-career">
     <p class="sl">Career Journey</p>
     <h2 class="st">15+ Years of Experience</h2>
     <p class="ss">From academic research and banking UX to corporate innovation and entrepreneurship.</p>
@@ -885,7 +1006,7 @@
 </div>
 
 <!-- ── SKILLS-UP HIGHLIGHT (PURPLE) ─────────────────────────── -->
-<section class="hl hl-purple">
+<section class="hl hl-purple" id="slide-skillsup">
   <span class="corner">🎓</span>
   <div class="hl-inner">
     <img src="logos/skillsup-logo-new.png" alt="Skills-UP!" class="hl-logo" style="filter:brightness(0) invert(1); opacity:0.9;" />
@@ -941,7 +1062,7 @@
 </div>
 
 <!-- ── SUSTAINISTA HIGHLIGHT (GREEN) ─────────────────────────── -->
-<section class="hl hl-green">
+<section class="hl hl-green" id="slide-sustainista">
   <span class="corner">✦</span>
   <div class="hl-inner">
     <img src="logos/sustainista-logo-white.png" alt="Sustainista" class="hl-logo" />
@@ -994,7 +1115,7 @@
 </div>
 
 <!-- ── L2BGREEN HIGHLIGHT (TEAL) ─────────────────────────────── -->
-<section class="hl hl-teal">
+<section class="hl hl-teal" id="slide-l2bgreen">
   <span class="corner">🌱</span>
   <div class="hl-inner">
     <img src="logos/l2bgreen-logo.png" alt="L2BGreen" class="hl-logo" style="filter:brightness(0) invert(1); opacity:0.9;" />
@@ -1051,7 +1172,7 @@
 </div>
 
 <!-- ── PROJECT MANAGEMENT HIGHLIGHT (AMBER) ──────────────────── -->
-<section class="hl hl-amber">
+<section class="hl hl-amber" id="slide-pm">
   <span class="corner">📐</span>
   <div class="hl-inner">
     <p class="sl" style="color:rgba(255,255,255,0.5);">Real-World Project Leadership &amp; Teaching</p>
@@ -1342,7 +1463,7 @@
 <!-- ── HACKATHON VIDEOS ─────────────────────────────────────── -->
 <main style="padding-top:0;">
 
-  <section>
+  <section id="slide-hackathon">
     <p class="sl">Hackathon in Action</p>
     <h2 class="st">Europe Tech Hackathon — Watch the Highlights</h2>
     <p class="ss">48 hours, real sustainability problems, real prototypes — at ViennaUP in the ÖBB Open Innovation Factory, Vienna.</p>
@@ -1388,7 +1509,7 @@
   <div class="divider"></div>
 
   <!-- ── EDUCATION ─────────────────────────────────────────── -->
-  <section>
+  <section id="slide-education">
     <p class="sl">Education</p>
     <h2 class="st">Academic Background</h2>
     <div class="g3">
@@ -1410,7 +1531,7 @@
   <div class="divider"></div>
 
   <!-- ── AWARDS ────────────────────────────────────────────── -->
-  <section>
+  <section id="slide-awards">
     <p class="sl">Recognition</p>
     <h2 class="st">Awards, Grants &amp; Honors</h2>
     <div class="award-list">
@@ -1452,7 +1573,7 @@
   <div class="divider"></div>
 
   <!-- ── TEACHING ───────────────────────────────────────────── -->
-  <section>
+  <section id="slide-teaching">
     <p class="sl">University Teaching</p>
     <h2 class="st">Courses &amp; Institutions</h2>
     <p class="ss">Teaching Innovation, Entrepreneurship, AI, UX, and Management since 2011 — across Austria, Iceland, Denmark, Russia, and Israel.</p>
@@ -1472,7 +1593,7 @@
   <div class="divider"></div>
 
   <!-- ── PUBLICATIONS ──────────────────────────────────────── -->
-  <section>
+  <section id="slide-publications">
     <p class="sl">Research</p>
     <h2 class="st">Publications · 620+ Citations</h2>
     <p class="ss">Peer-reviewed work in top-tier journals. Full list on <a href="https://scholar.google.com/citations?user=iFu00qUAAAAJ&hl=en" target="_blank" rel="noopener" style="color:var(--blue);">Google Scholar</a>.</p>
@@ -1515,7 +1636,7 @@
   <div class="divider"></div>
 
   <!-- ── ALL PROJECTS ──────────────────────────────────────── -->
-  <section>
+  <section id="slide-projects">
     <p class="sl">Projects &amp; Platforms</p>
     <h2 class="st">What I've Built</h2>
     <div class="proj-grid">
@@ -1560,7 +1681,7 @@
 </main>
 
 <!-- ── LINKEDIN BIG CTA ────────────────────────────────────── -->
-<section id="follow" class="li-cta">
+<section id="slide-follow" class="li-cta">
   <div class="li-cta-inner">
     <div class="li-icon">
       <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
@@ -1586,6 +1707,181 @@
   </p>
   <p style="margin-top:6px; opacity:0.4;">Dr. Stefan Bauer · PhD WU Wien · CEO Sustainista · Vienna, Austria</p>
 </footer>
+
+
+<!-- ── PRESENTATION MODE CONTROLS ──────────────────────────── -->
+<button class="pres-fab" id="pres-fab" title="Präsentations-Modus starten (Taste P)">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+  Präsentation
+</button>
+
+<div class="pres-bar" id="pres-bar" role="toolbar" aria-label="Präsentation Navigation">
+  <div class="pres-nav">
+    <button class="pres-btn" id="pres-prev" title="Zurück (←)" aria-label="Vorherige Folie">&#8592;</button>
+    <div class="pres-counter" id="pres-counter">1<span class="pc-total"> / 15</span></div>
+    <button class="pres-btn" id="pres-next" title="Weiter (→ oder Leertaste)" aria-label="Nächste Folie">&#8594;</button>
+  </div>
+  <div class="pres-dots" id="pres-dots" aria-hidden="true"></div>
+  <p class="pres-title" id="pres-title"></p>
+  <button class="pres-exit" id="pres-exit" title="Beenden (ESC)">✕ Beenden</button>
+</div>
+
+<div class="pres-hint" id="pres-hint" aria-hidden="true">
+  <p class="ph-title">Präsentations-Modus</p>
+  <div class="ph-keys">
+    <span class="ph-key">→ Weiter</span>
+    <span class="ph-key">← Zurück</span>
+    <span class="ph-key">Leertaste</span>
+    <span class="ph-key">ESC Beenden</span>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  const SLIDES = [
+    { id: 'slide-hero',         label: 'Vorstellung' },
+    { id: 'slide-award',        label: 'TOP 3 — MEGA Education Million 2025' },
+    { id: 'slide-about',        label: 'Wer bin ich?' },
+    { id: 'slide-career',       label: 'Karriere-Überblick' },
+    { id: 'slide-skillsup',     label: 'Skills-UP! — Finanzbildung' },
+    { id: 'slide-sustainista',  label: 'Sustainista — Sustainability as a Service' },
+    { id: 'slide-l2bgreen',     label: 'L2BGreen — Erasmus+ Projekt' },
+    { id: 'slide-pm',           label: 'Projektmanagement — ~€3M verwaltet' },
+    { id: 'slide-hackathon',    label: 'Europe Tech Hackathon' },
+    { id: 'slide-education',    label: 'Akademischer Hintergrund' },
+    { id: 'slide-awards',       label: 'Auszeichnungen & Preise' },
+    { id: 'slide-teaching',     label: 'Lehre an 10+ Universitäten' },
+    { id: 'slide-publications', label: 'Publikationen — 620+ Zitierungen' },
+    { id: 'slide-projects',     label: 'Projekte & Plattformen' },
+    { id: 'slide-follow',       label: 'LinkedIn — Let\'s connect!' },
+  ];
+
+  var current = 0;
+  var active = false;
+
+  var fab     = document.getElementById('pres-fab');
+  var bar     = document.getElementById('pres-bar');
+  var hint    = document.getElementById('pres-hint');
+  var counter = document.getElementById('pres-counter');
+  var title   = document.getElementById('pres-title');
+  var prevBtn = document.getElementById('pres-prev');
+  var nextBtn = document.getElementById('pres-next');
+  var dotsEl  = document.getElementById('pres-dots');
+  var exitBtn = document.getElementById('pres-exit');
+
+  // Build dots
+  SLIDES.forEach(function(s, i) {
+    var d = document.createElement('div');
+    d.className = 'pres-dot';
+    d.title = s.label;
+    d.addEventListener('click', function() { goTo(i); });
+    dotsEl.appendChild(d);
+  });
+
+  function updateUI() {
+    counter.innerHTML = (current + 1) + '<span class="pc-total"> / ' + SLIDES.length + '</span>';
+    title.textContent = SLIDES[current].label;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === SLIDES.length - 1;
+    var dots = dotsEl.querySelectorAll('.pres-dot');
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function findCurrentSlide() {
+    var best = 0;
+    var bestDist = Infinity;
+    SLIDES.forEach(function(s, i) {
+      var el = document.getElementById(s.id);
+      if (!el) return;
+      var dist = Math.abs(el.getBoundingClientRect().top);
+      if (dist < bestDist) { bestDist = dist; best = i; }
+    });
+    current = best;
+  }
+
+  function goTo(index) {
+    if (index < 0 || index >= SLIDES.length) return;
+    current = index;
+    var el = document.getElementById(SLIDES[index].id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateUI();
+  }
+
+  function showHint() {
+    hint.classList.add('show');
+    setTimeout(function() { hint.classList.remove('show'); }, 2000);
+  }
+
+  function enterMode() {
+    active = true;
+    bar.classList.add('pres-active');
+    document.body.classList.add('pres-mode');
+    fab.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg> Beenden';
+    findCurrentSlide();
+    updateUI();
+    showHint();
+  }
+
+  function exitMode() {
+    active = false;
+    bar.classList.remove('pres-active');
+    document.body.classList.remove('pres-mode');
+    fab.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Präsentation';
+  }
+
+  function toggle() {
+    if (active) exitMode(); else enterMode();
+  }
+
+  fab.addEventListener('click', toggle);
+  exitBtn.addEventListener('click', exitMode);
+  prevBtn.addEventListener('click', function() { goTo(current - 1); });
+  nextBtn.addEventListener('click', function() { goTo(current + 1); });
+
+  document.addEventListener('keydown', function(e) {
+    // P key toggles mode anywhere
+    if ((e.key === 'p' || e.key === 'P') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      var tag = document.activeElement && document.activeElement.tagName;
+      if (tag !== 'INPUT' && tag !== 'TEXTAREA') {
+        e.preventDefault(); toggle(); return;
+      }
+    }
+    if (!active) return;
+    switch (e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ':
+        e.preventDefault(); goTo(current + 1); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'Backspace':
+        e.preventDefault(); goTo(current - 1); break;
+      case 'Escape':
+        e.preventDefault(); exitMode(); break;
+      case 'Home':
+        e.preventDefault(); goTo(0); break;
+      case 'End':
+        e.preventDefault(); goTo(SLIDES.length - 1); break;
+    }
+  });
+
+  // Touch swipe support
+  var touchStartX = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  document.addEventListener('touchend', function(e) {
+    if (!active) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 60) {
+      if (dx < 0) goTo(current + 1);
+      else goTo(current - 1);
+    }
+  }, { passive: true });
+
+  updateUI();
+})();
+</script>
 
 </body>
 </html>
