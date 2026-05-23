@@ -646,29 +646,35 @@
     /* ── PRESENTATION MODE ──────────────────────────────────── */
     [id^="slide-"] { scroll-margin-top: 0; }
 
-    /* Hide sticky top bar in presentation so slides start at true top */
+    /* Hide sticky top bar so slides start at true viewport top */
     body.pres-mode .li-top-bar { display: none; }
 
-    /* Full-screen snap slides */
-    html.pres-mode {
-      scroll-snap-type: y mandatory;
-    }
+    /* Each slide fills exactly the viewport */
     body.pres-mode [id^="slide-"] {
       min-height: 100dvh;
-      scroll-snap-align: start;
       padding-bottom: 64px !important;
       box-sizing: border-box;
     }
-    /* Award hero fills full viewport in pres-mode */
+
+    /* Award hero image fills the locked viewport */
     body.pres-mode .award-hero-img {
       height: calc(100dvh - 64px);
     }
+
     /* Hide inter-slide filler */
     body.pres-mode .divider,
     body.pres-mode .wave-transition,
     body.pres-mode .ticker-wrap,
     body.pres-mode .award-caption {
       display: none !important;
+    }
+
+    /* Progress bar — thin line at top of screen */
+    #pres-progress {
+      position: fixed; top: 0; left: 0; height: 3px; z-index: 1100;
+      background: oklch(70% 0.18 218);
+      width: 0%; transition: width 0.28s ease-out;
+      pointer-events: none;
     }
 
     /* Floating "▶ Präsentation" button */
@@ -1535,6 +1541,7 @@
 
 
 <!-- ── PRESENTATION MODE CONTROLS ──────────────────────────── -->
+<div id="pres-progress" aria-hidden="true"></div>
 <button class="pres-fab" id="pres-fab" title="Präsentations-Modus starten (Taste P)">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
   Präsentation
@@ -1585,15 +1592,16 @@
   var current = 0;
   var active = false;
 
-  var fab     = document.getElementById('pres-fab');
-  var bar     = document.getElementById('pres-bar');
-  var hint    = document.getElementById('pres-hint');
-  var counter = document.getElementById('pres-counter');
-  var title   = document.getElementById('pres-title');
-  var prevBtn = document.getElementById('pres-prev');
-  var nextBtn = document.getElementById('pres-next');
-  var dotsEl  = document.getElementById('pres-dots');
-  var exitBtn = document.getElementById('pres-exit');
+  var fab      = document.getElementById('pres-fab');
+  var bar      = document.getElementById('pres-bar');
+  var hint     = document.getElementById('pres-hint');
+  var counter  = document.getElementById('pres-counter');
+  var title    = document.getElementById('pres-title');
+  var prevBtn  = document.getElementById('pres-prev');
+  var nextBtn  = document.getElementById('pres-next');
+  var dotsEl   = document.getElementById('pres-dots');
+  var exitBtn  = document.getElementById('pres-exit');
+  var progress = document.getElementById('pres-progress');
 
   // Build dots
   SLIDES.forEach(function(s, i) {
@@ -1610,9 +1618,8 @@
     prevBtn.disabled = current === 0;
     nextBtn.disabled = current === SLIDES.length - 1;
     var dots = dotsEl.querySelectorAll('.pres-dot');
-    dots.forEach(function(d, i) {
-      d.classList.toggle('active', i === current);
-    });
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+    if (progress) progress.style.width = ((current / (SLIDES.length - 1)) * 100) + '%';
   }
 
   function findCurrentSlide() {
@@ -1627,36 +1634,46 @@
     current = best;
   }
 
+  // Live offsetTop — always correct, no stale-cache risk
+  function slideTop(index) {
+    var el = document.getElementById(SLIDES[index].id);
+    return el ? el.offsetTop : 0;
+  }
+
   function goTo(index) {
     if (index < 0 || index >= SLIDES.length) return;
     current = index;
-    var el = document.getElementById(SLIDES[index].id);
-    if (el) {
-      // In pres-mode use instant then snap; outside pres-mode smooth scroll
-      el.scrollIntoView({ behavior: active ? 'smooth' : 'smooth', block: 'start' });
+    if (active) {
+      window.scrollTo({ top: slideTop(index), behavior: 'instant' });
+    } else {
+      var el = document.getElementById(SLIDES[index].id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     updateUI();
   }
 
   function showHint() {
     hint.classList.add('show');
-    setTimeout(function() { hint.classList.remove('show'); }, 2000);
+    setTimeout(function() { hint.classList.remove('show'); }, 2200);
   }
 
   function enterMode() {
     active = true;
+    findCurrentSlide();
+    // Apply classes first — layout will recalculate
     bar.classList.add('pres-active');
     document.body.classList.add('pres-mode');
     document.documentElement.classList.add('pres-mode');
     fab.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg> Beenden';
-    findCurrentSlide();
-    updateUI();
     showHint();
-    // Snap immediately to current slide once layout has recalculated
-    setTimeout(function() {
-      var el = document.getElementById(SLIDES[current].id);
-      if (el) el.scrollIntoView({ behavior: 'instant', block: 'start' });
-    }, 50);
+    // Wait two animation frames for browser to fully reflow pres-mode layout,
+    // then snap to current slide using live offsetTop
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        window.scrollTo({ top: slideTop(current), behavior: 'instant' });
+        updateUI();
+      });
+    });
   }
 
   function exitMode() {
@@ -1665,7 +1682,26 @@
     document.body.classList.remove('pres-mode');
     document.documentElement.classList.remove('pres-mode');
     fab.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Präsentation';
+    if (progress) progress.style.width = '0%';
   }
+
+  // Wheel navigation in pres-mode (debounced so one swipe = one slide)
+  var wheelTimer;
+  document.addEventListener('wheel', function(e) {
+    if (!active) return;
+    e.preventDefault();
+    var dy = e.deltaY;
+    clearTimeout(wheelTimer);
+    wheelTimer = setTimeout(function() {
+      if (dy > 0) goTo(current + 1);
+      else if (dy < 0) goTo(current - 1);
+    }, 60);
+  }, { passive: false });
+
+  // On resize, re-snap to current slide (dvh might change)
+  window.addEventListener('resize', function() {
+    if (active) window.scrollTo({ top: slideTop(current), behavior: 'instant' });
+  });
 
   function toggle() {
     if (active) exitMode(); else enterMode();
@@ -1699,17 +1735,27 @@
     }
   });
 
-  // Touch swipe support
-  var touchStartX = 0;
+  // Block touch-drag scrolling in pres-mode (allow swipe-navigation only)
+  document.addEventListener('touchmove', function(e) {
+    if (active) e.preventDefault();
+  }, { passive: false });
+
+  // Touch swipe — horizontal OR vertical swipe navigates slides in pres-mode
+  var touchStartX = 0, touchStartY = 0;
   document.addEventListener('touchstart', function(e) {
     touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
   }, { passive: true });
   document.addEventListener('touchend', function(e) {
     if (!active) return;
     var dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) > 60) {
-      if (dx < 0) goTo(current + 1);
-      else goTo(current - 1);
+    var dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      // Horizontal: swipe left = next, right = prev
+      if (dx < 0) goTo(current + 1); else goTo(current - 1);
+    } else if (Math.abs(dy) > 50) {
+      // Vertical: swipe up = next, down = prev
+      if (dy < 0) goTo(current + 1); else goTo(current - 1);
     }
   }, { passive: true });
 
