@@ -219,6 +219,7 @@
     .hl-purple { background: linear-gradient(135deg, #1a0b2e 0%, #3b1a6b 40%, #7c3aed 100%); }
     .hl-green  { background: linear-gradient(135deg, #0e1a09 0%, #2a4a18 40%, #4F772D 100%); }
     .hl-teal   { background: linear-gradient(135deg, #071216 0%, #0a3344 40%, #0891b2 100%); }
+    .hl-amber  { background: linear-gradient(135deg, #1c0a00 0%, #7c2d12 40%, #c2410c 100%); }
 
     .hl .sl { color: rgba(255,255,255,0.5); letter-spacing: 2px; }
     .hl .st { color: #fff; }
@@ -237,6 +238,7 @@
     .hl-purple .srow .s .n { color: #c4b5fd; }
     .hl-green  .srow .s .n { color: #86efac; }
     .hl-teal   .srow .s .n { color: #67e8f9; }
+    .hl-amber  .srow .s .n { color: #fde68a; }
     .srow .s .l { font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.5px; }
 
     /* award box */
@@ -250,6 +252,57 @@
     .abox .tx strong { display: block; font-size: 14px; margin-bottom: 2px; }
     .hl-purple .abox .tx strong { color: #c4b5fd; }
     .hl-green  .abox .tx strong { color: #fbbf24; }
+    .hl-amber  .abox .tx strong { color: #fde68a; }
+
+    /* ── PM PROJECT CARDS ───────────────────────────────────── */
+    .pm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; }
+    @media (max-width: 680px) { .pm-grid { grid-template-columns: 1fr; } }
+    .pm-card {
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 13px; padding: 22px;
+      transition: background 0.2s;
+    }
+    .pm-card:hover { background: rgba(255,255,255,0.13); }
+    .pm-card .pm-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 20px; padding: 3px 11px;
+      font-size: 11px; font-weight: 700; color: #fde68a;
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .pm-card h4 { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .pm-card .pm-budget {
+      font-size: 26px; font-weight: 900; color: #fde68a;
+      display: block; margin-bottom: 8px; letter-spacing: -0.5px;
+    }
+    .pm-card p { font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.65; }
+    .pm-card ul { padding-left: 16px; margin-top: 8px; }
+    .pm-card ul li { font-size: 12.5px; color: rgba(255,255,255,0.68); line-height: 1.6; margin-bottom: 3px; }
+
+    .pm-total-bar {
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 12px; padding: 18px 28px; gap: 20px; flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+    .pm-total-bar .total-num {
+      font-size: 42px; font-weight: 900; color: #fde68a; letter-spacing: -1.5px;
+    }
+    .pm-total-bar .total-label { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+    .pm-total-bar .total-label strong { display: block; font-size: 15px; color: #fff; }
+
+    .learning-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
+    @media (max-width: 680px) { .learning-grid { grid-template-columns: 1fr 1fr; } }
+    .learning-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 10px; padding: 16px;
+    }
+    .learning-card .lc-icon { font-size: 22px; margin-bottom: 8px; }
+    .learning-card .lc-title { font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .learning-card .lc-text  { font-size: 12px; color: rgba(255,255,255,0.62); line-height: 1.55; }
 
     /* chips */
     .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0; }
@@ -807,6 +860,172 @@
       </linearGradient>
     </defs>
     <path d="M0,0 C360,70 720,0 1080,50 C1260,70 1380,20 1440,40 L1440,80 L0,80 Z" fill="url(#wt4)"/>
+  </svg>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     WAVE TRANSITION: white → amber (Project Management)
+═════════════════════════════════════════════════════════════ -->
+<div class="wave-transition">
+  <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="wt5" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f8fafc"/>
+        <stop offset="100%" stop-color="#1c0a00"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,0 C300,80 600,10 900,55 C1100,85 1300,20 1440,50 L1440,90 L0,90 Z" fill="url(#wt5)"/>
+  </svg>
+</div>
+
+<!-- ── PROJECT MANAGEMENT HIGHLIGHT (AMBER) ──────────────────── -->
+<section class="hl hl-amber">
+  <span class="corner">📐</span>
+  <div class="hl-inner">
+    <p class="sl" style="color:rgba(255,255,255,0.5);">Real-World Project Leadership &amp; Teaching</p>
+    <h2 class="st">Project Management — ~€3M Managed</h2>
+    <p class="ss">I don't just teach project management — I live it. As Work Package Lead on major EU and national research projects, I manage multi-million euro budgets, international consortia, regulatory complexity, and stakeholder alignment across academia, government, and industry. These real-world experiences feed directly back into my courses — so students learn what actually matters in practice.</p>
+
+    <!-- Total callout -->
+    <div class="pm-total-bar">
+      <span class="total-num">~€3M</span>
+      <div class="total-label">
+        <strong>Total managed project volume</strong>
+        Across EU Erasmus+, FFG Flagship, and national education programs
+      </div>
+      <div style="display:flex; gap:18px; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <span style="font-size:22px; font-weight:900; color:#fde68a; display:block;">3</span>
+          <span style="font-size:11px; color:rgba(255,255,255,0.55); text-transform:uppercase; letter-spacing:0.5px;">Major Projects</span>
+        </div>
+        <div style="text-align:center;">
+          <span style="font-size:22px; font-weight:900; color:#fde68a; display:block;">7</span>
+          <span style="font-size:11px; color:rgba(255,255,255,0.55); text-transform:uppercase; letter-spacing:0.5px;">Countries</span>
+        </div>
+        <div style="text-align:center;">
+          <span style="font-size:22px; font-weight:900; color:#fde68a; display:block;">10+</span>
+          <span style="font-size:11px; color:rgba(255,255,255,0.55); text-transform:uppercase; letter-spacing:0.5px;">Partners</span>
+        </div>
+        <div style="text-align:center;">
+          <span style="font-size:22px; font-weight:900; color:#fde68a; display:block;">IPMA</span>
+          <span style="font-size:11px; color:rgba(255,255,255,0.55); text-transform:uppercase; letter-spacing:0.5px;">Level D Cert.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Individual project cards -->
+    <div class="pm-grid">
+      <div class="pm-card">
+        <span class="pm-tag">🇪🇺 Erasmus+ · EU-Funded</span>
+        <h4>L2BGreen — Green Entrepreneurship</h4>
+        <span class="pm-budget">€1,499,148</span>
+        <p>Work Package Lead in a 7-country European consortium. Coordinating course development, an AI chatbot component, and a community platform — in 6 languages, with partners including University of Twente, TU Graz, Saarland University, and Estonian Business School.</p>
+        <ul>
+          <li>Timeline: April 2024 – March 2027 (36 months)</li>
+          <li>7 partner countries · 6 languages (DE, EN, NL, EE, EL, SL)</li>
+          <li>My role: WP Lead + Co-Founder of technology partner (AI chatbot)</li>
+          <li>Deliverables: Online course, AI chatbot, community network</li>
+        </ul>
+      </div>
+
+      <div class="pm-card">
+        <span class="pm-tag">🇦🇹 FFG Flagship · National Funded</span>
+        <h4>PACE-DPP — Digital Product Passport</h4>
+        <span class="pm-budget">~€1.5M</span>
+        <p>Work Package Lead in a prestigious FFG Flagship Project focused on building the data infrastructure for Digital Product Passports under EU regulation. Coordinated by Virtual Vehicle Research GmbH, funded by the Austrian Federal Ministry for Climate Action (BMK).</p>
+        <ul>
+          <li>Partners: Virtual Vehicle, industrial and research consortia</li>
+          <li>My role: WP Lead, Sustainista as industrial partner</li>
+          <li>Focus: Circular economy data spaces, Digital Twins, DPP ecosystems</li>
+          <li>Outcome: Tooling for EU Battery &amp; Ecodesign Regulation compliance</li>
+        </ul>
+      </div>
+
+      <div class="pm-card">
+        <span class="pm-tag">🏆 MEGA Education Million</span>
+        <h4>Skills-UP! — Financial Literacy</h4>
+        <span class="pm-budget">TOP 3 Grant</span>
+        <p>Led the development and rollout of Skills-UP! — from concept to national award recognition. Built the platform, the corporate partnership model (TGW Logistics), and the ERASMUS+ follow-up project as Work Package Lead for the AI &amp; Entrepreneurship module.</p>
+        <ul>
+          <li>Platform launched 2020 · Corporate rollout 2021</li>
+          <li>200+ apprentices · 90% behavioral change</li>
+          <li>Selected TOP 3 from 80+ national initiatives</li>
+          <li>ERASMUS+ follow-up: AI &amp; Entrepreneurship WP Lead</li>
+        </ul>
+      </div>
+
+      <div class="pm-card">
+        <span class="pm-tag">🎓 University Teaching</span>
+        <h4>Project Management Courses</h4>
+        <span class="pm-budget" style="font-size:20px;">Since 2011</span>
+        <p>Teaching Project Management at university level for 15+ years — bringing real project experience directly into the classroom.</p>
+        <ul>
+          <li><strong style="color:#fff;">IT Project Management</strong> — WU Wien (Bachelor, since 2011)</li>
+          <li><strong style="color:#fff;">IS Project &amp; Risk Management</strong> — WU Wien (Master, 2018–2021)</li>
+          <li><strong style="color:#fff;">Business Project Management</strong> — WU Wien (Master, 2021–2025)</li>
+          <li><strong style="color:#fff;">IT Innovation Management</strong> — FH Technikum (Master, since 2021)</li>
+          <li>Certification: IPMA Level D (pma Austria)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Key Learnings -->
+    <div style="margin-top: 32px;">
+      <p style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.45); margin-bottom:14px;">Key Learnings from Leading Multi-Million Euro Projects</p>
+      <div class="learning-grid">
+        <div class="learning-card">
+          <div class="lc-icon">🌍</div>
+          <div class="lc-title">Cross-Cultural Coordination</div>
+          <div class="lc-text">Managing teams across 7 countries and 6 languages requires cultural sensitivity, clear governance structures, and asynchronous communication that actually works.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🏛</div>
+          <div class="lc-title">Stakeholder Alignment</div>
+          <div class="lc-text">EU and FFG projects involve universities, governments, industry, and NGOs simultaneously. The hardest skill: finding the shared language between all of them.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">⚖️</div>
+          <div class="lc-title">Regulatory Complexity</div>
+          <div class="lc-text">EU Battery Regulation, ESG reporting requirements, Erasmus+ reporting standards — navigating regulatory frameworks is a core PM competency, not an afterthought.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">🔄</div>
+          <div class="lc-title">Agile in Research Projects</div>
+          <div class="lc-text">Applying agile thinking to multi-year EU projects means iterating deliverables within fixed milestone structures — and knowing when to protect the roadmap vs. adapt it.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">💡</div>
+          <div class="lc-title">From Research to Product</div>
+          <div class="lc-text">The biggest PM challenge in innovation projects: translating academic insights into deployable tools without losing scientific rigor or practical usability.</div>
+        </div>
+        <div class="learning-card">
+          <div class="lc-icon">📊</div>
+          <div class="lc-title">Impact Measurement</div>
+          <div class="lc-text">A €3M project is only successful if you can prove it worked. Defining KPIs upfront, tracking behavioral change (90% in Skills-UP!), and reporting with transparency builds credibility.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hl-btns">
+      <a href="https://www.l2bgreen.com" target="_blank" rel="noopener" class="hl-bw" style="color:#7c2d12;">🌱 L2BGreen Project</a>
+      <a href="https://dpp-austria.at" target="_blank" rel="noopener" class="hl-bo">🔄 PACE-DPP / DPP Austria</a>
+      <a href="https://www.sustainista.net/hackathon" target="_blank" rel="noopener" class="hl-bo">🏟 Europe Tech Hackathon</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     WAVE TRANSITION: amber → white
+═════════════════════════════════════════════════════════════ -->
+<div class="wave-transition">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="wt6" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#c2410c"/>
+        <stop offset="100%" stop-color="#f8fafc"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,0 C480,70 960,10 1440,55 L1440,80 L0,80 Z" fill="url(#wt6)"/>
   </svg>
 </div>
 
