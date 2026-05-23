@@ -14,80 +14,81 @@
       --teal:     #0891b2;
       --green:    #4F772D;
       --green-dk: #31572C;
-      --green-lt: #dcfce7;
       --amber:    #d97706;
       --amber-lt: #fef3c7;
       --purple:   #7c3aed;
-      --purple-lt:#ede9fe;
+      --purple-dk:#5b21b6;
       --red:      #dc2626;
       --bg:       #f8fafc;
-      --surface:  #f1f5f9;
       --card:     #ffffff;
       --text:     #0f172a;
-      --text-2:   #334155;
       --muted:    #64748b;
       --border:   #e2e8f0;
-      --radius:   14px;
+      --r:        14px;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
+      background: var(--bg); color: var(--text);
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
     }
 
-    /* ──────────────────────────────────────────────────────
-       HERO
-    ────────────────────────────────────────────────────── */
+    /* ── LINKEDIN TOP BAR ─────────────────────────────────── */
+    .li-top-bar {
+      background: #0a66c2;
+      padding: 10px 24px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; flex-wrap: wrap;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(10,102,194,0.4);
+    }
+    .li-top-bar p {
+      font-size: 13px; color: rgba(255,255,255,0.88); font-weight: 500;
+    }
+    .li-top-bar p strong { color: #fff; }
+    .li-top-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #fff; color: #0a66c2;
+      padding: 6px 16px; border-radius: 20px;
+      font-size: 12.5px; font-weight: 800;
+      text-decoration: none; transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .li-top-btn:hover { background: #e0efff; transform: scale(1.03); }
+
+    /* ── HERO ─────────────────────────────────────────────── */
     .hero {
       background: linear-gradient(140deg, #060d1f 0%, #0f2557 35%, #1a56db 70%, #0891b2 100%);
-      color: #fff;
-      padding: 72px 24px 88px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      color: #fff; padding: 68px 24px 84px;
+      text-align: center; position: relative; overflow: hidden;
     }
     .hero::before {
-      content: '';
-      position: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0; pointer-events: none;
       background:
         radial-gradient(ellipse 80% 60% at 20% 100%, rgba(14,159,138,0.18) 0%, transparent 60%),
         radial-gradient(ellipse 60% 50% at 80% 0%, rgba(124,58,237,0.12) 0%, transparent 60%);
-      pointer-events: none;
     }
     .hero-inner { position: relative; z-index: 1; }
 
     .avatar-ring {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 26px;
+      position: relative; display: inline-block; margin-bottom: 26px;
     }
     .avatar-ring::before {
-      content: '';
-      position: absolute; inset: -6px;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, #1a56db, #0891b2, #4F772D, #fbbf24, #1a56db);
-      animation: spin 8s linear infinite;
-      opacity: 0.6;
+      content: ''; position: absolute; inset: -6px; border-radius: 50%;
+      background: conic-gradient(from 0deg, #1a56db, #0891b2, #4F772D, #fbbf24, #7c3aed, #1a56db);
+      animation: spin 10s linear infinite; opacity: 0.65;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     .avatar {
-      width: 144px; height: 144px;
-      border-radius: 50%;
-      border: 4px solid #fff;
-      object-fit: cover;
-      display: block;
-      position: relative;
-      z-index: 1;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+      width: 148px; height: 148px; border-radius: 50%;
+      border: 4px solid #fff; object-fit: cover;
+      display: block; position: relative; z-index: 1;
+      box-shadow: 0 14px 44px rgba(0,0,0,0.38);
     }
-    .avatar-fallback {
-      width: 144px; height: 144px; border-radius: 50%;
+    .avatar-fb {
+      width: 148px; height: 148px; border-radius: 50%;
       border: 4px solid #fff;
       background: linear-gradient(135deg, #dbeafe, #ede9fe);
       display: none; align-items: center; justify-content: center;
@@ -96,174 +97,81 @@
     }
 
     .hero h1 {
-      font-size: clamp(30px, 5.5vw, 52px);
-      font-weight: 900;
-      letter-spacing: -1px;
-      margin-bottom: 8px;
+      font-size: clamp(30px, 5.5vw, 52px); font-weight: 900;
+      letter-spacing: -1px; margin-bottom: 8px;
       text-shadow: 0 2px 20px rgba(0,0,0,0.3);
     }
     .hero .tagline {
-      font-size: clamp(13px, 2vw, 16px);
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 6px;
-      font-weight: 400;
+      font-size: clamp(12.5px, 2vw, 15.5px); color: rgba(255,255,255,0.8);
+      margin-bottom: 8px;
     }
-    .hero .follower-pill {
+    .hero .fpill {
       display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 20px;
-      padding: 4px 14px;
-      font-size: 12.5px;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 28px;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px; padding: 4px 14px;
+      font-size: 12.5px; color: rgba(255,255,255,0.82); margin-bottom: 28px;
     }
-    .hero .follower-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
+    .fpill .live { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
 
-    .hero-links { display: flex; gap: 9px; justify-content: center; flex-wrap: wrap; }
-
+    .hero-links { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 9px 17px; border-radius: 8px;
       font-size: 13px; font-weight: 600;
-      text-decoration: none; transition: all 0.18s; cursor: pointer;
+      text-decoration: none; transition: all 0.18s;
     }
-    .btn-white { background: #fff; color: var(--blue); }
+    .btn-white  { background: #fff; color: var(--blue); }
     .btn-white:hover { background: #dbeafe; transform: translateY(-1px); }
-    .btn-ghost { background: rgba(255,255,255,0.12); color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
+    .btn-ghost  { background: rgba(255,255,255,0.12); color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
     .btn-ghost:hover { background: rgba(255,255,255,0.22); transform: translateY(-1px); }
-    .btn-green { background: var(--green); color: #fff; }
-    .btn-green:hover { background: var(--green-dk); transform: translateY(-1px); }
+    .btn-green  { background: var(--green); color: #fff; }
+    .btn-green:hover  { background: var(--green-dk); transform: translateY(-1px); }
 
-    /* ──────────────────────────────────────────────────────
-       AWARD TICKER
-    ────────────────────────────────────────────────────── */
+    /* ── TICKER ────────────────────────────────────────────── */
     .ticker-wrap {
-      background: linear-gradient(90deg, #d97706, #fbbf24 50%, #d97706);
-      overflow: hidden;
-      padding: 0;
-      height: 42px;
-      display: flex; align-items: center;
+      background: linear-gradient(90deg, #b45309, #fbbf24 50%, #b45309);
+      height: 40px; overflow: hidden; display: flex; align-items: center;
     }
     .ticker-inner {
-      display: flex; gap: 0;
-      animation: ticker 28s linear infinite;
-      white-space: nowrap;
+      display: flex; animation: tick 32s linear infinite; white-space: nowrap;
     }
-    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .ticker-item {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 0 28px;
-      font-size: 13px; font-weight: 700; color: #1a2a4a;
-      flex-shrink: 0;
+    @keyframes tick { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .tick-item {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0 26px; font-size: 12.5px; font-weight: 700;
+      color: #1a1a00; flex-shrink: 0;
     }
-    .ticker-sep { opacity: 0.4; font-size: 18px; }
+    .tick-sep { opacity: 0.35; font-size: 16px; }
 
-    /* ──────────────────────────────────────────────────────
-       LINKEDIN CTA
-    ────────────────────────────────────────────────────── */
-    .linkedin-cta {
-      background: linear-gradient(135deg, #0a1628 0%, #0e4f7b 40%, #0a66c2 100%);
-      padding: 56px 24px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .linkedin-cta::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(10,102,194,0.3), transparent);
-      pointer-events: none;
-    }
-    .linkedin-cta .inner { position: relative; z-index: 1; }
-    .li-logo {
-      width: 56px; height: 56px; background: #0a66c2; border-radius: 12px;
-      display: inline-flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 24px rgba(10,102,194,0.5);
-    }
-    .li-logo svg { width: 32px; height: 32px; fill: #fff; }
-    .linkedin-cta h2 {
-      font-size: clamp(22px, 4vw, 38px);
-      font-weight: 900; color: #fff;
-      letter-spacing: -0.5px; margin-bottom: 12px;
-    }
-    .linkedin-cta p {
-      font-size: 15px; color: rgba(255,255,255,0.75);
-      max-width: 500px; margin: 0 auto 32px;
-    }
-    .btn-follow {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: #0a66c2;
-      border: 2px solid rgba(255,255,255,0.3);
-      color: #fff;
-      padding: 15px 36px;
-      border-radius: 50px;
-      font-size: 16px; font-weight: 800;
-      text-decoration: none;
-      transition: all 0.2s;
-      box-shadow: 0 4px 24px rgba(10,102,194,0.5), 0 0 0 0 rgba(10,102,194,0.5);
-      animation: pulse-li 2.5s ease-in-out infinite;
-    }
-    @keyframes pulse-li {
-      0%, 100% { box-shadow: 0 4px 24px rgba(10,102,194,0.5), 0 0 0 0 rgba(255,255,255,0.3); }
-      50%       { box-shadow: 0 4px 24px rgba(10,102,194,0.5), 0 0 0 12px rgba(255,255,255,0); }
-    }
-    .btn-follow:hover {
-      background: #0052a3;
-      transform: scale(1.04);
-    }
-    .li-social-proof {
-      margin-top: 18px;
-      font-size: 13px; color: rgba(255,255,255,0.55);
-    }
-    .li-social-proof strong { color: rgba(255,255,255,0.85); }
-
-    /* ──────────────────────────────────────────────────────
-       LAYOUT
-    ────────────────────────────────────────────────────── */
+    /* ── LAYOUT ─────────────────────────────────────────────── */
     main { max-width: 960px; margin: 0 auto; padding: 56px 24px 80px; }
 
-    .sec-label {
-      text-transform: uppercase; font-size: 10.5px;
-      font-weight: 700; letter-spacing: 2.5px; color: var(--blue);
-      margin-bottom: 7px;
-    }
-    .sec-title {
-      font-size: clamp(21px, 3.2vw, 30px);
-      font-weight: 900; color: var(--text); margin-bottom: 6px;
-      letter-spacing: -0.3px;
-    }
-    .sec-sub { font-size: 14.5px; color: var(--muted); max-width: 680px; margin-bottom: 24px; line-height: 1.7; }
+    .sl { text-transform: uppercase; font-size: 10.5px; font-weight: 700;
+          letter-spacing: 2.5px; color: var(--blue); margin-bottom: 7px; }
+    .st { font-size: clamp(21px, 3.2vw, 30px); font-weight: 900; color: var(--text);
+          margin-bottom: 8px; letter-spacing: -0.3px; }
+    .ss { font-size: 14.5px; color: var(--muted); max-width: 720px;
+          margin-bottom: 24px; line-height: 1.75; }
     .divider { height: 1px; background: var(--border); margin: 52px 0; }
 
-    /* ──────────────────────────────────────────────────────
-       STAT BAR (quick numbers)
-    ────────────────────────────────────────────────────── */
+    /* ── STAT BAR ───────────────────────────────────────────── */
     .stat-bar {
       display: grid; grid-template-columns: repeat(4, 1fr);
-      border: 1px solid var(--border); border-radius: var(--radius);
+      border: 1px solid var(--border); border-radius: var(--r);
       background: var(--card); overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      margin: 32px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 32px 0;
     }
     @media (max-width: 580px) { .stat-bar { grid-template-columns: 1fr 1fr; } }
-
-    .stat-cell {
+    .sc {
       padding: 22px 16px; text-align: center;
       border-right: 1px solid var(--border);
     }
-    .stat-cell:last-child { border-right: none; }
-    @media (max-width: 580px) { .stat-cell:nth-child(2) { border-right: none; } }
-    .stat-cell .n {
-      font-size: 28px; font-weight: 900; color: var(--blue);
-      letter-spacing: -1px; display: block;
-    }
-    .stat-cell .l { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+    .sc:last-child { border-right: none; }
+    @media (max-width: 580px) { .sc:nth-child(2) { border-right: none; } }
+    .sc .n { font-size: 28px; font-weight: 900; color: var(--blue); letter-spacing: -1px; display: block; }
+    .sc .l { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
 
-    /* ──────────────────────────────────────────────────────
-       CARDS
-    ────────────────────────────────────────────────────── */
+    /* ── CARDS ──────────────────────────────────────────────── */
     .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
     @media (max-width: 700px) { .g2, .g3 { grid-template-columns: 1fr; } }
@@ -271,163 +179,188 @@
 
     .card {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 22px;
+      border-radius: var(--r); padding: 22px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.04);
       transition: box-shadow 0.2s, transform 0.2s;
     }
     .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); transform: translateY(-2px); }
-
     .ci {
       width: 40px; height: 40px; border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 20px; margin-bottom: 13px; flex-shrink: 0;
+      font-size: 20px; margin-bottom: 13px;
     }
-    .ci-blue   { background: #eff6ff; }
-    .ci-teal   { background: #ecfeff; }
-    .ci-green  { background: #f0fdf4; }
-    .ci-amber  { background: #fffbeb; }
-    .ci-purple { background: #f5f3ff; }
-    .ci-red    { background: #fef2f2; }
-    .ci-slate  { background: #f8fafc; border: 1px solid var(--border); }
-
-    .card h3 { font-size: 14.5px; font-weight: 800; margin-bottom: 8px; color: var(--text); }
+    .ci-b { background: #eff6ff; }
+    .ci-t { background: #ecfeff; }
+    .ci-g { background: #f0fdf4; }
+    .ci-a { background: #fffbeb; }
+    .ci-p { background: #f5f3ff; }
+    .card h3 { font-size: 14.5px; font-weight: 800; margin-bottom: 8px; }
     .card p, .card li { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
     .card ul { padding-left: 17px; }
     .card ul li { margin-bottom: 4px; }
-    .card-accent { border-left: 3px solid var(--blue); }
 
-    /* ──────────────────────────────────────────────────────
-       HIGHLIGHT BLOCKS
-    ────────────────────────────────────────────────────── */
-    .hl {
-      border-radius: 16px; padding: 34px 36px; color: #fff;
-      margin: 8px 0; position: relative; overflow: hidden;
+    /* ── LOGO IMG WITHIN CARDS ──────────────────────────────── */
+    .card-logo { height: 32px; width: auto; object-fit: contain; margin-bottom: 14px; display: block; }
+    .card-logo-sm { height: 24px; width: auto; object-fit: contain; }
+
+    /* ── GRADIENT WAVE TRANSITIONS ──────────────────────────── */
+    .wave-transition {
+      display: block; line-height: 0; margin: 0; padding: 0;
+      overflow: hidden;
     }
-    @media (max-width: 580px) { .hl { padding: 26px 22px; } }
-    .hl-blue  { background: linear-gradient(135deg, #060d1f 0%, #0f2557 30%, #1a56db 100%); }
-    .hl-green { background: linear-gradient(135deg, #0e1a09 0%, #2a4a18 30%, #4F772D 100%); }
-    .hl-teal  { background: linear-gradient(135deg, #071216 0%, #0a3344 30%, #0891b2 100%); }
-    .hl-purple{ background: linear-gradient(135deg, #1a0b2e 0%, #3b1a6b 30%, #7c3aed 100%); }
+    .wave-transition svg { display: block; width: 100%; }
 
-    .hl .sec-label { color: rgba(255,255,255,0.55); letter-spacing: 2px; }
-    .hl .sec-title { color: #fff; margin-bottom: 12px; }
-    .hl p { color: rgba(255,255,255,0.78); font-size: 14.5px; max-width: 700px; margin-bottom: 14px; }
-    .hl .corner { position: absolute; right: 30px; top: 18px; font-size: 80px; opacity: 0.08; pointer-events: none; }
+    /* ── HIGHLIGHT BLOCKS ───────────────────────────────────── */
+    .hl {
+      border-radius: 0; padding: 52px 0; color: #fff;
+      position: relative; overflow: hidden;
+    }
+    .hl-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    .hl-purple { background: linear-gradient(135deg, #1a0b2e 0%, #3b1a6b 40%, #7c3aed 100%); }
+    .hl-green  { background: linear-gradient(135deg, #0e1a09 0%, #2a4a18 40%, #4F772D 100%); }
+    .hl-teal   { background: linear-gradient(135deg, #071216 0%, #0a3344 40%, #0891b2 100%); }
 
+    .hl .sl { color: rgba(255,255,255,0.5); letter-spacing: 2px; }
+    .hl .st { color: #fff; }
+    .hl .ss { color: rgba(255,255,255,0.76); max-width: 680px; }
+    .hl .corner {
+      position: absolute; right: 40px; top: 20px;
+      font-size: 90px; opacity: 0.07; pointer-events: none;
+    }
+
+    /* logo in highlight */
+    .hl-logo { height: 36px; width: auto; object-fit: contain; margin-bottom: 18px; display: block; }
+
+    /* stats in hl */
     .srow { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 20px; }
-    .srow .s .n { font-size: 30px; font-weight: 900; display: block; color: #fbbf24; }
-    .hl-green .srow .s .n { color: #86efac; }
-    .hl-teal  .srow .s .n { color: #67e8f9; }
+    .srow .s .n { font-size: 30px; font-weight: 900; display: block; }
     .hl-purple .srow .s .n { color: #c4b5fd; }
+    .hl-green  .srow .s .n { color: #86efac; }
+    .hl-teal   .srow .s .n { color: #67e8f9; }
     .srow .s .l { font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.5px; }
 
+    /* award box */
     .abox {
       display: flex; align-items: center; gap: 14px;
-      background: rgba(255,255,255,0.1);
-      border: 1.5px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.18);
       border-radius: 11px; padding: 13px 18px; margin-top: 18px; max-width: 580px;
     }
-    .abox .ico { font-size: 30px; }
-    .abox .tx  { font-size: 13px; color: rgba(255,255,255,0.8); }
-    .abox .tx strong { display: block; font-size: 14px; color: #fbbf24; margin-bottom: 2px; }
-    .hl-green .abox .tx strong { color: #86efac; }
+    .abox .ic { font-size: 30px; }
+    .abox .tx { font-size: 13px; color: rgba(255,255,255,0.8); }
+    .abox .tx strong { display: block; font-size: 14px; margin-bottom: 2px; }
+    .hl-purple .abox .tx strong { color: #c4b5fd; }
+    .hl-green  .abox .tx strong { color: #fbbf24; }
 
-    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 12px 0; }
+    /* chips */
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0; }
     .chip {
       padding: 4px 11px; border-radius: 20px;
-      background: rgba(255,255,255,0.11); border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
       font-size: 12px; color: rgba(255,255,255,0.85); font-weight: 500;
     }
-    .hl-btns { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 20px; }
-    .hl-btn-w {
+
+    /* hl buttons */
+    .hl-btns { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 22px; }
+    .hl-bw {
       display: inline-flex; align-items: center; gap: 7px;
-      background: #fff; color: #1a2a4a;
-      padding: 9px 18px; border-radius: 8px;
-      font-size: 13px; font-weight: 700; text-decoration: none;
-      transition: all 0.18s;
+      background: #fff; padding: 9px 18px; border-radius: 8px;
+      font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.18s;
     }
-    .hl-btn-w:hover { background: #e0f2fe; transform: translateY(-1px); }
-    .hl-btn-o {
+    .hl-purple .hl-bw { color: var(--purple-dk); }
+    .hl-green  .hl-bw { color: var(--green-dk); }
+    .hl-teal   .hl-bw { color: #075985; }
+    .hl-bw:hover { opacity: 0.9; transform: translateY(-1px); }
+    .hl-bo {
       display: inline-flex; align-items: center; gap: 7px;
       background: rgba(255,255,255,0.13); color: #fff;
       border: 1.5px solid rgba(255,255,255,0.3);
       padding: 9px 18px; border-radius: 8px;
-      font-size: 13px; font-weight: 600; text-decoration: none;
-      transition: all 0.18s;
+      font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.18s;
     }
-    .hl-btn-o:hover { background: rgba(255,255,255,0.22); transform: translateY(-1px); }
+    .hl-bo:hover { background: rgba(255,255,255,0.22); transform: translateY(-1px); }
 
-    /* ──────────────────────────────────────────────────────
-       TIMELINE
-    ────────────────────────────────────────────────────── */
+    /* ── PARTNER LOGO STRIP ─────────────────────────────────── */
+    .logo-strip {
+      display: flex; align-items: center; gap: 20px;
+      flex-wrap: wrap; margin-top: 22px;
+    }
+    .logo-strip-label {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+      color: rgba(255,255,255,0.45); font-weight: 700; flex-basis: 100%; margin-bottom: 4px;
+    }
+    .logo-strip img {
+      height: 28px; width: auto; object-fit: contain;
+      filter: brightness(0) invert(1); opacity: 0.65;
+      transition: opacity 0.18s;
+    }
+    .logo-strip img:hover { opacity: 1; }
+
+    /* partner logos on white bg */
+    .logo-strip-light { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 16px; }
+    .logo-strip-light .lsl {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+      color: var(--muted); font-weight: 700; flex-basis: 100%; margin-bottom: 4px;
+    }
+    .logo-strip-light img {
+      height: 28px; width: auto; object-fit: contain; opacity: 0.7; filter: grayscale(20%);
+      transition: opacity 0.18s, filter 0.18s;
+    }
+    .logo-strip-light img:hover { opacity: 1; filter: grayscale(0); }
+
+    /* ── TIMELINE ───────────────────────────────────────────── */
     .timeline { margin-top: 28px; position: relative; padding-left: 32px; }
     .timeline::before {
-      content: '';
-      position: absolute; left: 10px; top: 6px; bottom: 6px;
-      width: 2px; background: linear-gradient(to bottom, var(--blue), var(--teal), var(--green));
+      content: ''; position: absolute; left: 10px; top: 6px; bottom: 6px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), var(--purple), var(--green), var(--teal));
       border-radius: 1px;
     }
     .tli { position: relative; margin-bottom: 26px; }
     .tli:last-child { margin-bottom: 0; }
     .dot {
       position: absolute; left: -26px; top: 4px;
-      width: 14px; height: 14px; border-radius: 50%;
-      border: 2.5px solid #fff;
+      width: 14px; height: 14px; border-radius: 50%; border: 2.5px solid #fff;
     }
-    .dot-blue   { background: var(--blue);   box-shadow: 0 0 0 2.5px var(--blue); }
-    .dot-green  { background: var(--green);  box-shadow: 0 0 0 2.5px var(--green); }
-    .dot-amber  { background: var(--amber);  box-shadow: 0 0 0 2.5px var(--amber); }
-    .dot-teal   { background: var(--teal);   box-shadow: 0 0 0 2.5px var(--teal); }
-    .dot-red    { background: var(--red);    box-shadow: 0 0 0 2.5px var(--red); }
-    .dot-purple { background: var(--purple); box-shadow: 0 0 0 2.5px var(--purple); }
-
+    .d-b { background: var(--blue);   box-shadow: 0 0 0 2.5px var(--blue); }
+    .d-g { background: var(--green);  box-shadow: 0 0 0 2.5px var(--green); }
+    .d-a { background: var(--amber);  box-shadow: 0 0 0 2.5px var(--amber); }
+    .d-t { background: var(--teal);   box-shadow: 0 0 0 2.5px var(--teal); }
+    .d-p { background: var(--purple); box-shadow: 0 0 0 2.5px var(--purple); }
     .tl-yr  { font-size: 11px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
     .tl-ttl { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
     .tl-sub { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
-    /* ──────────────────────────────────────────────────────
-       AWARD CARDS
-    ────────────────────────────────────────────────────── */
+    /* ── AWARD GRID ─────────────────────────────────────────── */
     .award-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; }
     @media (max-width: 700px) { .award-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 420px) { .award-grid { grid-template-columns: 1fr; } }
-
     .award-card {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 20px 18px; text-align: center;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      border-radius: var(--r); padding: 20px 18px; text-align: center;
       transition: all 0.2s;
     }
     .award-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
-    .award-card .ic  { font-size: 30px; margin-bottom: 8px; }
+    .award-card .ic  { font-size: 28px; margin-bottom: 8px; }
     .award-card .yr  { font-size: 10.5px; font-weight: 700; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
     .award-card .ttl { font-size: 13.5px; font-weight: 800; color: var(--text); margin-bottom: 5px; line-height: 1.35; }
     .award-card .dsc { font-size: 12px; color: var(--muted); line-height: 1.55; }
 
-    /* ──────────────────────────────────────────────────────
-       TEACHING TABLE
-    ────────────────────────────────────────────────────── */
+    /* ── TEACHING GRID ──────────────────────────────────────── */
     .teach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
     @media (max-width: 700px) { .teach-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 440px) { .teach-grid { grid-template-columns: 1fr; } }
-
     .uni-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 10px; padding: 14px 16px;
     }
     .uni-card .flag { font-size: 18px; margin-bottom: 6px; }
     .uni-card .uname { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-    .uni-card .ucourses { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .uni-card .ucourse { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
-    /* ──────────────────────────────────────────────────────
-       PUBLICATIONS
-    ────────────────────────────────────────────────────── */
+    /* ── PUBLICATIONS ───────────────────────────────────────── */
     .pub-list { list-style: none; margin-top: 18px; }
     .pub-item {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 11px; padding: 16px 18px; margin-bottom: 10px;
-      display: flex; gap: 13px; align-items: flex-start;
-      transition: border-color 0.18s;
+      display: flex; gap: 13px; align-items: flex-start; transition: border-color 0.18s;
     }
     .pub-item:hover { border-color: var(--blue); }
     .pub-num {
@@ -437,26 +370,20 @@
     }
     .pub-ttl { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 3px; line-height: 1.45; }
     .pub-meta { font-size: 12.5px; color: var(--muted); }
-    .pub-badge {
-      display: inline-block; margin-top: 5px;
-      padding: 2px 9px; border-radius: 20px;
+    .pbadge {
+      display: inline-block; margin-top: 5px; padding: 2px 9px; border-radius: 20px;
       font-size: 11px; font-weight: 700;
     }
-    .pb-journal { background: var(--blue-lt); color: var(--blue-dk); }
-    .pb-conf    { background: var(--purple-lt); color: var(--purple); }
+    .pbj { background: #eff6ff; color: var(--blue-dk); }
+    .pbc { background: #f5f3ff; color: var(--purple-dk); }
 
-    /* ──────────────────────────────────────────────────────
-       PROJECT STRIP
-    ────────────────────────────────────────────────────── */
+    /* ── PROJECT GRID ───────────────────────────────────────── */
     .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
     @media (max-width: 700px) { .proj-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 440px) { .proj-grid { grid-template-columns: 1fr; } }
-
     .proj-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 11px; padding: 18px;
-      display: flex; flex-direction: column; gap: 6px;
-      transition: all 0.2s;
+      display: flex; flex-direction: column; gap: 6px; transition: all 0.2s;
     }
     .proj-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
     .proj-ico  { font-size: 24px; }
@@ -465,454 +392,432 @@
     .proj-link { font-size: 12px; font-weight: 700; color: var(--blue); text-decoration: none; margin-top: 4px; }
     .proj-link:hover { text-decoration: underline; }
 
-    /* ──────────────────────────────────────────────────────
-       TAGS / LANGUAGES
-    ────────────────────────────────────────────────────── */
+    /* ── TAGS ───────────────────────────────────────────────── */
     .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
     .tag { padding: 5px 13px; border-radius: 20px; font-size: 12.5px; font-weight: 600; }
-    .tb { background: var(--blue-lt); color: var(--blue-dk); }
+    .tb { background: #eff6ff; color: var(--blue-dk); }
     .tt { background: #ecfeff; color: #0e7490; }
     .tg { background: #f0fdf4; color: #15803d; }
-    .tp { background: #f5f3ff; color: var(--purple); }
-    .ta { background: var(--amber-lt); color: #92400e; }
+    .tp { background: #f5f3ff; color: var(--purple-dk); }
+    .ta { background: #fffbeb; color: #92400e; }
     .ts { background: #f1f5f9; color: #475569; }
     .tr { background: #fef2f2; color: #991b1b; }
 
-    .lang-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
-    .lang-pill {
-      display: flex; flex-direction: column; align-items: center;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 10px; padding: 12px 18px; min-width: 82px;
+    /* ── LINKEDIN BIG CTA ───────────────────────────────────── */
+    .li-cta {
+      background: linear-gradient(135deg, #0a1628 0%, #0e4f7b 40%, #0a66c2 100%);
+      padding: 64px 24px; text-align: center; position: relative; overflow: hidden;
     }
-    .lang-pill .lf   { font-size: 24px; margin-bottom: 4px; }
-    .lang-pill .ln   { font-size: 12px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
-    .lang-pill .ll   { font-size: 11px; color: var(--muted); }
+    .li-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(10,102,194,0.3), transparent);
+      pointer-events: none;
+    }
+    .li-cta-inner { position: relative; z-index: 1; }
+    .li-icon {
+      width: 60px; height: 60px; background: #0a66c2; border-radius: 14px;
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-bottom: 22px; box-shadow: 0 4px 24px rgba(10,102,194,0.5);
+    }
+    .li-icon svg { width: 34px; height: 34px; fill: #fff; }
+    .li-cta h2 {
+      font-size: clamp(24px, 4vw, 42px); font-weight: 900; color: #fff;
+      letter-spacing: -0.5px; margin-bottom: 14px;
+    }
+    .li-cta p { font-size: 15px; color: rgba(255,255,255,0.72); max-width: 520px; margin: 0 auto 36px; }
+    .li-cta-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #fff; color: #0a66c2;
+      padding: 16px 40px; border-radius: 50px;
+      font-size: 17px; font-weight: 900; text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 30px rgba(255,255,255,0.2);
+      animation: pulse-li 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-li {
+      0%,100% { box-shadow: 0 4px 30px rgba(255,255,255,0.2), 0 0 0 0 rgba(255,255,255,0.25); }
+      50%      { box-shadow: 0 4px 30px rgba(255,255,255,0.2), 0 0 0 14px rgba(255,255,255,0); }
+    }
+    .li-cta-btn:hover { background: #e0efff; transform: scale(1.04); }
+    .li-proof { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.5); }
+    .li-proof strong { color: rgba(255,255,255,0.82); }
 
-    /* ──────────────────────────────────────────────────────
-       FOOTER
-    ────────────────────────────────────────────────────── */
+    /* ── FOOTER ─────────────────────────────────────────────── */
     footer {
       text-align: center; padding: 30px 24px;
-      background: var(--text);
-      color: rgba(255,255,255,0.5);
-      font-size: 12.5px;
+      background: var(--text); color: rgba(255,255,255,0.45); font-size: 12.5px;
     }
-    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer a { color: rgba(255,255,255,0.65); text-decoration: none; }
     footer a:hover { color: #fff; }
-    footer .divf { margin: 0 8px; opacity: 0.3; }
+    footer .d { margin: 0 8px; opacity: 0.25; }
   </style>
 </head>
 <body>
 
-<!-- ─── HERO ──────────────────────────────────────────────── -->
+<!-- ── STICKY LINKEDIN TOP BAR ─────────────────────────────── -->
+<div class="li-top-bar">
+  <p>📣 Follow me for the latest on <strong>AI, sustainability &amp; innovation</strong></p>
+  <a href="https://www.linkedin.com/in/stefan-bauer-innovator/" target="_blank" rel="noopener" class="li-top-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+    Follow on LinkedIn →
+  </a>
+</div>
+
+<!-- ── HERO ────────────────────────────────────────────────── -->
 <header class="hero">
   <div class="hero-inner">
     <div class="avatar-ring">
       <img src="stefan-bauer.jpeg" alt="Dr. Stefan Bauer" class="avatar"
            onerror="this.style.display='none';document.getElementById('afb').style.display='flex';" />
-      <div id="afb" class="avatar-fallback">SB</div>
+      <div id="afb" class="avatar-fb">SB</div>
     </div>
-
     <h1>Dr. Stefan Bauer 🤸‍♂️</h1>
     <p class="tagline">PhD · CEO Sustainista · EdTech Innovator · Hackathon Organizer · Lecturer at 10+ Universities</p>
     <div style="margin-bottom:28px;">
-      <span class="follower-pill">
-        <span class="dot"></span>
-        6,333 LinkedIn Followers · Vienna, Austria
-      </span>
+      <span class="fpill"><span class="live"></span>6,333 LinkedIn Followers · Vienna, Austria</span>
     </div>
-
     <div class="hero-links">
       <a href="https://www.linkedin.com/in/stefan-bauer-innovator/" target="_blank" rel="noopener" class="btn btn-white">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
         Follow on LinkedIn
       </a>
-      <a href="https://scholar.google.com/citations?user=iFu00qUAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-ghost">
-        📚 620+ Citations
-      </a>
+      <a href="https://scholar.google.com/citations?user=iFu00qUAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-ghost">📚 620+ Citations</a>
       <a href="https://www.sustainista.net" target="_blank" rel="noopener" class="btn btn-green">✦ Sustainista</a>
       <a href="#follow" class="btn btn-ghost">⬇ Follow Me</a>
     </div>
   </div>
 </header>
 
-<!-- ─── AWARD TICKER ──────────────────────────────────────── -->
+<!-- ── AWARD TICKER ────────────────────────────────────────── -->
 <div class="ticker-wrap" aria-hidden="true">
   <div class="ticker-inner">
-    <!-- first copy -->
-    <span class="ticker-item">🏆 TOP 3 — MEGA Education Million 2025</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">🏅 ERSTE Bank Research Prize CEE 2012</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">⭐ #1 in Business — University of Vienna 2010</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">🎓 PhD Information Systems — WU Wien</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">📚 620+ Academic Citations</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">🏛 Teaching at 10+ Universities Worldwide</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">🇪🇺 Erasmus+ &amp; FFG Project Lead</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">🏟 Europe Tech Hackathon Organizer · ViennaUP</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <!-- duplicate for seamless loop -->
-    <span class="ticker-item">🏆 TOP 3 — MEGA Education Million 2025</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">🏅 ERSTE Bank Research Prize CEE 2012</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">⭐ #1 in Business — University of Vienna 2010</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">🎓 PhD Information Systems — WU Wien</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">📚 620+ Academic Citations</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">🏛 Teaching at 10+ Universities Worldwide</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">🇪🇺 Erasmus+ &amp; FFG Project Lead</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">🏟 Europe Tech Hackathon Organizer · ViennaUP</span>
-    <span class="ticker-item ticker-sep">✦</span>
+    <span class="tick-item">🏆 TOP 3 — MEGA Education Million 2025</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">🏅 ERSTE Bank Research Prize CEE 2012 · €17.880</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">🥇 #1 in Business — University of Vienna 2010</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">🎓 PhD Information Systems — WU Wien</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">📚 620+ Academic Citations</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">🏛 Lecturer at 10+ Universities Worldwide</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">🇪🇺 Erasmus+ &amp; FFG Flagship Project Lead</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">🏟 Europe Tech Hackathon · ViennaUP</span><span class="tick-item tick-sep">✦</span>
+    <!-- duplicate -->
+    <span class="tick-item">🏆 TOP 3 — MEGA Education Million 2025</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">🏅 ERSTE Bank Research Prize CEE 2012 · €17.880</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">🥇 #1 in Business — University of Vienna 2010</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">🎓 PhD Information Systems — WU Wien</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">📚 620+ Academic Citations</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">🏛 Lecturer at 10+ Universities Worldwide</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">🇪🇺 Erasmus+ &amp; FFG Flagship Project Lead</span><span class="tick-item tick-sep">✦</span>
+    <span class="tick-item">🏟 Europe Tech Hackathon · ViennaUP</span><span class="tick-item tick-sep">✦</span>
   </div>
 </div>
 
 <main>
 
-  <!-- ─── QUICK STATS ───────────────────────────────────── -->
+  <!-- ── STATS ─────────────────────────────────────────────── -->
   <div class="stat-bar">
-    <div class="stat-cell"><span class="n">620+</span><span class="l">Academic Citations</span></div>
-    <div class="stat-cell"><span class="n">10+</span><span class="l">Universities</span></div>
-    <div class="stat-cell"><span class="n">15+</span><span class="l">Years Experience</span></div>
-    <div class="stat-cell"><span class="n">6,333</span><span class="l">LinkedIn Followers</span></div>
+    <div class="sc"><span class="n">620+</span><span class="l">Academic Citations</span></div>
+    <div class="sc"><span class="n">10+</span><span class="l">Universities</span></div>
+    <div class="sc"><span class="n">15+</span><span class="l">Years Experience</span></div>
+    <div class="sc"><span class="n">6,333</span><span class="l">LinkedIn Followers</span></div>
   </div>
 
-  <!-- ─── ABOUT ──────────────────────────────────────────── -->
+  <!-- ── WHO AM I ────────────────────────────────────────────── -->
   <section>
-    <p class="sec-label">About</p>
-    <h2 class="sec-title">Who am I?</h2>
-    <p class="sec-sub">
-      I hold a <strong>PhD in Information Systems from WU Wien</strong> and have spent 15+ years at the intersection of technology, innovation, and education.
-      My journey spans research at WU Wien, Head of UX at BAWAG P.S.K., Innovation School Director at Talent Garden,
-      IT Innovation Lead at Wüstenrot Technology — to founding <strong>Sustainista</strong> (ESG &amp; AI automation)
-      and co-founding <strong>Skills-UP!</strong> (financial literacy for apprentices, TOP 3 MEGA Education Million 2025).
-      I teach at 10+ universities across Austria, Iceland, and beyond — and organize the <strong>Europe Tech Hackathon</strong> at ViennaUP.
+    <p class="sl">About</p>
+    <h2 class="st">Who am I?</h2>
+    <p class="ss" style="max-width:800px;">
+      I build practical solutions at the intersection of <strong>AI, sustainability, digital education and entrepreneurship</strong>.
+      With a PhD in Information Systems from WU Wien and 15+ years across academia, banking, and corporate innovation,
+      I bridge research and real-world impact.
+      At <strong>Sustainista</strong> I lead AI-powered ESG automation and Digital Product Passport solutions.
+      Through <strong>Skills-UP!</strong> I've helped 200+ apprentices take control of their financial futures —
+      recognised as <strong>TOP 3 at the MEGA Education Million 2025</strong>.
+      I teach at 10+ universities — from Vienna to Reykjavik —
+      and organise the <strong>Europe Tech Hackathon</strong> at ViennaUP.
+      My mission: turn complex technology into practical tools that actually change how people live and work.
     </p>
 
     <div class="g2">
-      <div class="card card-accent">
-        <div class="ci ci-green">✦</div>
+      <div class="card">
+        <img src="logos/sustainista-logo.png" alt="Sustainista" class="card-logo" style="height:28px;" />
         <h3>Sustainista — CEO &amp; Co-Founder</h3>
         <ul>
           <li>Sustainability as a Service — AI-powered ESG automation</li>
           <li>Digital Product Passport (EU Battery &amp; Ecodesign Regulation)</li>
-          <li>Product Carbon Footprint analysis (Scope 1, 2 &amp; 3)</li>
+          <li>Product Carbon Footprint (Scope 1, 2 &amp; 3)</li>
           <li>FFG Flagship Project PACE-DPP — Work Package Lead</li>
-          <li>Partners: ÖBB, Vienna Business Agency, Microsoft, Google, Infineon…</li>
+          <li>OekoBusiness Wien certified ESG &amp; SDG Consultant</li>
         </ul>
+        <div class="logo-strip-light" style="margin-top:14px;">
+          <span class="lsl">Partners &amp; Clients</span>
+          <img src="logos/partner-oebb.jpeg" alt="ÖBB" />
+          <img src="logos/partner-microsoft.jpg" alt="Microsoft" />
+          <img src="logos/partner-google.png" alt="Google" />
+          <img src="logos/partner-infineon.png" alt="Infineon" />
+          <img src="logos/partner-vba.png" alt="Vienna Business Agency" />
+        </div>
       </div>
       <div class="card">
-        <div class="ci ci-blue">🎓</div>
+        <div class="ci ci-b">🎓</div>
         <h3>Lecturer — 10+ Universities</h3>
         <ul>
           <li>WU Wien · TU Wien · Modul University Vienna</li>
           <li>FH Technikum · FH WKW · FH Wiener Neustadt</li>
           <li>Reykjavik University 🇮🇸 · Aarhus University 🇩🇰</li>
           <li>HSE Moscow · IDC Herzliya · Lauder Business School</li>
-          <li>Courses: Innovation, Entrepreneurship, Data Literacy &amp; AI, UX, IT Management</li>
+          <li>Innovation, Entrepreneurship, Data Literacy &amp; AI, UX, IT Management</li>
         </ul>
+        <p style="font-size:12px; color:var(--muted); margin-top:10px; font-style:italic;">Languages: 🇦🇹 German (native) · 🇬🇧 English (fluent)</p>
       </div>
       <div class="card">
-        <div class="ci ci-amber">🏟</div>
+        <div class="ci ci-a">🏟</div>
         <h3>Europe Tech Hackathon — Organizer</h3>
         <ul>
-          <li>48h innovation sprint at ViennaUP, Vienna</li>
+          <li>48h innovation sprint · ViennaUP, Vienna</li>
           <li>ÖBB Open Innovation Factory</li>
           <li>200+ participants · 4 Challenges · 8+ Partner orgs</li>
-          <li>Partners: Anthropic, OpenAI, Google, AWS, WU, TU Wien, BEJ</li>
+          <li>Partners: Anthropic, OpenAI, Google, AWS, WU Wien, TU Wien</li>
         </ul>
-      </div>
-      <div class="card">
-        <div class="ci ci-teal">📱</div>
-        <h3>Skills-UP! — Co-Founder &amp; VP</h3>
-        <ul>
-          <li>Peer-to-peer financial education for apprentices (age 14–20)</li>
-          <li>Gamification, quiz battles, podcasts, peer videos</li>
-          <li>90% behavior change · 200+ apprentices · TGW partnership since 2021</li>
-          <li><strong>TOP 3 — MEGA Education Million 2025</strong> (from 80+ initiatives)</li>
-          <li>ERASMUS+ project lead for AI &amp; Entrepreneurship module</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ─── CAREER TIMELINE ────────────────────────────────── -->
-  <section>
-    <p class="sec-label">Career Journey</p>
-    <h2 class="sec-title">15+ Years of Experience</h2>
-    <p class="sec-sub">From academic research and banking UX to corporate innovation and entrepreneurship.</p>
-
-    <div class="timeline">
-
-      <div class="tli">
-        <div class="dot dot-green"></div>
-        <p class="tl-yr">2022 – Present</p>
-        <p class="tl-ttl">CEO &amp; Co-Founder — Sustainista GmbH</p>
-        <p class="tl-sub">AI-powered ESG automation, Digital Product Passport, Carbon Footprint analysis. FFG Flagship Project PACE-DPP (Work Package Lead). OekoBusiness Wien certified ESG &amp; SDG Consultant.</p>
-      </div>
-
-      <div class="tli">
-        <div class="dot dot-blue"></div>
-        <p class="tl-yr">2023 – 2025</p>
-        <p class="tl-ttl">IT Innovation &amp; User Research Lead — Wüstenrot Technology GmbH</p>
-        <p class="tl-sub">User research for mobile apps &amp; web platforms, UX-driven product development, IT innovation management.</p>
-      </div>
-
-      <div class="tli">
-        <div class="dot dot-teal"></div>
-        <p class="tl-yr">2021 – Present</p>
-        <p class="tl-ttl">Co-Founder &amp; Vice Chairman — Verein zur Entwicklung digitaler Zukunftsbildung</p>
-        <p class="tl-sub">Co-founded Skills-UP! with Marina Winkler. Peer-to-peer financial literacy platform. ERASMUS+ Work Package Lead (AI &amp; Entrepreneurship). TOP 3 MEGA Education Million 2025.</p>
-      </div>
-
-      <div class="tli">
-        <div class="dot dot-blue"></div>
-        <p class="tl-yr">2021 – Present</p>
-        <p class="tl-ttl">Founder &amp; Leadership Coach — Stefan Bauer e.U.</p>
-        <p class="tl-sub">Consulting agency specializing in leadership development, innovation coaching, and digital transformation.</p>
-      </div>
-
-      <div class="tli">
-        <div class="dot dot-amber"></div>
-        <p class="tl-yr">2019 – 2021</p>
-        <p class="tl-ttl">Innovation School Director — Talent Garden AT GmbH</p>
-        <p class="tl-sub">General management of B2B corporate innovation programs and academic study programs. Built and led high-performing teams, developed digital learning experiences.</p>
-      </div>
-
-      <div class="tli">
-        <div class="dot dot-blue"></div>
-        <p class="tl-yr">2016 – 2019</p>
-        <p class="tl-ttl">Head of User Experience — BAWAG P.S.K.</p>
-        <p class="tl-sub">Led UX team in agile platform development. Drove agile transformation, customer journey mapping, prototyping, app design, and user research at one of Austria's largest banks.</p>
-      </div>
-
-      <div class="tli">
-        <div class="dot dot-purple"></div>
-        <p class="tl-yr">2011 – 2016</p>
-        <p class="tl-ttl">Research &amp; Teaching Associate — WU Wien (Department of IS &amp; Operations)</p>
-        <p class="tl-sub">PhD research in Digital Innovation and Information Security. Taught Technology &amp; Management. Managed academic partnerships and open innovation processes. International exchanges: Aarhus University, University of Economics Prague.</p>
-      </div>
-
-      <div class="tli">
-        <div class="dot dot-amber"></div>
-        <p class="tl-yr">2010</p>
-        <p class="tl-ttl">Merit-Based Scholarship — Ranked #1 in Business</p>
-        <p class="tl-sub">University of Vienna. Ranked first in the Business faculty.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ─── EDUCATION ──────────────────────────────────────── -->
-  <section>
-    <p class="sec-label">Education</p>
-    <h2 class="sec-title">Academic Background</h2>
-    <div class="g3">
-      <div class="card">
-        <div class="ci ci-purple">🎓</div>
-        <h3>PhD — Information Systems</h3>
-        <p><strong>WU Wien</strong> · 2011–2016<br/>Information Systems Management · Research in Digital Innovation &amp; Information Security</p>
-      </div>
-      <div class="card">
-        <div class="ci ci-blue">🎓</div>
-        <h3>Master — E-Business &amp; Management</h3>
-        <p><strong>University of Vienna</strong> · 2006–2011<br/>General Management, E-Business, Controlling &amp; Strategic Management</p>
-      </div>
-      <div class="card">
-        <div class="ci ci-teal">🎓</div>
-        <h3>Diploma — Economic Sociology</h3>
-        <p><strong>University of Vienna</strong> · 2005–2012<br/>Economic Sociology &amp; Industrial Relations</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ─── AWARDS ─────────────────────────────────────────── -->
-  <section>
-    <p class="sec-label">Recognition</p>
-    <h2 class="sec-title">Awards, Grants &amp; Honors</h2>
-    <div class="award-grid">
-      <div class="award-card">
-        <div class="ic">🏆</div>
-        <div class="yr">2025</div>
-        <div class="ttl">MEGA Education Million — TOP 3</div>
-        <div class="dsc">Selected from 80+ initiatives. Grant awarded. National lighthouse project in financial literacy.</div>
-      </div>
-      <div class="award-card">
-        <div class="ic">🇪🇺</div>
-        <div class="yr">2024</div>
-        <div class="ttl">FFG Flagship Project — PACE-DPP</div>
-        <div class="dsc">Work Package Lead in Austrian FFG flagship project for Digital Product Passport circular economy.</div>
-      </div>
-      <div class="award-card">
-        <div class="ic">🌍</div>
-        <div class="yr">2024</div>
-        <div class="ttl">ERASMUS+ Project Grant — L2BGreen</div>
-        <div class="dsc">€1.5M EU project · Work Package Lead · AI &amp; Green Entrepreneurship · 7 countries.</div>
-      </div>
-      <div class="award-card">
-        <div class="ic">⭐</div>
-        <div class="yr">2018 &amp; 2019</div>
-        <div class="ttl">Outstanding Research Achievement Award</div>
-        <div class="dsc">Special Award by WU Wien — awarded twice for exceptional research contributions.</div>
-      </div>
-      <div class="award-card">
-        <div class="ic">🌏</div>
-        <div class="yr">2014</div>
-        <div class="ttl">Erasmus Teaching Fellowship</div>
-        <div class="dsc">Aarhus University 🇩🇰 · Also HSE Moscow (2018) &amp; IDC Herzliya (2019).</div>
-      </div>
-      <div class="award-card">
-        <div class="ic">⭐</div>
-        <div class="yr">2014</div>
-        <div class="ttl">Department Performance Award</div>
-        <div class="dsc">Department of Information Systems &amp; Operations, WU Wien, January 2014.</div>
-      </div>
-      <div class="award-card">
-        <div class="ic">🏅</div>
-        <div class="yr">2012</div>
-        <div class="ttl">ERSTE Bank Research Prize CEE</div>
-        <div class="dsc">Prize for outstanding research in Central Eastern Europe. Research grant: €17,880.</div>
-      </div>
-      <div class="award-card">
-        <div class="ic">🎓</div>
-        <div class="yr">2012 &amp; 2013</div>
-        <div class="ttl">CEEPUS Teaching Fellowship</div>
-        <div class="dsc">University of Economics Prague 🇨🇿 — international teaching exchange.</div>
-      </div>
-      <div class="award-card">
-        <div class="ic">🥇</div>
-        <div class="yr">2010</div>
-        <div class="ttl">#1 in Business — Merit Scholarship</div>
-        <div class="dsc">Ranked first in Business at University of Vienna. Merit-based scholarship awarded.</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ─── SKILLS-UP HIGHLIGHT ────────────────────────────── -->
-  <section>
-    <div class="hl hl-blue">
-      <span class="corner">🏆</span>
-      <p class="sec-label">Featured Project · Education</p>
-      <h2 class="sec-title">Skills-UP! — Financial Literacy for Apprentices</h2>
-      <p>Skills-UP! brings financial education where it's needed: directly into Austrian vocational schools. Real apprentices guide their peers through savings goals, debt traps, crypto basics, and emergency budgets — using gamification, quiz battles, podcasts, and peer-made videos. 90% of participants report lasting behavioral change.</p>
-      <div class="abox">
-        <span class="ico">🏆</span>
-        <div class="tx">
-          <strong>TOP 3 — MEGA Education Million 2025</strong>
-          Austria's most prestigious education award. Selected from 80+ national initiatives by expert jury and public vote.
+        <div class="logo-strip-light" style="margin-top:14px;">
+          <span class="lsl">Event Partners</span>
+          <img src="logos/partner-viennaup.png" alt="ViennaUP" />
+          <img src="logos/bij-logo.png" alt="BEJ" />
+          <img src="logos/partner-oegig.png" alt="ÖGIG" />
         </div>
       </div>
-      <div class="srow">
-        <div class="s"><span class="n">90%</span><span class="l">Behavior change</span></div>
-        <div class="s"><span class="n">200+</span><span class="l">Apprentices</span></div>
-        <div class="s"><span class="n">80+</span><span class="l">Initiatives defeated</span></div>
-        <div class="s"><span class="n">2021</span><span class="l">Partnership start</span></div>
-      </div>
-      <div class="hl-btns">
-        <a href="https://www.digitale-zukunftsbildung.eu" target="_blank" rel="noopener" class="hl-btn-w">🎓 digitale-zukunftsbildung.eu</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── SUSTAINISTA HIGHLIGHT ──────────────────────────── -->
-  <section>
-    <div class="hl hl-green">
-      <span class="corner">✦</span>
-      <p class="sec-label">Sustainista · CEO</p>
-      <h2 class="sec-title">Sustainability as a Service</h2>
-      <p>Sustainista helps companies automate ESG reporting, build EU-compliant Digital Product Passports, and measure their full Product Carbon Footprint (Scope 1, 2 &amp; 3). As Work Package Lead in the <strong style="color:#fff;">FFG Flagship Project PACE-DPP</strong> and partner of <strong style="color:#fff;">dpp-austria.at</strong>, we're at the forefront of Austria's circular economy transition.</p>
-      <div class="chips">
-        <span class="chip">ESG Reporting Automation</span>
-        <span class="chip">Digital Product Passport</span>
-        <span class="chip">Carbon Footprint (Scope 1–3)</span>
-        <span class="chip">AI Agents</span>
-        <span class="chip">FFG PACE-DPP — Work Package Lead</span>
-        <span class="chip">OekoBusiness Wien certified</span>
-      </div>
-      <div class="srow">
-        <div class="s"><span class="n">4</span><span class="l">Core products</span></div>
-        <div class="s"><span class="n">13+</span><span class="l">Partners</span></div>
-        <div class="s"><span class="n">FFG</span><span class="l">Flagship funded</span></div>
-      </div>
-      <div class="hl-btns">
-        <a href="https://www.sustainista.net" target="_blank" rel="noopener" class="hl-btn-w">✦ sustainista.net</a>
-        <a href="https://dpp-austria.at" target="_blank" rel="noopener" class="hl-btn-o">🇦🇹 dpp-austria.at</a>
+      <div class="card">
+        <img src="logos/skillsup-logo-new.png" alt="Skills-UP!" class="card-logo" />
+        <h3>Skills-UP! — Co-Founder &amp; VP</h3>
+        <ul>
+          <li>Peer-to-peer financial education for apprentices (14–20)</li>
+          <li>Gamification, quiz battles, podcasts, peer videos</li>
+          <li>90% behavior change · 200+ apprentices</li>
+          <li><strong>TOP 3 — MEGA Education Million 2025</strong></li>
+          <li>ERASMUS+ Work Package Lead (AI &amp; Entrepreneurship)</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- ─── L2BGREEN HIGHLIGHT ─────────────────────────────── -->
-  <section>
-    <div class="hl hl-teal">
-      <span class="corner">🌱</span>
-      <p class="sec-label">ERASMUS+ Project · EU Funded</p>
-      <h2 class="sec-title">L2BGreen — Green Entrepreneurship for Europe</h2>
-      <p>L2BGreen is an Erasmus+ initiative I co-lead as part of the consortium — equipping people across Europe with the skills and knowledge for green entrepreneurship. The project creates an interactive online course, an AI chatbot for real-world case studies, and a Europe-wide community. I serve as Work Package Lead and co-founder of the technology partner building the AI chatbot component.</p>
-      <div class="chips">
-        <span class="chip">🇪🇺 Erasmus+ · €1,499,148 EU Funding</span>
-        <span class="chip">April 2024 – March 2027</span>
-        <span class="chip">7 Countries</span>
-        <span class="chip">6 Languages: DE, EN, NL, EE, EL, SL</span>
-        <span class="chip">AI Chatbot for Green Entrepreneurship</span>
-        <span class="chip">University of Twente · TU Graz · Saarland University · Estonian Business School</span>
-      </div>
-      <div class="srow">
-        <div class="s"><span class="n">€1.5M</span><span class="l">EU Funding</span></div>
-        <div class="s"><span class="n">7</span><span class="l">Countries</span></div>
-        <div class="s"><span class="n">2027</span><span class="l">Project end</span></div>
-      </div>
-      <div class="hl-btns">
-        <a href="https://www.l2bgreen.com" target="_blank" rel="noopener" class="hl-btn-w">🌱 l2bgreen.com</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── DPP AUSTRIA HIGHLIGHT ──────────────────────────── -->
-  <section style="margin-top:8px;">
-    <div class="hl hl-purple">
-      <span class="corner">🔄</span>
-      <p class="sec-label">FFG Flagship Project · Digital Product Passport</p>
-      <h2 class="sec-title">PACE-DPP &amp; DPP Austria — Circular Economy</h2>
-      <p>The Digital Product Passport (DPP) is becoming mandatory under EU law — for batteries, textiles, electronics, and more. As Work Package Lead in the FFG flagship project PACE-DPP and partner of dpp-austria.at, Sustainista is building the tools and data ecosystems that make DPP implementation practical for Austrian and European companies. Funded by the Austrian Federal Ministry for Climate Action (BMK) and the FFG.</p>
-      <div class="chips">
-        <span class="chip">EU Battery Regulation</span>
-        <span class="chip">Ecodesign for Sustainable Products Regulation</span>
-        <span class="chip">Data Spaces &amp; Digital Twins</span>
-        <span class="chip">Circular Economy Business Models</span>
-        <span class="chip">Austrian FFG Flagship funded</span>
-        <span class="chip">Coordinated by Virtual Vehicle Research GmbH</span>
-      </div>
-      <div class="hl-btns">
-        <a href="https://dpp-austria.at" target="_blank" rel="noopener" class="hl-btn-w">🔄 dpp-austria.at</a>
-        <a href="https://www.sustainista.net" target="_blank" rel="noopener" class="hl-btn-o">✦ sustainista.net</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── HACKATHON VIDEOS ────────────────────────────────── -->
   <div class="divider"></div>
+
+  <!-- ── CAREER TIMELINE ──────────────────────────────────── -->
   <section>
-    <p class="sec-label">Hackathon in Action</p>
-    <h2 class="sec-title">Europe Tech Hackathon — Watch the Highlights</h2>
-    <p class="sec-sub">48 hours, real sustainability problems, real prototypes — at ViennaUP in the ÖBB Open Innovation Factory, Vienna.</p>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:4px;">
+    <p class="sl">Career Journey</p>
+    <h2 class="st">15+ Years of Experience</h2>
+    <p class="ss">From academic research and banking UX to corporate innovation and entrepreneurship.</p>
+    <div class="timeline">
+      <div class="tli"><div class="dot d-g"></div>
+        <p class="tl-yr">2022 – Present</p>
+        <p class="tl-ttl">CEO &amp; Co-Founder — Sustainista GmbH</p>
+        <p class="tl-sub">AI-powered ESG automation, Digital Product Passport, Carbon Footprint. FFG Flagship PACE-DPP.</p>
+      </div>
+      <div class="tli"><div class="dot d-b"></div>
+        <p class="tl-yr">2023 – 2025</p>
+        <p class="tl-ttl">IT Innovation &amp; User Research Lead — Wüstenrot Technology GmbH</p>
+        <p class="tl-sub">User research for mobile apps &amp; web platforms, IT innovation management.</p>
+      </div>
+      <div class="tli"><div class="dot d-t"></div>
+        <p class="tl-yr">2021 – Present</p>
+        <p class="tl-ttl">Co-Founder &amp; Vice Chairman — Verein zur Entwicklung digitaler Zukunftsbildung</p>
+        <p class="tl-sub">Skills-UP! peer-to-peer financial literacy platform. ERASMUS+ Lead. TOP 3 MEGA Education Million 2025.</p>
+      </div>
+      <div class="tli"><div class="dot d-a"></div>
+        <p class="tl-yr">2019 – 2021</p>
+        <p class="tl-ttl">Innovation School Director — Talent Garden AT GmbH</p>
+        <p class="tl-sub">B2B corporate innovation programs and academic study programs. Digital learning experience design.</p>
+      </div>
+      <div class="tli"><div class="dot d-b"></div>
+        <p class="tl-yr">2016 – 2019</p>
+        <p class="tl-ttl">Head of User Experience — BAWAG P.S.K.</p>
+        <p class="tl-sub">Led UX team in agile platform development at one of Austria's largest banks. Customer journey mapping, prototyping, app design.</p>
+      </div>
+      <div class="tli"><div class="dot d-p"></div>
+        <p class="tl-yr">2011 – 2016</p>
+        <p class="tl-ttl">Research &amp; Teaching Associate — WU Wien (IS &amp; Operations)</p>
+        <p class="tl-sub">PhD research in Digital Innovation &amp; Information Security. International teaching exchanges: Aarhus, Prague. Elected Chairman of Doctoral Students.</p>
+      </div>
+      <div class="tli"><div class="dot d-a"></div>
+        <p class="tl-yr">2010</p>
+        <p class="tl-ttl">Merit Scholarship — #1 in Business, University of Vienna</p>
+        <p class="tl-sub">Ranked first in the Business faculty. Merit-based scholarship awarded.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════════════════════════════════════════════════════════
+     WAVE TRANSITION: white → purple (Skills-UP)
+═════════════════════════════════════════════════════════════ -->
+<div class="wave-transition">
+  <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="wt1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f8fafc"/>
+        <stop offset="100%" stop-color="#1a0b2e"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,0 C240,80 480,20 720,60 C960,100 1200,20 1440,50 L1440,90 L0,90 Z" fill="url(#wt1)"/>
+  </svg>
+</div>
+
+<!-- ── SKILLS-UP HIGHLIGHT (PURPLE) ─────────────────────────── -->
+<section class="hl hl-purple">
+  <span class="corner">🎓</span>
+  <div class="hl-inner">
+    <img src="logos/skillsup-logo-new.png" alt="Skills-UP!" class="hl-logo" style="filter:brightness(0) invert(1); opacity:0.9;" />
+    <p class="sl">Featured Project · Financial Education</p>
+    <h2 class="st">Skills-UP! — Financial Literacy for Apprentices</h2>
+    <p class="ss">Skills-UP! brings financial education where it's needed most: directly into Austrian vocational schools. Instead of textbooks, real apprentices guide their peers through savings goals, debt traps, crypto basics, and emergency budgets — using gamification, quiz battles, podcasts, and peer-made videos. 90% of participants report lasting behavioral change.</p>
+    <div class="abox">
+      <span class="ic">🏆</span>
+      <div class="tx">
+        <strong>TOP 3 — MEGA Education Million 2025</strong>
+        Austria's most prestigious education award. Selected from 80+ national initiatives by expert jury and public vote.
+      </div>
+    </div>
+    <div class="srow">
+      <div class="s"><span class="n">90%</span><span class="l">Behavior change</span></div>
+      <div class="s"><span class="n">200+</span><span class="l">Apprentices</span></div>
+      <div class="s"><span class="n">80+</span><span class="l">Initiatives defeated</span></div>
+      <div class="s"><span class="n">2021</span><span class="l">Partnership start</span></div>
+    </div>
+    <div class="hl-btns">
+      <a href="https://www.digitale-zukunftsbildung.eu" target="_blank" rel="noopener" class="hl-bw">🎓 digitale-zukunftsbildung.eu</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     WAVE TRANSITION: purple → green (Skills-UP → Sustainista)
+═════════════════════════════════════════════════════════════ -->
+<div class="wave-transition">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="wt2-bg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#7c3aed"/>
+        <stop offset="100%" stop-color="#0e1a09"/>
+      </linearGradient>
+      <!-- wave fill: blends top purple with bottom dark-green -->
+      <linearGradient id="wt2-fill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3b1a6b"/>
+        <stop offset="100%" stop-color="#2a4a18"/>
+      </linearGradient>
+    </defs>
+    <!-- background rect: purple top, dark-green bottom -->
+    <rect width="1440" height="120" fill="url(#wt2-bg)"/>
+    <!-- wave shape that sits on top -->
+    <path d="M0,30 C200,90 400,0 600,50 C800,100 1000,10 1200,60 C1320,90 1400,40 1440,55 L1440,120 L0,120 Z"
+          fill="url(#wt2-fill)" opacity="0.7"/>
+    <path d="M0,50 C300,110 600,20 900,70 C1100,100 1300,30 1440,65 L1440,120 L0,120 Z"
+          fill="#2a4a18" opacity="0.5"/>
+  </svg>
+</div>
+
+<!-- ── SUSTAINISTA HIGHLIGHT (GREEN) ─────────────────────────── -->
+<section class="hl hl-green">
+  <span class="corner">✦</span>
+  <div class="hl-inner">
+    <img src="logos/sustainista-logo-white.png" alt="Sustainista" class="hl-logo" />
+    <p class="sl">CEO &amp; Co-Founder</p>
+    <h2 class="st">Sustainability as a Service</h2>
+    <p class="ss">Sustainista helps companies automate ESG reporting, build EU-compliant Digital Product Passports, and measure their full Product Carbon Footprint (Scope 1, 2 &amp; 3). As Work Package Lead in the <strong style="color:#fff;">FFG Flagship Project PACE-DPP</strong> and partner of dpp-austria.at, we're at the forefront of Austria's circular economy transition — powered by AI.</p>
+    <div class="chips">
+      <span class="chip">ESG Reporting Automation</span>
+      <span class="chip">Digital Product Passport</span>
+      <span class="chip">Carbon Footprint (Scope 1–3)</span>
+      <span class="chip">AI Agents</span>
+      <span class="chip">FFG PACE-DPP — WP Lead</span>
+      <span class="chip">OekoBusiness Wien certified</span>
+    </div>
+    <div class="logo-strip">
+      <span class="logo-strip-label">Partners &amp; Clients</span>
+      <img src="logos/partner-oebb.jpeg" alt="ÖBB" />
+      <img src="logos/partner-microsoft.jpg" alt="Microsoft" />
+      <img src="logos/partner-google.png" alt="Google" />
+      <img src="logos/partner-infineon.png" alt="Infineon" />
+      <img src="logos/partner-vba.png" alt="Vienna Business Agency" />
+      <img src="logos/partner-oeko-business-wien.png" alt="ÖkoBusiness Wien" />
+      <img src="logos/partner-oegig.png" alt="ÖGIG" />
+      <img src="logos/partner-oekb.png" alt="OeKB" />
+      <img src="logos/partner-ai-factory.png" alt="AI Factory" />
+      <img src="logos/partner-atrust.png" alt="A-Trust" />
+    </div>
+    <div class="hl-btns">
+      <a href="https://www.sustainista.net" target="_blank" rel="noopener" class="hl-bw">✦ sustainista.net</a>
+      <a href="https://dpp-austria.at" target="_blank" rel="noopener" class="hl-bo">🔄 dpp-austria.at</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     WAVE TRANSITION: green → teal (Sustainista → L2BGreen)
+═════════════════════════════════════════════════════════════ -->
+<div class="wave-transition">
+  <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="wt3-bg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#4F772D"/>
+        <stop offset="100%" stop-color="#071216"/>
+      </linearGradient>
+    </defs>
+    <rect width="1440" height="100" fill="url(#wt3-bg)"/>
+    <path d="M0,20 C360,80 720,10 1080,60 C1260,80 1380,30 1440,45 L1440,100 L0,100 Z"
+          fill="#0a3344" opacity="0.6"/>
+  </svg>
+</div>
+
+<!-- ── L2BGREEN HIGHLIGHT (TEAL) ─────────────────────────────── -->
+<section class="hl hl-teal">
+  <span class="corner">🌱</span>
+  <div class="hl-inner">
+    <img src="logos/l2bgreen-logo.png" alt="L2BGreen" class="hl-logo" style="filter:brightness(0) invert(1); opacity:0.9;" />
+    <p class="sl">ERASMUS+ Project · EU Funded</p>
+    <h2 class="st">L2BGreen — Green Entrepreneurship for Europe</h2>
+    <p class="ss">L2BGreen is an Erasmus+ initiative I co-lead — equipping people across Europe with the skills for green entrepreneurship. The project builds an interactive online course, an AI chatbot for real-world case studies, and a Europe-wide community network. I serve as Work Package Lead and co-founder of the technology partner building the AI chatbot component.</p>
+    <div class="chips">
+      <span class="chip">🇪🇺 Erasmus+ · €1,499,148 EU Funding</span>
+      <span class="chip">April 2024 – March 2027</span>
+      <span class="chip">7 Countries</span>
+      <span class="chip">DE · EN · NL · EE · EL · SL</span>
+      <span class="chip">AI Chatbot for Green Entrepreneurship</span>
+      <span class="chip">University of Twente · TU Graz · Saarland · Estonian Business School</span>
+    </div>
+    <div class="srow">
+      <div class="s"><span class="n">€1.5M</span><span class="l">EU Funding</span></div>
+      <div class="s"><span class="n">7</span><span class="l">Countries</span></div>
+      <div class="s"><span class="n">2027</span><span class="l">Project end</span></div>
+    </div>
+    <div class="hl-btns">
+      <a href="https://www.l2bgreen.com" target="_blank" rel="noopener" class="hl-bw">🌱 l2bgreen.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     WAVE TRANSITION: teal → white
+═════════════════════════════════════════════════════════════ -->
+<div class="wave-transition">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="wt4" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0891b2"/>
+        <stop offset="100%" stop-color="#f8fafc"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,0 C360,70 720,0 1080,50 C1260,70 1380,20 1440,40 L1440,80 L0,80 Z" fill="url(#wt4)"/>
+  </svg>
+</div>
+
+<!-- ── HACKATHON VIDEOS ─────────────────────────────────────── -->
+<main style="padding-top:0;">
+
+  <section>
+    <p class="sl">Hackathon in Action</p>
+    <h2 class="st">Europe Tech Hackathon — Watch the Highlights</h2>
+    <p class="ss">48 hours, real sustainability problems, real prototypes — at ViennaUP in the ÖBB Open Innovation Factory, Vienna.</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
       <div style="background:var(--card); border:1px solid var(--border); border-radius:13px; overflow:hidden;">
         <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
           <iframe src="https://www.youtube.com/embed/fvoTBR_Vkng" title="Europe Tech Hackathon Recap"
@@ -938,80 +843,110 @@
         </div>
       </div>
     </div>
-    @media (max-width: 580px) { /* handled inline */ }
   </section>
 
   <div class="divider"></div>
 
-  <!-- ─── TEACHING ───────────────────────────────────────── -->
+  <!-- ── EDUCATION ─────────────────────────────────────────── -->
   <section>
-    <p class="sec-label">University Teaching</p>
-    <h2 class="sec-title">Courses &amp; Institutions</h2>
-    <p class="sec-sub">Teaching Innovation, Entrepreneurship, AI, UX, and Management at universities across Austria and internationally — ongoing since 2011.</p>
-    <div class="teach-grid">
-      <div class="uni-card">
-        <div class="flag">🇦🇹</div>
-        <p class="uname">WU Wien</p>
-        <p class="ucourses">IT Project Management, IS Accountability, B2C E-Commerce, Research Seminar</p>
+    <p class="sl">Education</p>
+    <h2 class="st">Academic Background</h2>
+    <div class="g3">
+      <div class="card"><div class="ci ci-p">🎓</div>
+        <h3>PhD — Information Systems</h3>
+        <p><strong>WU Wien</strong> · 2011–2016<br/>Information Systems Management · Digital Innovation &amp; Information Security</p>
       </div>
-      <div class="uni-card">
-        <div class="flag">🇦🇹</div>
-        <p class="uname">TU Wien Academy</p>
-        <p class="ucourses">Everyday AI (Data Literacy) · since 2023</p>
+      <div class="card"><div class="ci ci-b">🎓</div>
+        <h3>Master — E-Business &amp; Management</h3>
+        <p><strong>University of Vienna</strong> · 2006–2011<br/>General Management, E-Business, Controlling &amp; Strategic Management</p>
       </div>
-      <div class="uni-card">
-        <div class="flag">🇦🇹</div>
-        <p class="uname">Modul University Vienna</p>
-        <p class="ucourses">Entrepreneurship (Bachelor, Master, MBA) · Applied Innovation Management</p>
-      </div>
-      <div class="uni-card">
-        <div class="flag">🇦🇹</div>
-        <p class="uname">FH Technikum Vienna</p>
-        <p class="ucourses">IT Innovation Management · Mobile Business / E-Commerce · since 2016</p>
-      </div>
-      <div class="uni-card">
-        <div class="flag">🇦🇹</div>
-        <p class="uname">FH f. Management &amp; Kommunikation</p>
-        <p class="ucourses">Applied Management, Digital Innovation, Innovation Management, Qualitative Research</p>
-      </div>
-      <div class="uni-card">
-        <div class="flag">🇦🇹</div>
-        <p class="uname">FH Wiener Neustadt</p>
-        <p class="ucourses">Quality &amp; Innovation Management · since 2025</p>
-      </div>
-      <div class="uni-card">
-        <div class="flag">🇮🇸</div>
-        <p class="uname">Reykjavik University</p>
-        <p class="ucourses">Design Thinking: An Interdisciplinary Perspective (MBA/Master) · ongoing</p>
-      </div>
-      <div class="uni-card">
-        <div class="flag">🇦🇹</div>
-        <p class="uname">Lauder Business School</p>
-        <p class="ucourses">Banking Simulation (Master) · ongoing</p>
-      </div>
-      <div class="uni-card">
-        <div class="flag">🇩🇰🇷🇺🇮🇱</div>
-        <p class="uname">International Exchanges</p>
-        <p class="ucourses">Aarhus University · HSE Moscow · IDC Herzliya · Prague University of Economics</p>
+      <div class="card"><div class="ci ci-t">🎓</div>
+        <h3>Diploma — Economic Sociology</h3>
+        <p><strong>University of Vienna</strong> · 2005–2012<br/>Economic Sociology &amp; Industrial Relations</p>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- ─── PUBLICATIONS ───────────────────────────────────── -->
+  <!-- ── AWARDS ────────────────────────────────────────────── -->
   <section>
-    <p class="sec-label">Research</p>
-    <h2 class="sec-title">Publications · 620+ Citations</h2>
-    <p class="sec-sub">Peer-reviewed work in top-tier journals and international conferences. Full list on <a href="https://scholar.google.com/citations?user=iFu00qUAAAAJ&hl=en" target="_blank" rel="noopener" style="color:var(--blue);">Google Scholar</a>.</p>
+    <p class="sl">Recognition</p>
+    <h2 class="st">Awards, Grants &amp; Honors</h2>
+    <div class="award-grid">
+      <div class="award-card"><div class="ic">🏆</div><div class="yr">2025</div>
+        <div class="ttl">MEGA Education Million — TOP 3</div>
+        <div class="dsc">80+ initiatives. National lighthouse project in financial literacy.</div>
+      </div>
+      <div class="award-card"><div class="ic">🇪🇺</div><div class="yr">2024</div>
+        <div class="ttl">FFG Flagship Project — PACE-DPP</div>
+        <div class="dsc">Work Package Lead · Austrian FFG flagship for Digital Product Passport.</div>
+      </div>
+      <div class="award-card"><div class="ic">🌍</div><div class="yr">2024</div>
+        <div class="ttl">ERASMUS+ Grant — L2BGreen</div>
+        <div class="dsc">€1.5M EU project · WP Lead · Green Entrepreneurship · 7 countries.</div>
+      </div>
+      <div class="award-card"><div class="ic">⭐</div><div class="yr">2018 &amp; 2019</div>
+        <div class="ttl">Outstanding Research Award</div>
+        <div class="dsc">Special Award by WU Wien — awarded twice for exceptional research.</div>
+      </div>
+      <div class="award-card"><div class="ic">🌏</div><div class="yr">2014</div>
+        <div class="ttl">Erasmus Teaching Fellowship</div>
+        <div class="dsc">Aarhus 🇩🇰 · HSE Moscow (2018) · IDC Herzliya (2019).</div>
+      </div>
+      <div class="award-card"><div class="ic">⭐</div><div class="yr">2014</div>
+        <div class="ttl">Department Performance Award</div>
+        <div class="dsc">IS &amp; Operations, WU Wien, January 2014.</div>
+      </div>
+      <div class="award-card"><div class="ic">🏅</div><div class="yr">2012</div>
+        <div class="ttl">ERSTE Bank Research Prize CEE</div>
+        <div class="dsc">Outstanding research in Central Eastern Europe. Grant: €17,880.</div>
+      </div>
+      <div class="award-card"><div class="ic">🎓</div><div class="yr">2012–13</div>
+        <div class="ttl">CEEPUS Teaching Fellowship</div>
+        <div class="dsc">University of Economics Prague 🇨🇿 — international exchange.</div>
+      </div>
+      <div class="award-card"><div class="ic">🥇</div><div class="yr">2010</div>
+        <div class="ttl">#1 in Business — Merit Scholarship</div>
+        <div class="dsc">Ranked first in Business, University of Vienna.</div>
+      </div>
+    </div>
+  </section>
 
+  <div class="divider"></div>
+
+  <!-- ── TEACHING ───────────────────────────────────────────── -->
+  <section>
+    <p class="sl">University Teaching</p>
+    <h2 class="st">Courses &amp; Institutions</h2>
+    <p class="ss">Teaching Innovation, Entrepreneurship, AI, UX, and Management since 2011 — across Austria, Iceland, Denmark, Russia, and Israel.</p>
+    <div class="teach-grid">
+      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">WU Wien</p><p class="ucourse">IT Project Management, IS Accountability, B2C E-Commerce, Research Seminar</p></div>
+      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">TU Wien Academy</p><p class="ucourse">Everyday AI (Data Literacy) · since 2023</p></div>
+      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">Modul University Vienna</p><p class="ucourse">Entrepreneurship (Bachelor, Master, MBA) · Applied Innovation Management</p></div>
+      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">FH Technikum Vienna</p><p class="ucourse">IT Innovation Management · Mobile Business · since 2016</p></div>
+      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">FH f. Management &amp; Komm.</p><p class="ucourse">Applied Management, Digital Innovation, Innovation Management</p></div>
+      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">FH Wiener Neustadt</p><p class="ucourse">Quality &amp; Innovation Management · since 2025</p></div>
+      <div class="uni-card"><div class="flag">🇮🇸</div><p class="uname">Reykjavik University</p><p class="ucourse">Design Thinking: An Interdisciplinary Perspective (MBA/Master) · ongoing</p></div>
+      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">Lauder Business School</p><p class="ucourse">Banking Simulation (Master) · ongoing</p></div>
+      <div class="uni-card"><div class="flag">🇩🇰🇷🇺🇮🇱</div><p class="uname">International Exchanges</p><p class="ucourse">Aarhus · HSE Moscow · IDC Herzliya · Prague Univ. of Economics</p></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── PUBLICATIONS ──────────────────────────────────────── -->
+  <section>
+    <p class="sl">Research</p>
+    <h2 class="st">Publications · 620+ Citations</h2>
+    <p class="ss">Peer-reviewed work in top-tier journals. Full list on <a href="https://scholar.google.com/citations?user=iFu00qUAAAAJ&hl=en" target="_blank" rel="noopener" style="color:var(--blue);">Google Scholar</a>.</p>
     <ul class="pub-list">
       <li class="pub-item">
         <div class="pub-num">1</div>
         <div>
           <div class="pub-ttl">From Information Security Awareness to Reasoned Compliant Action: Analyzing Information Security Policy Compliance in a Large Banking Organization</div>
-          <div class="pub-meta">Bauer, S., Bernroider, E.W.N. · <em>The DATA BASE for Advances in Information Systems</em> · Vol. 48(3), pp. 44–68 · 2017</div>
-          <span class="pub-badge pb-journal">Journal Article</span>
+          <div class="pub-meta">Bauer, S., Bernroider, E.W.N. · <em>The DATA BASE for Advances in Information Systems</em> · Vol. 48(3) · 2017</div>
+          <span class="pbadge pbj">Journal Article</span>
         </div>
       </li>
       <li class="pub-item">
@@ -1019,15 +954,15 @@
         <div>
           <div class="pub-ttl">Prevention is better than cure! Designing information security awareness programs to overcome users' non-compliance with information security policies in banks</div>
           <div class="pub-meta">Bauer, S., Bernroider, E.W.N., Chudzikowski, K. · <em>Computers &amp; Security</em> · Vol. 68, pp. 145–159 · 2017</div>
-          <span class="pub-badge pb-journal">Journal Article</span>
+          <span class="pbadge pbj">Journal Article</span>
         </div>
       </li>
       <li class="pub-item">
         <div class="pub-num">3</div>
         <div>
           <div class="pub-ttl">Corporate Accelerators: Transferring Technology Innovation to Incumbent Companies</div>
-          <div class="pub-meta">Bauer, S., Obwegeser, N., Avdagic, Z. · <em>10th Mediterranean Conference on Information Systems (MCIS 2016)</em> · University of Nicosia · 2016</div>
-          <span class="pub-badge pb-conf">Conference</span>
+          <div class="pub-meta">Bauer, S., Obwegeser, N., Avdagic, Z. · <em>MCIS 2016</em> · University of Nicosia</div>
+          <span class="pbadge pbc">Conference</span>
         </div>
       </li>
       <li class="pub-item">
@@ -1035,7 +970,7 @@
         <div>
           <div class="pub-ttl">Digital innovation and the becoming of an organizational identity</div>
           <div class="pub-meta">Obwegeser, N., Bauer, S. · <em>HCI in Business, Government and Organizations</em> · Springer, pp. 556–564 · 2016</div>
-          <span class="pub-badge pb-conf">Conference</span>
+          <span class="pbadge pbc">Conference</span>
         </div>
       </li>
     </ul>
@@ -1043,74 +978,26 @@
 
   <div class="divider"></div>
 
-  <!-- ─── ALL PROJECTS ───────────────────────────────────── -->
+  <!-- ── ALL PROJECTS ──────────────────────────────────────── -->
   <section>
-    <p class="sec-label">Projects &amp; Platforms</p>
-    <h2 class="sec-title">What I've Built</h2>
+    <p class="sl">Projects &amp; Platforms</p>
+    <h2 class="st">What I've Built</h2>
     <div class="proj-grid">
-      <div class="proj-card">
-        <span class="proj-ico">✦</span>
-        <p class="proj-name">Sustainista</p>
-        <p class="proj-desc">ESG automation, Digital Product Passport &amp; Carbon Footprint for B2B. FFG PACE-DPP flagship.</p>
-        <a href="https://www.sustainista.net" target="_blank" rel="noopener" class="proj-link">sustainista.net →</a>
-      </div>
-      <div class="proj-card">
-        <span class="proj-ico">📱</span>
-        <p class="proj-name">Skills-UP!</p>
-        <p class="proj-desc">Peer-to-peer financial literacy for Austrian apprentices. TOP 3 MEGA Education Million 2025.</p>
-        <a href="https://www.digitale-zukunftsbildung.eu" target="_blank" rel="noopener" class="proj-link">digitale-zukunftsbildung.eu →</a>
-      </div>
-      <div class="proj-card">
-        <span class="proj-ico">🌱</span>
-        <p class="proj-name">L2BGreen</p>
-        <p class="proj-desc">Erasmus+ project: Green entrepreneurship courses &amp; AI chatbot for 7 European countries. €1.5M EU funded.</p>
-        <a href="https://www.l2bgreen.com" target="_blank" rel="noopener" class="proj-link">l2bgreen.com →</a>
-      </div>
-      <div class="proj-card">
-        <span class="proj-ico">🔄</span>
-        <p class="proj-name">PACE-DPP / DPP Austria</p>
-        <p class="proj-desc">FFG Flagship: Digital Product Passport data-service ecosystem for circular economy compliance.</p>
-        <a href="https://dpp-austria.at" target="_blank" rel="noopener" class="proj-link">dpp-austria.at →</a>
-      </div>
-      <div class="proj-card">
-        <span class="proj-ico">🏟</span>
-        <p class="proj-name">Europe Tech Hackathon</p>
-        <p class="proj-desc">48h innovation sprint at ViennaUP. Sustainability, AI, battery, ESG challenges. 200+ participants.</p>
-        <a href="https://www.sustainista.net/hackathon" target="_blank" rel="noopener" class="proj-link">sustainista.net/hackathon →</a>
-      </div>
-      <div class="proj-card">
-        <span class="proj-ico">🎮</span>
-        <p class="proj-name">InnoSim</p>
-        <p class="proj-desc">Business simulation for Innovation Management at FH WKW. Stage-Gate, Open Innovation, IP Strategy.</p>
-        <a href="https://github.com/stefangeorgbauer84/InnoSim" target="_blank" rel="noopener" class="proj-link">GitHub →</a>
-      </div>
-      <div class="proj-card">
-        <span class="proj-ico">⚡</span>
-        <p class="proj-name">Elektro</p>
-        <p class="proj-desc">EV &amp; E-Bike platform with EU Battery Passport compliance tracking.</p>
-        <a href="https://github.com/stefangeorgbauer84/Elektro" target="_blank" rel="noopener" class="proj-link">GitHub →</a>
-      </div>
-      <div class="proj-card">
-        <span class="proj-ico">🔒</span>
-        <p class="proj-name">Security Awareness Course</p>
-        <p class="proj-desc">Cyber security training platform — building on 2017 peer-reviewed research in banking security compliance.</p>
-        <a href="https://github.com/stefangeorgbauer84/security-course" target="_blank" rel="noopener" class="proj-link">GitHub →</a>
-      </div>
-      <div class="proj-card">
-        <span class="proj-ico">🥐</span>
-        <p class="proj-name">Bäckerei Karl Bauer GmbH</p>
-        <p class="proj-desc">Managing Director — driving innovation and sustainability in a traditional Austrian business.</p>
-        <a href="#" class="proj-link" style="opacity:.4; cursor:default;">Family Business</a>
-      </div>
+      <div class="proj-card"><span class="proj-ico">✦</span><p class="proj-name">Sustainista</p><p class="proj-desc">ESG automation, Digital Product Passport &amp; Carbon Footprint. FFG PACE-DPP flagship.</p><a href="https://www.sustainista.net" target="_blank" rel="noopener" class="proj-link">sustainista.net →</a></div>
+      <div class="proj-card"><span class="proj-ico">📱</span><p class="proj-name">Skills-UP!</p><p class="proj-desc">Peer-to-peer financial literacy for Austrian apprentices. TOP 3 MEGA Education Million 2025.</p><a href="https://www.digitale-zukunftsbildung.eu" target="_blank" rel="noopener" class="proj-link">digitale-zukunftsbildung.eu →</a></div>
+      <div class="proj-card"><span class="proj-ico">🌱</span><p class="proj-name">L2BGreen</p><p class="proj-desc">Erasmus+: Green entrepreneurship courses &amp; AI chatbot for 7 European countries. €1.5M EU funded.</p><a href="https://www.l2bgreen.com" target="_blank" rel="noopener" class="proj-link">l2bgreen.com →</a></div>
+      <div class="proj-card"><span class="proj-ico">🔄</span><p class="proj-name">PACE-DPP / DPP Austria</p><p class="proj-desc">FFG Flagship: Digital Product Passport ecosystem for circular economy compliance.</p><a href="https://dpp-austria.at" target="_blank" rel="noopener" class="proj-link">dpp-austria.at →</a></div>
+      <div class="proj-card"><span class="proj-ico">🏟</span><p class="proj-name">Europe Tech Hackathon</p><p class="proj-desc">48h innovation sprint at ViennaUP. 200+ participants, 4 challenges.</p><a href="https://www.sustainista.net/hackathon" target="_blank" rel="noopener" class="proj-link">sustainista.net/hackathon →</a></div>
+      <div class="proj-card"><span class="proj-ico">🎮</span><p class="proj-name">InnoSim</p><p class="proj-desc">Business simulation for Innovation Management at FH WKW. Stage-Gate, Open Innovation, IP Strategy.</p><a href="https://github.com/stefangeorgbauer84/InnoSim" target="_blank" rel="noopener" class="proj-link">GitHub →</a></div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- ─── EXPERTISE ──────────────────────────────────────── -->
+  <!-- ── EXPERTISE ─────────────────────────────────────────── -->
   <section>
-    <p class="sec-label">Expertise</p>
-    <h2 class="sec-title">Skills &amp; Research Areas</h2>
+    <p class="sl">Expertise</p>
+    <h2 class="st">Skills &amp; Research Areas</h2>
     <div class="tags">
       <span class="tag tr">Information Security</span>
       <span class="tag tb">Data Literacy &amp; AI</span>
@@ -1134,54 +1021,34 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- ─── LANGUAGES ──────────────────────────────────────── -->
-  <section>
-    <p class="sec-label">Languages</p>
-    <h2 class="sec-title">Communication</h2>
-    <div class="lang-row">
-      <div class="lang-pill"><span class="lf">🇦🇹</span><span class="ln">German</span><span class="ll">Native</span></div>
-      <div class="lang-pill"><span class="lf">🇬🇧</span><span class="ln">English</span><span class="ll">Fluent</span></div>
-      <div class="lang-pill"><span class="lf">🇨🇿</span><span class="ln">Czech</span><span class="ll">Elementary</span></div>
-      <div class="lang-pill"><span class="lf">🇫🇷</span><span class="ln">French</span><span class="ll">Elementary</span></div>
-      <div class="lang-pill"><span class="lf">🇪🇸</span><span class="ln">Spanish</span><span class="ll">Elementary</span></div>
-    </div>
-  </section>
-
 </main>
 
-<!-- ─── LINKEDIN CTA ───────────────────────────────────────── -->
-<section id="follow" class="linkedin-cta">
-  <div class="inner">
-    <div class="li-logo">
-      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+<!-- ── LINKEDIN BIG CTA ────────────────────────────────────── -->
+<section id="follow" class="li-cta">
+  <div class="li-cta-inner">
+    <div class="li-icon">
+      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
     </div>
     <h2>Follow Me on LinkedIn</h2>
-    <p>Join 6,333+ professionals following my work on AI, sustainability, education, and innovation. I share insights on ESG, EdTech, startup building, and the future of learning — regularly.</p>
-    <a href="https://www.linkedin.com/in/stefan-bauer-innovator/" target="_blank" rel="noopener" class="btn-follow">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    <p>Join 6,333+ professionals following my work on AI, sustainability, and innovation. I share regular insights on ESG, EdTech, startup building, and the future of learning.</p>
+    <a href="https://www.linkedin.com/in/stefan-bauer-innovator/" target="_blank" rel="noopener" class="li-cta-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
       Follow Dr. Stefan Bauer
     </a>
-    <p class="li-social-proof"><strong>6,333 followers</strong> already — join the community around AI, sustainability &amp; innovation</p>
+    <p class="li-proof"><strong>6,333 followers</strong> already — join the community around AI, sustainability &amp; innovation</p>
   </div>
 </section>
 
 <footer>
   <p>
-    <a href="https://www.linkedin.com/in/stefan-bauer-innovator/" target="_blank" rel="noopener">LinkedIn</a>
-    <span class="divf">·</span>
-    <a href="https://www.sustainista.net" target="_blank" rel="noopener">sustainista.net</a>
-    <span class="divf">·</span>
-    <a href="https://www.l2bgreen.com" target="_blank" rel="noopener">l2bgreen.com</a>
-    <span class="divf">·</span>
-    <a href="https://dpp-austria.at" target="_blank" rel="noopener">dpp-austria.at</a>
-    <span class="divf">·</span>
-    <a href="https://www.digitale-zukunftsbildung.eu" target="_blank" rel="noopener">digitale-zukunftsbildung.eu</a>
-    <span class="divf">·</span>
+    <a href="https://www.linkedin.com/in/stefan-bauer-innovator/" target="_blank" rel="noopener">LinkedIn</a><span class="d">·</span>
+    <a href="https://www.sustainista.net" target="_blank" rel="noopener">sustainista.net</a><span class="d">·</span>
+    <a href="https://www.l2bgreen.com" target="_blank" rel="noopener">l2bgreen.com</a><span class="d">·</span>
+    <a href="https://dpp-austria.at" target="_blank" rel="noopener">dpp-austria.at</a><span class="d">·</span>
+    <a href="https://www.digitale-zukunftsbildung.eu" target="_blank" rel="noopener">digitale-zukunftsbildung.eu</a><span class="d">·</span>
     <a href="https://scholar.google.com/citations?user=iFu00qUAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
   </p>
-  <p style="margin-top:6px; opacity:0.45;">Dr. Stefan Bauer · CEO Sustainista · PhD WU Wien · Vienna, Austria</p>
+  <p style="margin-top:6px; opacity:0.4;">Dr. Stefan Bauer · PhD WU Wien · CEO Sustainista · Vienna, Austria</p>
 </footer>
 
 </body>
