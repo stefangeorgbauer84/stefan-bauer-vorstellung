@@ -6,7 +6,7 @@
   <title>Dr. Stefan Bauer — Course Introduction</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -32,7 +32,7 @@
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Barlow', 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--bg); color: var(--text);
       line-height: 1.65; -webkit-font-smoothing: antialiased;
       font-feature-settings: 'cv02','cv03','cv04','cv11';
@@ -63,24 +63,35 @@
 
     /* ── HERO ─────────────────────────────────────────────── */
     .hero {
-      background: linear-gradient(140deg, #020714 0%, #061033 28%, #0e2254 55%, #1542a8 80%, #0891b2 100%);
-      color: #fff; padding: 72px 24px 88px;
-      text-align: center; position: relative; overflow: hidden;
+      background: oklch(14% 0.018 258);
+      color: #fff; padding: 72px 0 80px;
+      position: relative; overflow: hidden;
     }
     .hero::before {
       content: ''; position: absolute; inset: 0; pointer-events: none;
       background:
-        radial-gradient(ellipse 80% 60% at 20% 100%, rgba(14,159,138,0.22) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 80% 0%, rgba(124,58,237,0.16) 0%, transparent 60%);
+        radial-gradient(ellipse 60% 80% at 0% 100%, oklch(57% 0.15 218 / 0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 100% 0%, oklch(43% 0.24 298 / 0.14) 0%, transparent 55%);
     }
     .hero::after {
       content: ''; position: absolute; inset: 0; pointer-events: none;
       background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+        linear-gradient(oklch(100% 0 0 / 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, oklch(100% 0 0 / 0.035) 1px, transparent 1px);
       background-size: 44px 44px;
     }
-    .hero-inner { position: relative; z-index: 2; }
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 980px; margin: 0 auto; padding: 0 28px;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 48px; align-items: center;
+    }
+    @media (max-width: 680px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero-photo { justify-self: start; }
+      .hero { padding: 56px 0 64px; }
+    }
+    .hero-photo { flex-shrink: 0; }
 
     .avatar-ring {
       position: relative; display: inline-block; margin-bottom: 26px;
@@ -108,13 +119,19 @@
     }
 
     .hero h1 {
-      font-size: clamp(32px, 6vw, 58px); font-weight: 900;
-      letter-spacing: -1px; margin-bottom: 8px;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(52px, 9vw, 96px); font-weight: 900;
+      letter-spacing: -2px; line-height: 0.92;
+      margin-bottom: 16px;
     }
     .hero .tagline {
-      font-size: clamp(12.5px, 2vw, 15.5px); color: rgba(255,255,255,0.8);
-      margin-bottom: 8px;
+      font-size: clamp(13px, 1.8vw, 16px); color: oklch(80% 0.01 258);
+      margin-bottom: 12px; font-weight: 500; line-height: 1.55;
+    }
+    .hero-kicker {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: oklch(70% 0.14 218);
+      margin-bottom: 12px;
     }
     .hero .fpill {
       display: inline-flex; align-items: center; gap: 6px;
@@ -124,7 +141,7 @@
     }
     .fpill .live { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
 
-    .hero-links { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .hero-links { display: flex; gap: 8px; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 9px 17px; border-radius: 8px;
@@ -231,36 +248,39 @@
 
     .sl {
       text-transform: uppercase; font-size: 10.5px; font-weight: 700;
-      letter-spacing: 3px; color: var(--blue); margin-bottom: 8px;
-      display: inline-flex; align-items: center; gap: 9px;
+      letter-spacing: 2.5px; color: var(--blue); margin-bottom: 8px;
+      display: block;
     }
-    .sl::before {
-      content: ''; display: inline-block;
-      width: 22px; height: 2.5px;
-      background: currentColor; border-radius: 2px;
-    }
-    .st { font-size: clamp(23px, 3.5vw, 34px); font-weight: 900; color: var(--text);
-          margin-bottom: 10px; letter-spacing: -0.6px; line-height: 1.15; }
+    /* .st defined below with Barlow Condensed */
     .ss { font-size: 14.5px; color: var(--muted); max-width: 720px;
           margin-bottom: 24px; line-height: 1.75; }
     .divider { height: 1px; background: var(--border); margin: 52px 0; }
 
-    /* ── STAT BAR ───────────────────────────────────────────── */
-    .stat-bar {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      border: 1px solid var(--border); border-radius: var(--r);
-      background: var(--card); overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin: 36px 0;
+    /* ── STAT STRIP ─────────────────────────────────────────── */
+    .stat-strip {
+      display: flex; flex-wrap: wrap; gap: 0;
+      border-top: 1.5px solid var(--border);
+      border-bottom: 1.5px solid var(--border);
+      padding: 20px 0; margin: 36px 0;
     }
-    @media (max-width: 580px) { .stat-bar { grid-template-columns: 1fr 1fr; } }
-    .sc {
-      padding: 22px 16px; text-align: center;
+    .ss-item {
+      padding: 0 28px 0 0; margin-right: 28px;
       border-right: 1px solid var(--border);
+      line-height: 1.3;
     }
-    .sc:last-child { border-right: none; }
-    @media (max-width: 580px) { .sc:nth-child(2) { border-right: none; } }
-    .sc .n { font-size: 32px; font-weight: 900; color: var(--blue); letter-spacing: -1.5px; display: block; }
-    .sc .l { font-size: 11px; color: var(--muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 500; }
+    .ss-item:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+    @media (max-width: 600px) {
+      .ss-item { border-right: none; padding-right: 0; margin-right: 0;
+                 flex: 1 1 45%; padding-bottom: 12px; margin-bottom: 12px;
+                 border-bottom: 1px solid var(--border); }
+      .ss-item:last-child, .ss-item:nth-last-child(2):nth-child(odd) { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+    }
+    .ss-n {
+      font-family: 'Barlow Condensed', sans-serif;
+      display: block; font-size: 30px; font-weight: 900;
+      color: var(--text); letter-spacing: -1px;
+    }
+    .ss-l { font-size: 11.5px; color: var(--muted); font-weight: 500; }
 
     /* ── CARDS ──────────────────────────────────────────────── */
     .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
@@ -271,13 +291,12 @@
     .card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: var(--r); padding: 24px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-      transition: box-shadow 0.22s, transform 0.22s, border-color 0.22s;
+      box-shadow: 0 1px 4px oklch(0% 0 0 / 0.04);
+      transition: box-shadow 0.18s ease-out, transform 0.18s ease-out;
     }
     .card:hover {
-      box-shadow: 0 8px 32px rgba(26,86,219,0.11);
-      transform: translateY(-3px);
-      border-color: rgba(26,86,219,0.22);
+      box-shadow: 0 6px 24px oklch(0% 0 0 / 0.09);
+      transform: translateY(-2px);
     }
     .ci {
       width: 40px; height: 40px; border-radius: 10px;
@@ -293,6 +312,9 @@
     .card p, .card li { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
     .card ul { padding-left: 17px; }
     .card ul li { margin-bottom: 4px; }
+
+    /* ── CARD ICONS (keep for CSS compatibility but invisible) ─ */
+    .ci { display: none; }
 
     /* ── LOGO IMG WITHIN CARDS ──────────────────────────────── */
     .card-logo { height: 32px; width: auto; object-fit: contain; margin-bottom: 14px; display: block; }
@@ -329,7 +351,7 @@
 
     /* stats in hl */
     .srow { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 20px; }
-    .srow .s .n { font-size: 30px; font-weight: 900; display: block; }
+    .srow .s .n { font-family: 'Barlow Condensed', sans-serif; font-size: 34px; font-weight: 900; display: block; letter-spacing: -1px; }
     .hl-purple .srow .s .n { color: #c4b5fd; }
     .hl-green  .srow .s .n { color: #86efac; }
     .hl-teal   .srow .s .n { color: #67e8f9; }
@@ -377,13 +399,15 @@
     .pm-card ul li { font-size: 12.5px; color: rgba(255,255,255,0.68); line-height: 1.6; margin-bottom: 3px; }
 
     .pm-total-bar {
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.2);
-      border-radius: 12px; padding: 18px 28px; gap: 20px; flex-wrap: wrap;
+      display: flex; align-items: center;
+      border-top: 1.5px solid rgba(255,255,255,0.2);
+      border-bottom: 1.5px solid rgba(255,255,255,0.2);
+      padding: 22px 0; gap: 32px; flex-wrap: wrap;
       margin-bottom: 26px;
     }
     .pm-total-bar .total-num {
-      font-size: 42px; font-weight: 900; color: #fde68a; letter-spacing: -1.5px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 52px; font-weight: 900; color: #fde68a; letter-spacing: -2px;
     }
     .pm-total-bar .total-label { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5; }
     .pm-total-bar .total-label strong { display: block; font-size: 15px; color: #fff; }
@@ -486,30 +510,33 @@
     .tl-ttl { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
     .tl-sub { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
-    /* ── AWARD GRID ─────────────────────────────────────────── */
-    .award-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; }
-    @media (max-width: 700px) { .award-grid { grid-template-columns: 1fr 1fr; } }
-    .award-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 20px 18px; text-align: center;
-      transition: all 0.2s;
+    /* ── AWARD LIST (editorial timeline) ───────────────────── */
+    .award-list { margin-top: 24px; }
+    .award-row {
+      display: grid; grid-template-columns: 68px 1fr;
+      gap: 20px; padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
     }
-    .award-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(0,0,0,0.12); border-color: rgba(251,191,36,0.35); }
-    .award-card .ic  { font-size: 28px; margin-bottom: 8px; }
-    .award-card .yr  { font-size: 10.5px; font-weight: 700; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
-    .award-card .ttl { font-size: 13.5px; font-weight: 800; color: var(--text); margin-bottom: 5px; line-height: 1.35; }
-    .award-card .dsc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+    .award-row:last-child { border-bottom: none; }
+    .ar-year {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 800;
+      color: var(--blue); letter-spacing: 0.5px; padding-top: 1px;
+    }
+    .ar-title { font-size: 14.5px; font-weight: 700; color: var(--text); margin-bottom: 3px; line-height: 1.35; }
+    .ar-desc  { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
 
-    /* ── TEACHING GRID ──────────────────────────────────────── */
-    .teach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
-    @media (max-width: 700px) { .teach-grid { grid-template-columns: 1fr 1fr; } }
-    .uni-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 10px; padding: 14px 16px;
+    /* ── TEACHING LIST ──────────────────────────────────────── */
+    .teach-list { margin-top: 20px; columns: 2; gap: 32px; }
+    @media (max-width: 600px) { .teach-list { columns: 1; } }
+    .teach-item {
+      break-inside: avoid; margin-bottom: 14px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--border);
     }
-    .uni-card .flag { font-size: 18px; margin-bottom: 6px; }
-    .uni-card .uname { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-    .uni-card .ucourse { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .teach-item:last-child { border-bottom: none; }
+    .teach-uni { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+    .teach-course { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
 
     /* ── PUBLICATIONS ───────────────────────────────────────── */
     .pub-list { list-style: none; margin-top: 18px; }
@@ -598,6 +625,19 @@
     .li-proof { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.5); }
     .li-proof strong { color: rgba(255,255,255,0.82); }
 
+    /* ── DISPLAY FONT for section headings ─────────────────── */
+    .st {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(26px, 4vw, 40px); font-weight: 900; color: var(--text);
+      margin-bottom: 10px; letter-spacing: -0.5px; line-height: 1.1;
+    }
+    .hl .st { color: #fff; }
+
+    /* ── REDUCED MOTION ─────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
     /* ── FOOTER ─────────────────────────────────────────────── */
     footer {
       text-align: center; padding: 36px 24px;
@@ -623,24 +663,28 @@
 <!-- ── HERO ────────────────────────────────────────────────── -->
 <header class="hero">
   <div class="hero-inner">
-    <div class="avatar-ring">
-      <img src="stefan-bauer.jpeg" alt="Dr. Stefan Bauer" class="avatar"
-           onerror="this.style.display='none';document.getElementById('afb').style.display='flex';" />
-      <div id="afb" class="avatar-fb">SB</div>
+    <div class="hero-text">
+      <p class="hero-kicker">Course Introduction · Vienna, Austria</p>
+      <h1>Dr. Stefan<br>Bauer</h1>
+      <p class="tagline">PhD · CEO Sustainista · EdTech Innovator<br>Hackathon Organizer · Lecturer at 10+ Universities</p>
+      <div style="margin-bottom:24px;">
+        <span class="fpill"><span class="live"></span>6,333 LinkedIn Followers</span>
+      </div>
+      <div class="hero-links">
+        <a href="https://www.linkedin.com/in/stefan-bauer-innovator/" target="_blank" rel="noopener" class="btn btn-white">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+          Follow on LinkedIn
+        </a>
+        <a href="https://scholar.google.com/citations?user=iFu00qUAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-ghost">📚 620+ Citations</a>
+        <a href="https://www.sustainista.net" target="_blank" rel="noopener" class="btn btn-green">✦ Sustainista</a>
+      </div>
     </div>
-    <h1>Dr. Stefan Bauer 🤸‍♂️</h1>
-    <p class="tagline">PhD · CEO Sustainista · EdTech Innovator · Hackathon Organizer · Lecturer at 10+ Universities</p>
-    <div style="margin-bottom:28px;">
-      <span class="fpill"><span class="live"></span>6,333 LinkedIn Followers · Vienna, Austria</span>
-    </div>
-    <div class="hero-links">
-      <a href="https://www.linkedin.com/in/stefan-bauer-innovator/" target="_blank" rel="noopener" class="btn btn-white">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
-        Follow on LinkedIn
-      </a>
-      <a href="https://scholar.google.com/citations?user=iFu00qUAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-ghost">📚 620+ Citations</a>
-      <a href="https://www.sustainista.net" target="_blank" rel="noopener" class="btn btn-green">✦ Sustainista</a>
-      <a href="#follow" class="btn btn-ghost">⬇ Follow Me</a>
+    <div class="hero-photo">
+      <div class="avatar-ring">
+        <img src="stefan-bauer.jpeg" alt="Dr. Stefan Bauer" class="avatar"
+             onerror="this.style.display='none';document.getElementById('afb').style.display='flex';" />
+        <div id="afb" class="avatar-fb">SB</div>
+      </div>
     </div>
   </div>
 </header>
@@ -692,11 +736,11 @@
 <main>
 
   <!-- ── STATS ─────────────────────────────────────────────── -->
-  <div class="stat-bar">
-    <div class="sc"><span class="n">620+</span><span class="l">Academic Citations</span></div>
-    <div class="sc"><span class="n">10+</span><span class="l">Universities</span></div>
-    <div class="sc"><span class="n">15+</span><span class="l">Years Experience</span></div>
-    <div class="sc"><span class="n">6,333</span><span class="l">LinkedIn Followers</span></div>
+  <div class="stat-strip">
+    <div class="ss-item"><span class="ss-n">620+</span><span class="ss-l">academic citations</span></div>
+    <div class="ss-item"><span class="ss-n">10+</span><span class="ss-l">universities</span></div>
+    <div class="ss-item"><span class="ss-n">15+</span><span class="ss-l">years experience</span></div>
+    <div class="ss-item"><span class="ss-n">6,333</span><span class="ss-l">LinkedIn followers</span></div>
   </div>
 
   <!-- ── WHO AM I ────────────────────────────────────────────── -->
@@ -1369,42 +1413,38 @@
   <section>
     <p class="sl">Recognition</p>
     <h2 class="st">Awards, Grants &amp; Honors</h2>
-    <div class="award-grid">
-      <div class="award-card"><div class="ic">🏆</div><div class="yr">2025</div>
-        <div class="ttl">MEGA Education Million — TOP 3</div>
-        <div class="dsc">80+ initiatives. National lighthouse project in financial literacy.</div>
+    <div class="award-list">
+      <div class="award-row">
+        <span class="ar-year">2025</span>
+        <div><p class="ar-title">🏆 MEGA Education Million — TOP 3</p><p class="ar-desc">80+ initiatives. National lighthouse project in financial literacy for apprentices.</p></div>
       </div>
-      <div class="award-card"><div class="ic">🇪🇺</div><div class="yr">2024</div>
-        <div class="ttl">FFG Flagship Project — PACE-DPP</div>
-        <div class="dsc">Work Package Lead · Austrian FFG flagship for Digital Product Passport.</div>
+      <div class="award-row">
+        <span class="ar-year">2024</span>
+        <div><p class="ar-title">🇪🇺 FFG Flagship Project — PACE-DPP</p><p class="ar-desc">Work Package Lead · Austrian FFG flagship for Digital Product Passport infrastructure.</p></div>
       </div>
-      <div class="award-card"><div class="ic">🌍</div><div class="yr">2024</div>
-        <div class="ttl">ERASMUS+ Grant — L2BGreen</div>
-        <div class="dsc">€1.5M EU project · WP Lead · Green Entrepreneurship · 7 countries.</div>
+      <div class="award-row">
+        <span class="ar-year">2024</span>
+        <div><p class="ar-title">🌱 ERASMUS+ Grant — L2BGreen</p><p class="ar-desc">€1.5M EU project · WP Lead · Green Entrepreneurship across 7 countries.</p></div>
       </div>
-      <div class="award-card"><div class="ic">⭐</div><div class="yr">2018 &amp; 2019</div>
-        <div class="ttl">Outstanding Research Award</div>
-        <div class="dsc">Special Award by WU Wien — awarded twice for exceptional research.</div>
+      <div class="award-row">
+        <span class="ar-year">2018–19</span>
+        <div><p class="ar-title">⭐ Outstanding Research Award</p><p class="ar-desc">Special Award by WU Wien — awarded twice for exceptional research contributions.</p></div>
       </div>
-      <div class="award-card"><div class="ic">🌏</div><div class="yr">2014</div>
-        <div class="ttl">Erasmus Teaching Fellowship</div>
-        <div class="dsc">Aarhus 🇩🇰 · HSE Moscow (2018) · IDC Herzliya (2019).</div>
+      <div class="award-row">
+        <span class="ar-year">2014–19</span>
+        <div><p class="ar-title">🌍 Erasmus Teaching Fellowships</p><p class="ar-desc">Aarhus University 🇩🇰 · HSE Moscow 🇷🇺 · IDC Herzliya 🇮🇱 · Prague University of Economics 🇨🇿</p></div>
       </div>
-      <div class="award-card"><div class="ic">⭐</div><div class="yr">2014</div>
-        <div class="ttl">Department Performance Award</div>
-        <div class="dsc">IS &amp; Operations, WU Wien, January 2014.</div>
+      <div class="award-row">
+        <span class="ar-year">2014</span>
+        <div><p class="ar-title">⭐ Department Performance Award</p><p class="ar-desc">IS &amp; Operations, WU Wien, January 2014.</p></div>
       </div>
-      <div class="award-card"><div class="ic">🏅</div><div class="yr">2012</div>
-        <div class="ttl">ERSTE Bank Research Prize CEE</div>
-        <div class="dsc">Outstanding research in Central Eastern Europe. Grant: €17,880.</div>
+      <div class="award-row">
+        <span class="ar-year">2012</span>
+        <div><p class="ar-title">🏅 ERSTE Bank Research Prize CEE</p><p class="ar-desc">Outstanding research in Central Eastern Europe. Grant: €17,880.</p></div>
       </div>
-      <div class="award-card"><div class="ic">🎓</div><div class="yr">2012–13</div>
-        <div class="ttl">CEEPUS Teaching Fellowship</div>
-        <div class="dsc">University of Economics Prague 🇨🇿 — international exchange.</div>
-      </div>
-      <div class="award-card"><div class="ic">🥇</div><div class="yr">2010</div>
-        <div class="ttl">#1 in Business — Merit Scholarship</div>
-        <div class="dsc">Ranked first in Business, University of Vienna.</div>
+      <div class="award-row">
+        <span class="ar-year">2010</span>
+        <div><p class="ar-title">🥇 #1 in Business — Merit Scholarship</p><p class="ar-desc">Ranked first in the Business faculty, University of Vienna.</p></div>
       </div>
     </div>
   </section>
@@ -1416,16 +1456,16 @@
     <p class="sl">University Teaching</p>
     <h2 class="st">Courses &amp; Institutions</h2>
     <p class="ss">Teaching Innovation, Entrepreneurship, AI, UX, and Management since 2011 — across Austria, Iceland, Denmark, Russia, and Israel.</p>
-    <div class="teach-grid">
-      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">WU Wien</p><p class="ucourse">IT Project Management, IS Accountability, B2C E-Commerce, Research Seminar</p></div>
-      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">TU Wien Academy</p><p class="ucourse">Everyday AI (Data Literacy) · since 2023</p></div>
-      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">Modul University Vienna</p><p class="ucourse">Entrepreneurship (Bachelor, Master, MBA) · Applied Innovation Management</p></div>
-      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">FH Technikum Vienna</p><p class="ucourse">IT Innovation Management · Mobile Business · since 2016</p></div>
-      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">FH f. Management &amp; Komm.</p><p class="ucourse">Applied Management, Digital Innovation, Innovation Management</p></div>
-      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">FH Wiener Neustadt</p><p class="ucourse">Quality &amp; Innovation Management · since 2025</p></div>
-      <div class="uni-card"><div class="flag">🇮🇸</div><p class="uname">Reykjavik University</p><p class="ucourse">Design Thinking: An Interdisciplinary Perspective (MBA/Master) · ongoing</p></div>
-      <div class="uni-card"><div class="flag">🇦🇹</div><p class="uname">Lauder Business School</p><p class="ucourse">Banking Simulation (Master) · ongoing</p></div>
-      <div class="uni-card"><div class="flag">🇩🇰🇷🇺🇮🇱</div><p class="uname">International Exchanges</p><p class="ucourse">Aarhus · HSE Moscow · IDC Herzliya · Prague Univ. of Economics</p></div>
+    <div class="teach-list">
+      <div class="teach-item"><p class="teach-uni">🇦🇹 WU Wien</p><p class="teach-course">IT Project Management · IS Accountability · B2C E-Commerce · Research Seminar</p></div>
+      <div class="teach-item"><p class="teach-uni">🇦🇹 TU Wien Academy</p><p class="teach-course">Everyday AI (Data Literacy) · since 2023</p></div>
+      <div class="teach-item"><p class="teach-uni">🇦🇹 Modul University Vienna</p><p class="teach-course">Entrepreneurship (Bachelor, Master, MBA) · Applied Innovation Management</p></div>
+      <div class="teach-item"><p class="teach-uni">🇦🇹 FH Technikum Vienna</p><p class="teach-course">IT Innovation Management · Mobile Business · since 2016</p></div>
+      <div class="teach-item"><p class="teach-uni">🇦🇹 FH f. Management &amp; Kommunikation</p><p class="teach-course">Applied Management · Digital Innovation · Innovation Management</p></div>
+      <div class="teach-item"><p class="teach-uni">🇦🇹 FH Wiener Neustadt</p><p class="teach-course">Quality &amp; Innovation Management · since 2025</p></div>
+      <div class="teach-item"><p class="teach-uni">🇮🇸 Reykjavik University</p><p class="teach-course">Design Thinking: An Interdisciplinary Perspective (MBA/Master) · ongoing</p></div>
+      <div class="teach-item"><p class="teach-uni">🇦🇹 Lauder Business School</p><p class="teach-course">Banking Simulation (Master) · ongoing</p></div>
+      <div class="teach-item"><p class="teach-uni">🇩🇰🇷🇺🇮🇱 International Exchanges</p><p class="teach-course">Aarhus University · HSE Moscow · IDC Herzliya · Prague University of Economics</p></div>
     </div>
   </section>
 
