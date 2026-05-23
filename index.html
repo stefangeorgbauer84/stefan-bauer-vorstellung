@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dr. Stefan Bauer — Course Introduction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -29,9 +32,10 @@
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--bg); color: var(--text);
       line-height: 1.65; -webkit-font-smoothing: antialiased;
+      font-feature-settings: 'cv02','cv03','cv04','cv11';
     }
 
     /* ── LINKEDIN TOP BAR ─────────────────────────────────── */
@@ -59,17 +63,24 @@
 
     /* ── HERO ─────────────────────────────────────────────── */
     .hero {
-      background: linear-gradient(140deg, #060d1f 0%, #0f2557 35%, #1a56db 70%, #0891b2 100%);
-      color: #fff; padding: 68px 24px 84px;
+      background: linear-gradient(140deg, #020714 0%, #061033 28%, #0e2254 55%, #1542a8 80%, #0891b2 100%);
+      color: #fff; padding: 72px 24px 88px;
       text-align: center; position: relative; overflow: hidden;
     }
     .hero::before {
       content: ''; position: absolute; inset: 0; pointer-events: none;
       background:
-        radial-gradient(ellipse 80% 60% at 20% 100%, rgba(14,159,138,0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 80% 0%, rgba(124,58,237,0.12) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 60% at 20% 100%, rgba(14,159,138,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 0%, rgba(124,58,237,0.16) 0%, transparent 60%);
     }
-    .hero-inner { position: relative; z-index: 1; }
+    .hero::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    .hero-inner { position: relative; z-index: 2; }
 
     .avatar-ring {
       position: relative; display: inline-block; margin-bottom: 26px;
@@ -97,7 +108,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(30px, 5.5vw, 52px); font-weight: 900;
+      font-size: clamp(32px, 6vw, 58px); font-weight: 900;
       letter-spacing: -1px; margin-bottom: 8px;
       text-shadow: 0 2px 20px rgba(0,0,0,0.3);
     }
@@ -127,6 +138,78 @@
     .btn-green  { background: var(--green); color: #fff; }
     .btn-green:hover  { background: var(--green-dk); transform: translateY(-1px); }
 
+    /* ── AWARD HERO — Cinematic full-bleed image section ─── */
+    .award-hero { position: relative; width: 100%; background: #000; overflow: hidden; }
+    .award-hero-img {
+      width: 100%; height: 580px;
+      object-fit: cover; object-position: center 18%;
+      display: block; opacity: 0.82;
+    }
+    @media (max-width: 700px) { .award-hero-img { height: 340px; } }
+
+    .award-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(2, 5, 20, 0.97) 0%,
+        rgba(2, 5, 20, 0.65) 38%,
+        rgba(2, 5, 20, 0.15) 72%,
+        transparent 100%
+      );
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 52px 46px;
+    }
+    @media (max-width: 700px) { .award-overlay { padding: 0 22px 28px; } }
+
+    .aw-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fbbf24; color: #1a0800;
+      font-size: 10.5px; font-weight: 900;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      padding: 5px 15px; border-radius: 24px;
+      margin-bottom: 14px; width: fit-content;
+    }
+    .aw-headline {
+      font-size: clamp(26px, 5vw, 62px);
+      font-weight: 900; color: #fff;
+      letter-spacing: -2.5px; line-height: 1.0;
+      margin-bottom: 12px;
+    }
+    .aw-sub {
+      font-size: clamp(13px, 1.6vw, 16px);
+      color: rgba(255,255,255,0.7);
+      max-width: 580px; line-height: 1.65;
+      margin-bottom: 20px; font-weight: 400;
+    }
+    .aw-stats {
+      display: flex; gap: 28px; flex-wrap: wrap;
+    }
+    .aw-stat .aw-n {
+      font-size: 26px; font-weight: 900;
+      color: #fbbf24; display: block; letter-spacing: -1px;
+    }
+    .aw-stat .aw-l {
+      font-size: 10px; color: rgba(255,255,255,0.48);
+      text-transform: uppercase; letter-spacing: 1.5px;
+      font-weight: 500;
+    }
+    .award-caption {
+      background: #000; padding: 11px 52px;
+      font-size: 11.5px; color: rgba(255,255,255,0.35);
+      font-style: italic; letter-spacing: 0.3px;
+    }
+    @media (max-width: 700px) { .award-caption { padding: 9px 22px; } }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .aw-eyebrow { animation: fadeUp 0.7s ease 0.15s both; }
+    .aw-headline { animation: fadeUp 0.7s ease 0.28s both; }
+    .aw-sub      { animation: fadeUp 0.7s ease 0.4s  both; }
+    .aw-stats    { animation: fadeUp 0.7s ease 0.52s both; }
+
     /* ── TICKER ────────────────────────────────────────────── */
     .ticker-wrap {
       background: linear-gradient(90deg, #b45309, #fbbf24 50%, #b45309);
@@ -144,12 +227,20 @@
     .tick-sep { opacity: 0.35; font-size: 16px; }
 
     /* ── LAYOUT ─────────────────────────────────────────────── */
-    main { max-width: 960px; margin: 0 auto; padding: 56px 24px 80px; }
+    main { max-width: 980px; margin: 0 auto; padding: 64px 28px 88px; }
 
-    .sl { text-transform: uppercase; font-size: 10.5px; font-weight: 700;
-          letter-spacing: 2.5px; color: var(--blue); margin-bottom: 7px; }
-    .st { font-size: clamp(21px, 3.2vw, 30px); font-weight: 900; color: var(--text);
-          margin-bottom: 8px; letter-spacing: -0.3px; }
+    .sl {
+      text-transform: uppercase; font-size: 10.5px; font-weight: 700;
+      letter-spacing: 3px; color: var(--blue); margin-bottom: 8px;
+      display: inline-flex; align-items: center; gap: 9px;
+    }
+    .sl::before {
+      content: ''; display: inline-block;
+      width: 22px; height: 2.5px;
+      background: currentColor; border-radius: 2px;
+    }
+    .st { font-size: clamp(23px, 3.5vw, 34px); font-weight: 900; color: var(--text);
+          margin-bottom: 10px; letter-spacing: -0.6px; line-height: 1.15; }
     .ss { font-size: 14.5px; color: var(--muted); max-width: 720px;
           margin-bottom: 24px; line-height: 1.75; }
     .divider { height: 1px; background: var(--border); margin: 52px 0; }
@@ -159,7 +250,7 @@
       display: grid; grid-template-columns: repeat(4, 1fr);
       border: 1px solid var(--border); border-radius: var(--r);
       background: var(--card); overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 32px 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin: 36px 0;
     }
     @media (max-width: 580px) { .stat-bar { grid-template-columns: 1fr 1fr; } }
     .sc {
@@ -168,8 +259,8 @@
     }
     .sc:last-child { border-right: none; }
     @media (max-width: 580px) { .sc:nth-child(2) { border-right: none; } }
-    .sc .n { font-size: 28px; font-weight: 900; color: var(--blue); letter-spacing: -1px; display: block; }
-    .sc .l { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+    .sc .n { font-size: 32px; font-weight: 900; color: var(--blue); letter-spacing: -1.5px; display: block; }
+    .sc .l { font-size: 11px; color: var(--muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 500; }
 
     /* ── CARDS ──────────────────────────────────────────────── */
     .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
@@ -179,11 +270,15 @@
 
     .card {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 22px;
+      border-radius: var(--r); padding: 24px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-      transition: box-shadow 0.2s, transform 0.2s;
+      transition: box-shadow 0.22s, transform 0.22s, border-color 0.22s;
     }
-    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); transform: translateY(-2px); }
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(26,86,219,0.11);
+      transform: translateY(-3px);
+      border-color: rgba(26,86,219,0.22);
+    }
     .ci {
       width: 40px; height: 40px; border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
@@ -215,7 +310,7 @@
       border-radius: 0; padding: 52px 0; color: #fff;
       position: relative; overflow: hidden;
     }
-    .hl-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    .hl-inner { max-width: 980px; margin: 0 auto; padding: 0 28px; }
     .hl-purple { background: linear-gradient(135deg, #1a0b2e 0%, #3b1a6b 40%, #7c3aed 100%); }
     .hl-green  { background: linear-gradient(135deg, #0e1a09 0%, #2a4a18 40%, #4F772D 100%); }
     .hl-teal   { background: linear-gradient(135deg, #071216 0%, #0a3344 40%, #0891b2 100%); }
@@ -399,7 +494,7 @@
       border-radius: var(--r); padding: 20px 18px; text-align: center;
       transition: all 0.2s;
     }
-    .award-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
+    .award-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(0,0,0,0.12); border-color: rgba(251,191,36,0.35); }
     .award-card .ic  { font-size: 28px; margin-bottom: 8px; }
     .award-card .yr  { font-size: 10.5px; font-weight: 700; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
     .award-card .ttl { font-size: 13.5px; font-weight: 800; color: var(--text); margin-bottom: 5px; line-height: 1.35; }
@@ -505,12 +600,13 @@
 
     /* ── FOOTER ─────────────────────────────────────────────── */
     footer {
-      text-align: center; padding: 30px 24px;
-      background: var(--text); color: rgba(255,255,255,0.45); font-size: 12.5px;
+      text-align: center; padding: 36px 24px;
+      background: #030712; color: rgba(255,255,255,0.4); font-size: 12.5px;
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
-    footer a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
     footer a:hover { color: #fff; }
-    footer .d { margin: 0 8px; opacity: 0.25; }
+    footer .d { margin: 0 8px; opacity: 0.2; }
   </style>
 </head>
 <body>
@@ -571,6 +667,27 @@
     <span class="tick-item">🏟 Europe Tech Hackathon · ViennaUP</span><span class="tick-item tick-sep">✦</span>
   </div>
 </div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     AWARD MOMENT — TOP 3 MEGA Education Million 2025
+═══════════════════════════════════════════════════════════════ -->
+<div class="award-hero">
+  <img src="top3-bildungsmillion.jpg"
+       alt="Skills-UP! gewinnt TOP 3 bei der MEGA Education Million 2025 — Dr. Stefan Bauers Team auf der Bühne mit €200.000-Schecks"
+       class="award-hero-img" />
+  <div class="award-overlay">
+    <span class="aw-eyebrow">🏆 TOP 3 Award</span>
+    <h2 class="aw-headline">MEGA Education<br>Million 2025</h2>
+    <p class="aw-sub">Austria's most prestigious education award — Skills-UP! selected from over 80 national initiatives. A peer-to-peer financial literacy platform that reached 200+ apprentices with 90% lasting behavioral change.</p>
+    <div class="aw-stats">
+      <div class="aw-stat"><span class="aw-n">TOP 3</span><span class="aw-l">National Award</span></div>
+      <div class="aw-stat"><span class="aw-n">80+</span><span class="aw-l">Initiatives Defeated</span></div>
+      <div class="aw-stat"><span class="aw-n">200+</span><span class="aw-l">Apprentices Reached</span></div>
+      <div class="aw-stat"><span class="aw-n">90%</span><span class="aw-l">Behavioral Change</span></div>
+    </div>
+  </div>
+</div>
+<div class="award-caption">Skills-UP! team on stage at the MEGA Education Million award ceremony — Austria's largest education prize pool</div>
 
 <main>
 
@@ -744,7 +861,10 @@
       <div class="s"><span class="n">80+</span><span class="l">Initiatives defeated</span></div>
       <div class="s"><span class="n">2021</span><span class="l">Partnership start</span></div>
     </div>
-    <div class="hl-btns">
+    <div style="margin-top:26px; border-radius:14px; overflow:hidden; max-width:620px; border:1px solid rgba(255,255,255,0.12);">
+      <img src="skillsup-wirkung.png" alt="Skills-UP! Impact Visualization" style="width:100%; display:block;" />
+    </div>
+    <div class="hl-btns" style="margin-top:20px;">
       <a href="https://www.digitale-zukunftsbildung.eu" target="_blank" rel="noopener" class="hl-bw">🎓 digitale-zukunftsbildung.eu</a>
     </div>
   </div>
@@ -1182,6 +1302,17 @@
     <p class="sl">Hackathon in Action</p>
     <h2 class="st">Europe Tech Hackathon — Watch the Highlights</h2>
     <p class="ss">48 hours, real sustainability problems, real prototypes — at ViennaUP in the ÖBB Open Innovation Factory, Vienna.</p>
+
+    <!-- Hackathon photos -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:13px; margin-bottom:18px;">
+      <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border);">
+        <img src="hackathon-stage.jpg" alt="Europe Tech Hackathon — Stage" style="width:100%; height:200px; object-fit:cover; display:block;" />
+      </div>
+      <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border);">
+        <img src="hackathon-winners.jpg" alt="Europe Tech Hackathon — Winners" style="width:100%; height:200px; object-fit:cover; display:block;" />
+      </div>
+    </div>
+
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
       <div style="background:var(--card); border:1px solid var(--border); border-radius:13px; overflow:hidden;">
         <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
