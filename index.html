@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dr. Stefan Bauer — Course Introduction</title>
+  <meta name="description" content="Dr. Stefan Bauer — PhD, CEO Sustainista, EdTech Innovator, Hackathon Organizer, Lecturer at 10+ Universities. AI, sustainability &amp; innovation." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
@@ -303,23 +304,10 @@
       box-shadow: 0 6px 24px oklch(0% 0 0 / 0.09);
       transform: translateY(-2px);
     }
-    .ci {
-      width: 40px; height: 40px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px; margin-bottom: 13px;
-    }
-    .ci-b { background: #eff6ff; }
-    .ci-t { background: #ecfeff; }
-    .ci-g { background: #f0fdf4; }
-    .ci-a { background: #fffbeb; }
-    .ci-p { background: #f5f3ff; }
     .card h3 { font-size: 14.5px; font-weight: 800; margin-bottom: 8px; }
     .card p, .card li { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
     .card ul { padding-left: 17px; }
     .card ul li { margin-bottom: 4px; }
-
-    /* ── CARD ICONS (keep for CSS compatibility but invisible) ─ */
-    .ci { display: none; }
 
     /* ── LOGO IMG WITHIN CARDS ──────────────────────────────── */
     .card-logo { height: 32px; width: auto; object-fit: contain; margin-bottom: 14px; display: block; }
@@ -638,9 +626,32 @@
     }
     .hl .st { color: #fff; }
 
+    /* ── FOCUS STYLES ───────────────────────────────────────── */
+    :focus-visible {
+      outline: 2.5px solid var(--blue);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .hl :focus-visible,
+    .li-top-bar :focus-visible,
+    .li-cta :focus-visible,
+    footer :focus-visible {
+      outline-color: #fff;
+    }
+    .btn:focus-visible,
+    .hl-bw:focus-visible,
+    .hl-bo:focus-visible,
+    .li-top-btn:focus-visible,
+    .li-cta-btn:focus-visible,
+    .pres-btn:focus-visible,
+    .pres-exit:focus-visible,
+    .pres-fab:focus-visible { outline-offset: 2px; }
+
     /* ── REDUCED MOTION ─────────────────────────────────────── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .avatar-ring::before { animation: none; }
+      .ticker-inner { animation: none; }
     }
 
     /* ── PRESENTATION MODE ──────────────────────────────────── */
@@ -805,14 +816,23 @@
 </head>
 <body>
 
+<!-- ── SVG SPRITE ──────────────────────────────────────────── -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="li-icon" viewBox="0 0 24 24">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
+  </symbol>
+  <symbol id="fab-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></symbol>
+  <symbol id="fab-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></symbol>
+</svg>
+
 <!-- ── STICKY LINKEDIN TOP BAR ─────────────────────────────── -->
-<div class="li-top-bar">
+<aside class="li-top-bar" aria-label="LinkedIn follow prompt">
   <p>📣 Follow me for the latest on <strong>AI, sustainability &amp; innovation</strong></p>
   <a href="https://www.linkedin.com/in/stefan-bauer-innovator/" target="_blank" rel="noopener" class="li-top-btn">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+    <svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#li-icon"/></svg>
     Follow on LinkedIn →
   </a>
-</div>
+</aside>
 
 <!-- ── HERO ────────────────────────────────────────────────── -->
 <header class="hero" id="slide-hero">
@@ -826,7 +846,7 @@
       </div>
       <div class="hero-links">
         <a href="https://www.linkedin.com/in/stefan-bauer-innovator/" target="_blank" rel="noopener" class="btn btn-white">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+          <svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#li-icon"/></svg>
           Follow on LinkedIn
         </a>
         <a href="https://scholar.google.com/citations?user=iFu00qUAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-ghost">📚 620+ Citations</a>
@@ -899,7 +919,6 @@
 
   <!-- ── WHO AM I ────────────────────────────────────────────── -->
   <section>
-    <p class="sl">About</p>
     <h2 class="st">Who am I?</h2>
     <p class="ss" style="max-width:800px;">
       I build practical solutions at the intersection of <strong>AI, sustainability, digital education and entrepreneurship</strong>.
@@ -936,7 +955,6 @@
         </div>
       </div>
       <div class="card">
-        <div class="ci ci-b">🎓</div>
         <h3>Lecturer — 10+ Universities</h3>
         <ul>
           <li>WU Wien · TU Wien · Modul University Vienna</li>
@@ -948,7 +966,6 @@
         <p style="font-size:12px; color:var(--muted); margin-top:10px; font-style:italic;">Languages: 🇦🇹 German (native) · 🇬🇧 English (fluent)</p>
       </div>
       <div class="card">
-        <div class="ci ci-a">🏟</div>
         <h3>Europe Tech Hackathon — Organizer</h3>
         <ul>
           <li>48h innovation sprint · ViennaUP, Vienna</li>
@@ -981,7 +998,6 @@
 
   <!-- ── CAREER TIMELINE ──────────────────────────────────── -->
   <section id="slide-career">
-    <p class="sl">Career Journey</p>
     <h2 class="st">15+ Years of Experience</h2>
     <p class="ss">From academic research and banking UX to corporate innovation and entrepreneurship.</p>
     <div class="timeline">
@@ -1350,10 +1366,9 @@
 </div>
 
 <!-- ── HACKATHON VIDEOS ─────────────────────────────────────── -->
-<main style="padding-top:0;">
+<div style="max-width:980px;margin:0 auto;padding:0 28px 88px;">
 
   <section id="slide-hackathon">
-    <p class="sl">Hackathon in Action</p>
     <h2 class="st">Europe Tech Hackathon — Watch the Highlights</h2>
     <p class="ss">48 hours, real sustainability problems, real prototypes — at ViennaUP in the ÖBB Open Innovation Factory, Vienna.</p>
 
@@ -1373,7 +1388,8 @@
           <iframe src="https://www.youtube.com/embed/fvoTBR_Vkng" title="Europe Tech Hackathon Recap"
             style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
+            allowfullscreen loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"></iframe>
         </div>
         <div style="padding:13px 15px;">
           <p style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:3px;">Recap</p>
@@ -1385,7 +1401,8 @@
           <iframe src="https://www.youtube.com/embed/og69zvtwv2I" title="ViennaUP &amp; Sustainista"
             style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
+            allowfullscreen loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"></iframe>
         </div>
         <div style="padding:13px 15px;">
           <p style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:3px;">Behind the Scenes</p>
@@ -1399,7 +1416,6 @@
 
   <!-- ── AWARDS ────────────────────────────────────────────── -->
   <section id="slide-awards">
-    <p class="sl">Recognition</p>
     <h2 class="st">Awards, Grants &amp; Honors</h2>
     <div class="award-list">
       <div class="award-row">
@@ -1433,7 +1449,6 @@
 
   <!-- ── TEACHING ───────────────────────────────────────────── -->
   <section id="slide-teaching">
-    <p class="sl">University Teaching</p>
     <h2 class="st">Courses &amp; Institutions</h2>
     <p class="ss">Teaching Innovation, Entrepreneurship, AI, UX, and Management since 2011 — across Austria, Iceland, Denmark, Russia, and Israel.</p>
     <div class="teach-list">
@@ -1453,7 +1468,6 @@
 
   <!-- ── PUBLICATIONS ──────────────────────────────────────── -->
   <section id="slide-publications">
-    <p class="sl">Research</p>
     <h2 class="st">Publications · 620+ Citations</h2>
     <p class="ss">Peer-reviewed work in top-tier journals. Full list on <a href="https://scholar.google.com/citations?user=iFu00qUAAAAJ&hl=en" target="_blank" rel="noopener" style="color:var(--blue);">Google Scholar</a>.</p>
     <ul class="pub-list">
@@ -1496,7 +1510,6 @@
 
   <!-- ── ALL PROJECTS ──────────────────────────────────────── -->
   <section id="slide-projects">
-    <p class="sl">Projects &amp; Platforms</p>
     <h2 class="st">What I've Built</h2>
     <div class="proj-grid">
       <div class="proj-card"><span class="proj-ico">✦</span><p class="proj-name">Sustainista</p><p class="proj-desc">ESG automation, Digital Product Passport &amp; Carbon Footprint. FFG PACE-DPP flagship.</p><a href="https://www.sustainista.net" target="_blank" rel="noopener" class="proj-link">sustainista.net →</a></div>
@@ -1509,18 +1522,18 @@
   </section>
 
 
-</main>
+</div>
 
 <!-- ── LINKEDIN BIG CTA ────────────────────────────────────── -->
 <section id="slide-follow" class="li-cta">
   <div class="li-cta-inner">
     <div class="li-icon">
-      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+      <svg aria-hidden="true"><use href="#li-icon"/></svg>
     </div>
     <h2>Follow Me on LinkedIn</h2>
     <p>Join 6,333+ professionals following my work on AI, sustainability, and innovation. I share regular insights on ESG, EdTech, startup building, and the future of learning.</p>
     <a href="https://www.linkedin.com/in/stefan-bauer-innovator/" target="_blank" rel="noopener" class="li-cta-btn">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+      <svg width="22" height="22" fill="currentColor" aria-hidden="true"><use href="#li-icon"/></svg>
       Follow Dr. Stefan Bauer
     </a>
     <p class="li-proof"><strong>6,333 followers</strong> already — join the community around AI, sustainability &amp; innovation</p>
@@ -1542,15 +1555,16 @@
 
 <!-- ── PRESENTATION MODE CONTROLS ──────────────────────────── -->
 <div id="pres-progress" aria-hidden="true"></div>
-<button class="pres-fab" id="pres-fab" title="Präsentations-Modus starten (Taste P)">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-  Präsentation
+<button class="pres-fab" id="pres-fab" lang="de" title="Präsentations-Modus starten (Taste P)">
+  <svg width="14" height="14" fill="currentColor" aria-hidden="true" id="fab-icon-play"><use href="#fab-play"/></svg>
+  <svg width="12" height="12" fill="currentColor" aria-hidden="true" id="fab-icon-close" style="display:none"><use href="#fab-close"/></svg>
+  <span id="fab-label">Präsentation</span>
 </button>
 
-<div class="pres-bar" id="pres-bar" role="toolbar" aria-label="Präsentation Navigation">
+<div class="pres-bar" id="pres-bar" lang="de" role="toolbar" aria-label="Präsentation Navigation">
   <div class="pres-nav">
     <button class="pres-btn" id="pres-prev" title="Zurück (←)" aria-label="Vorherige Folie">&#8592;</button>
-    <div class="pres-counter" id="pres-counter">1<span class="pc-total"> / 14</span></div>
+    <div class="pres-counter" id="pres-counter" aria-live="polite" aria-atomic="true">1<span class="pc-total"> / –</span></div>
     <button class="pres-btn" id="pres-next" title="Weiter (→ oder Leertaste)" aria-label="Nächste Folie">&#8594;</button>
   </div>
   <div class="pres-dots" id="pres-dots" aria-hidden="true"></div>
@@ -1558,7 +1572,7 @@
   <button class="pres-exit" id="pres-exit" title="Beenden (ESC)">✕ Beenden</button>
 </div>
 
-<div class="pres-hint" id="pres-hint" aria-hidden="true">
+<div class="pres-hint" id="pres-hint" lang="de" aria-hidden="true">
   <p class="ph-title">Präsentations-Modus</p>
   <div class="ph-keys">
     <span class="ph-key">→ Weiter</span>
@@ -1589,46 +1603,53 @@
     { id: 'slide-follow',       label: 'LinkedIn — Let\'s connect!' },
   ];
 
-  var current = 0;
-  var active = false;
+  let current = 0;
+  let active = false;
 
-  var fab      = document.getElementById('pres-fab');
-  var bar      = document.getElementById('pres-bar');
-  var hint     = document.getElementById('pres-hint');
-  var counter  = document.getElementById('pres-counter');
-  var title    = document.getElementById('pres-title');
-  var prevBtn  = document.getElementById('pres-prev');
-  var nextBtn  = document.getElementById('pres-next');
-  var dotsEl   = document.getElementById('pres-dots');
-  var exitBtn  = document.getElementById('pres-exit');
-  var progress = document.getElementById('pres-progress');
+  const fab       = document.getElementById('pres-fab');
+  const fabPlay   = document.getElementById('fab-icon-play');
+  const fabClose  = document.getElementById('fab-icon-close');
+  const fabLabel  = document.getElementById('fab-label');
+  const bar      = document.getElementById('pres-bar');
+  const hint     = document.getElementById('pres-hint');
+  const counter  = document.getElementById('pres-counter');
+  const title    = document.getElementById('pres-title');
+  const prevBtn  = document.getElementById('pres-prev');
+  const nextBtn  = document.getElementById('pres-next');
+  const dotsEl   = document.getElementById('pres-dots');
+  const exitBtn  = document.getElementById('pres-exit');
+  const progress = document.getElementById('pres-progress');
 
   // Build dots
-  SLIDES.forEach(function(s, i) {
-    var d = document.createElement('div');
+  SLIDES.forEach((s, i) => {
+    const d = document.createElement('div');
     d.className = 'pres-dot';
     d.title = s.label;
-    d.addEventListener('click', function() { goTo(i); });
+    d.addEventListener('click', () => goTo(i));
     dotsEl.appendChild(d);
   });
 
+  // Counter has a styled <span> for the total — update the text node before it,
+  // then update the span separately to avoid innerHTML with dynamic values.
+  const counterTotal = counter.querySelector('.pc-total');
+
   function updateUI() {
-    counter.innerHTML = (current + 1) + '<span class="pc-total"> / ' + SLIDES.length + '</span>';
+    counter.firstChild.textContent = String(current + 1);
+    counterTotal.textContent = ' / ' + SLIDES.length;
     title.textContent = SLIDES[current].label;
     prevBtn.disabled = current === 0;
     nextBtn.disabled = current === SLIDES.length - 1;
-    var dots = dotsEl.querySelectorAll('.pres-dot');
-    dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+    dotsEl.querySelectorAll('.pres-dot').forEach((d, i) => d.classList.toggle('active', i === current));
     if (progress) progress.style.width = ((current / (SLIDES.length - 1)) * 100) + '%';
   }
 
   function findCurrentSlide() {
-    var best = 0;
-    var bestDist = Infinity;
-    SLIDES.forEach(function(s, i) {
-      var el = document.getElementById(s.id);
+    let best = 0;
+    let bestDist = Infinity;
+    SLIDES.forEach((s, i) => {
+      const el = document.getElementById(s.id);
       if (!el) return;
-      var dist = Math.abs(el.getBoundingClientRect().top);
+      const dist = Math.abs(el.getBoundingClientRect().top);
       if (dist < bestDist) { bestDist = dist; best = i; }
     });
     current = best;
@@ -1636,7 +1657,7 @@
 
   // Live offsetTop — always correct, no stale-cache risk
   function slideTop(index) {
-    var el = document.getElementById(SLIDES[index].id);
+    const el = document.getElementById(SLIDES[index].id);
     return el ? el.offsetTop : 0;
   }
 
@@ -1646,7 +1667,7 @@
     if (active) {
       window.scrollTo({ top: slideTop(index), behavior: 'instant' });
     } else {
-      var el = document.getElementById(SLIDES[index].id);
+      const el = document.getElementById(SLIDES[index].id);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     updateUI();
@@ -1654,22 +1675,27 @@
 
   function showHint() {
     hint.classList.add('show');
-    setTimeout(function() { hint.classList.remove('show'); }, 2200);
+    setTimeout(() => hint.classList.remove('show'), 2200);
   }
+
+  // Block touch-drag scrolling only while pres-mode is active.
+  // Named reference required so removeEventListener can target the exact function.
+  function blockTouchMove(e) { e.preventDefault(); }
 
   function enterMode() {
     active = true;
     findCurrentSlide();
-    // Apply classes first — layout will recalculate
     bar.classList.add('pres-active');
     document.body.classList.add('pres-mode');
     document.documentElement.classList.add('pres-mode');
-    fab.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg> Beenden';
+    document.addEventListener('touchmove', blockTouchMove, { passive: false });
+    fabPlay.style.display = 'none';
+    fabClose.style.display = '';
+    fabLabel.textContent = 'Beenden';
     showHint();
-    // Wait two animation frames for browser to fully reflow pres-mode layout,
-    // then snap to current slide using live offsetTop
-    requestAnimationFrame(function() {
-      requestAnimationFrame(function() {
+    // Two rAF frames let the browser fully reflow pres-mode layout before snapping
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
         window.scrollTo({ top: slideTop(current), behavior: 'instant' });
         updateUI();
       });
@@ -1681,41 +1707,41 @@
     bar.classList.remove('pres-active');
     document.body.classList.remove('pres-mode');
     document.documentElement.classList.remove('pres-mode');
-    fab.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Präsentation';
+    document.removeEventListener('touchmove', blockTouchMove);
+    fabPlay.style.display = '';
+    fabClose.style.display = 'none';
+    fabLabel.textContent = 'Präsentation';
     if (progress) progress.style.width = '0%';
   }
 
   // Wheel navigation in pres-mode (debounced so one swipe = one slide)
-  var wheelTimer;
-  document.addEventListener('wheel', function(e) {
+  // passive:true — we cannot call preventDefault() from a passive listener,
+  // but pres-mode snap-scroll via scrollTo already overrides natural scroll.
+  let wheelTimer;
+  document.addEventListener('wheel', (e) => {
     if (!active) return;
-    e.preventDefault();
-    var dy = e.deltaY;
+    const dy = e.deltaY;
     clearTimeout(wheelTimer);
     wheelTimer = setTimeout(function() {
       if (dy > 0) goTo(current + 1);
       else if (dy < 0) goTo(current - 1);
     }, 60);
-  }, { passive: false });
+  }, { passive: true });
 
-  // On resize, re-snap to current slide (dvh might change)
-  window.addEventListener('resize', function() {
+  window.addEventListener('resize', () => {
     if (active) window.scrollTo({ top: slideTop(current), behavior: 'instant' });
   });
 
-  function toggle() {
-    if (active) exitMode(); else enterMode();
-  }
+  const toggle = () => active ? exitMode() : enterMode();
 
   fab.addEventListener('click', toggle);
   exitBtn.addEventListener('click', exitMode);
-  prevBtn.addEventListener('click', function() { goTo(current - 1); });
-  nextBtn.addEventListener('click', function() { goTo(current + 1); });
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
 
-  document.addEventListener('keydown', function(e) {
-    // P key toggles mode anywhere
+  document.addEventListener('keydown', (e) => {
     if ((e.key === 'p' || e.key === 'P') && !e.ctrlKey && !e.metaKey && !e.altKey) {
-      var tag = document.activeElement && document.activeElement.tagName;
+      const tag = document.activeElement?.tagName;
       if (tag !== 'INPUT' && tag !== 'TEXTAREA') {
         e.preventDefault(); toggle(); return;
       }
@@ -1735,26 +1761,19 @@
     }
   });
 
-  // Block touch-drag scrolling in pres-mode (allow swipe-navigation only)
-  document.addEventListener('touchmove', function(e) {
-    if (active) e.preventDefault();
-  }, { passive: false });
-
   // Touch swipe — horizontal OR vertical swipe navigates slides in pres-mode
-  var touchStartX = 0, touchStartY = 0;
-  document.addEventListener('touchstart', function(e) {
+  let touchStartX = 0, touchStartY = 0;
+  document.addEventListener('touchstart', (e) => {
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
   }, { passive: true });
-  document.addEventListener('touchend', function(e) {
+  document.addEventListener('touchend', (e) => {
     if (!active) return;
-    var dx = e.changedTouches[0].clientX - touchStartX;
-    var dy = e.changedTouches[0].clientY - touchStartY;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
     if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
-      // Horizontal: swipe left = next, right = prev
       if (dx < 0) goTo(current + 1); else goTo(current - 1);
     } else if (Math.abs(dy) > 50) {
-      // Vertical: swipe up = next, down = prev
       if (dy < 0) goTo(current + 1); else goTo(current - 1);
     }
   }, { passive: true });
