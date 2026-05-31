@@ -7,90 +7,77 @@
   <meta name="description" content="Dr. Stefan Bauer — PhD, CEO Sustainista, EdTech Innovator, Hackathon Organizer, Lecturer at 10+ Universities. AI, sustainability &amp; innovation." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue:     #1a56db;
-      --blue-lt:  #dbeafe;
-      --blue-dk:  #1240a0;
-      --teal:     #0891b2;
-      --green:    #4F772D;
-      --green-dk: #31572C;
-      --amber:    #d97706;
+      --blue:     #1a73e8;
+      --blue-lt:  #e8f0fe;
+      --blue-dk:  #1557b0;
+      --teal:     #1a73e8;
+      --green:    #137333;
+      --green-dk: #0d5228;
+      --amber:    #b45309;
       --amber-lt: #fef3c7;
-      --purple:   #7c3aed;
-      --purple-dk:#5b21b6;
-      --red:      #dc2626;
-      --bg:       #f8fafc;
+      --purple:   #6200ea;
+      --purple-dk:#4a00b4;
+      --red:      #c5221f;
+      --bg:       #ffffff;
       --card:     #ffffff;
-      --text:     #0f172a;
-      --muted:    #64748b;
-      --border:   #e2e8f0;
-      --r:        14px;
+      --text:     #202124;
+      --muted:    #5f6368;
+      --border:   #e8eaed;
+      --r:        12px;
     }
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Barlow', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Roboto', 'Google Sans', system-ui, -apple-system, sans-serif;
       background: var(--bg); color: var(--text);
       line-height: 1.65; -webkit-font-smoothing: antialiased;
-      font-feature-settings: 'cv02','cv03','cv04','cv11';
     }
 
     /* ── LINKEDIN TOP BAR ─────────────────────────────────── */
     .li-top-bar {
-      background: #0a66c2;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
       padding: 10px 24px;
       display: flex; align-items: center; justify-content: center;
       gap: 14px; flex-wrap: wrap;
       position: sticky; top: 0; z-index: 100;
-      box-shadow: 0 2px 12px rgba(10,102,194,0.4);
     }
     .li-top-bar p {
-      font-size: 13px; color: rgba(255,255,255,0.88); font-weight: 500;
+      font-size: 13px; color: var(--muted); font-weight: 400;
     }
-    .li-top-bar p strong { color: #fff; }
+    .li-top-bar p strong { color: var(--text); font-weight: 500; }
     .li-top-btn {
       display: inline-flex; align-items: center; gap: 6px;
-      background: #fff; color: #0a66c2;
+      background: var(--blue); color: #fff;
       padding: 6px 16px; border-radius: 20px;
-      font-size: 12.5px; font-weight: 800;
+      font-size: 12.5px; font-weight: 500;
       text-decoration: none; transition: all 0.18s;
       white-space: nowrap;
     }
-    .li-top-btn:hover { background: #e0efff; transform: scale(1.03); }
+    .li-top-btn:hover { background: var(--blue-dk); }
 
     /* ── HERO ─────────────────────────────────────────────── */
     .hero {
-      background: linear-gradient(
-        135deg,
-        oklch(21% 0.22 298) 0%,
-        oklch(14% 0.018 258) 48%,
-        oklch(18% 0.15 148) 100%
-      );
-      color: #fff; padding: 72px 0 80px;
+      background: linear-gradient(160deg, #ffffff 0%, #f8f9fa 100%);
+      color: var(--text);
+      padding: 88px 0 96px;
       position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
     }
-    .hero::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse 65% 75% at 0% 0%,   oklch(43% 0.24 298 / 0.30) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 70% at 100% 100%, oklch(48% 0.14 148 / 0.28) 0%, transparent 60%);
-    }
-    .hero::after {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(oklch(100% 0 0 / 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, oklch(100% 0 0 / 0.035) 1px, transparent 1px);
-      background-size: 44px 44px;
-    }
+    .hero::before { display: none; }
+    .hero::after { display: none; }
+
     .hero-inner {
       position: relative; z-index: 2;
       max-width: 980px; margin: 0 auto; padding: 0 28px;
       display: grid; grid-template-columns: 1fr auto;
-      gap: 48px; align-items: center;
+      gap: 64px; align-items: center;
     }
     @media (max-width: 680px) {
       .hero-inner { grid-template-columns: 1fr; gap: 32px; }
@@ -100,66 +87,63 @@
     .hero-photo { flex-shrink: 0; }
 
     .avatar-ring {
-      position: relative; display: inline-block; margin-bottom: 26px;
+      position: relative; display: inline-block; margin-bottom: 0;
     }
-    .avatar-ring::before {
-      content: ''; position: absolute; inset: -6px; border-radius: 50%;
-      background: conic-gradient(from 0deg, #1a56db, #0891b2, #4F772D, #fbbf24, #7c3aed, #1a56db);
-      animation: spin 10s linear infinite; opacity: 0.65;
-    }
+    .avatar-ring::before { display: none; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     .avatar {
-      width: 148px; height: 148px; border-radius: 50%;
-      border: 4px solid #fff; object-fit: cover;
+      width: 220px; height: 220px; border-radius: 50%;
+      border: 3px solid #fff; object-fit: cover;
       display: block; position: relative; z-index: 1;
-      box-shadow: 0 14px 44px rgba(0,0,0,0.38);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12), 0 0 0 1px var(--border);
     }
     .avatar-fb {
-      width: 148px; height: 148px; border-radius: 50%;
-      border: 4px solid #fff;
-      background: linear-gradient(135deg, #dbeafe, #ede9fe);
+      width: 200px; height: 200px; border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--blue-lt);
       display: none; align-items: center; justify-content: center;
-      font-size: 48px; font-weight: 800; color: var(--blue);
+      font-size: 64px; font-weight: 700; color: var(--blue);
       position: relative; z-index: 1;
     }
 
     .hero h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(52px, 9vw, 96px); font-weight: 900;
-      letter-spacing: -2px; line-height: 0.92;
-      margin-bottom: 16px;
+      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-size: clamp(44px, 6vw, 76px); font-weight: 700;
+      letter-spacing: -2px; line-height: 0.97;
+      color: var(--text);
+      margin-bottom: 18px;
     }
     .hero .tagline {
-      font-size: clamp(13px, 1.8vw, 16px); color: oklch(80% 0.01 258);
-      margin-bottom: 12px; font-weight: 500; line-height: 1.55;
+      font-size: clamp(14px, 1.8vw, 16px); color: var(--muted);
+      margin-bottom: 16px; font-weight: 400; line-height: 1.7;
     }
     .hero-kicker {
-      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
-      text-transform: uppercase; color: oklch(70% 0.14 218);
-      margin-bottom: 12px;
+      font-size: 11px; font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--blue);
+      margin-bottom: 16px;
     }
     .hero .fpill {
       display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+      background: #f8f9fa; border: 1px solid var(--border);
       border-radius: 20px; padding: 4px 14px;
-      font-size: 12.5px; color: rgba(255,255,255,0.82); margin-bottom: 28px;
+      font-size: 12.5px; color: var(--muted); margin-bottom: 28px;
     }
-    .fpill .live { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
+    .fpill .live { width: 6px; height: 6px; border-radius: 50%; background: #34a853; }
 
     .hero-links { display: flex; gap: 8px; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 9px 17px; border-radius: 8px;
-      font-size: 13px; font-weight: 600;
+      padding: 9px 20px; border-radius: 100px;
+      font-size: 13px; font-weight: 500;
       text-decoration: none; transition: all 0.18s;
     }
-    .btn-white  { background: #fff; color: var(--blue); }
-    .btn-white:hover { background: #dbeafe; transform: translateY(-1px); }
-    .btn-ghost  { background: rgba(255,255,255,0.12); color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
-    .btn-ghost:hover { background: rgba(255,255,255,0.22); transform: translateY(-1px); }
-    .btn-green  { background: var(--green); color: #fff; }
-    .btn-green:hover  { background: var(--green-dk); transform: translateY(-1px); }
+    .btn-white  { background: var(--blue); color: #fff; }
+    .btn-white:hover { background: var(--blue-dk); box-shadow: 0 2px 8px rgba(26,115,232,0.3); }
+    .btn-ghost  { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); }
+    .btn-green  { background: transparent; color: var(--green); border: 1.5px solid var(--border); }
+    .btn-green:hover  { border-color: var(--green); background: #e6f4ea; }
 
     /* ── AWARD HERO — Cinematic full-bleed image section ─── */
     .award-hero { position: relative; width: 100%; background: #000; overflow: hidden; }
@@ -235,7 +219,8 @@
 
     /* ── TICKER ────────────────────────────────────────────── */
     .ticker-wrap {
-      background: linear-gradient(90deg, #b45309, #fbbf24 50%, #b45309);
+      background: #f8f9fa;
+      border-bottom: 1px solid var(--border);
       height: 40px; overflow: hidden; display: flex; align-items: center;
     }
     .ticker-inner {
@@ -244,29 +229,29 @@
     @keyframes tick { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .tick-item {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 0 26px; font-size: 12.5px; font-weight: 700;
-      color: #1a1a00; flex-shrink: 0;
+      padding: 0 26px; font-size: 12px; font-weight: 500;
+      color: var(--muted); flex-shrink: 0;
     }
-    .tick-sep { opacity: 0.35; font-size: 16px; }
+    .tick-sep { opacity: 0.3; font-size: 14px; }
 
     /* ── LAYOUT ─────────────────────────────────────────────── */
     main { max-width: 980px; margin: 0 auto; padding: 64px 28px 88px; }
 
     .sl {
-      text-transform: uppercase; font-size: 10.5px; font-weight: 700;
-      letter-spacing: 2.5px; color: var(--blue); margin-bottom: 8px;
+      text-transform: uppercase; font-size: 11px; font-weight: 500;
+      letter-spacing: 2px; color: var(--blue); margin-bottom: 8px;
       display: block;
     }
-    /* .st defined below with Barlow Condensed */
-    .ss { font-size: 14.5px; color: var(--muted); max-width: 720px;
+    /* .st defined below */
+    .ss { font-size: 15px; color: var(--muted); max-width: 720px;
           margin-bottom: 24px; line-height: 1.75; }
     .divider { height: 1px; background: var(--border); margin: 52px 0; }
 
     /* ── STAT STRIP ─────────────────────────────────────────── */
     .stat-strip {
       display: flex; flex-wrap: wrap; gap: 0;
-      border-top: 1.5px solid var(--border);
-      border-bottom: 1.5px solid var(--border);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       padding: 20px 0; margin: 36px 0;
     }
     .ss-item {
@@ -282,175 +267,176 @@
       .ss-item:last-child, .ss-item:nth-last-child(2):nth-child(odd) { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
     }
     .ss-n {
-      font-family: 'Barlow Condensed', sans-serif;
-      display: block; font-size: 30px; font-weight: 900;
-      color: var(--text); letter-spacing: -1px;
+      font-family: 'Google Sans', 'Roboto', sans-serif;
+      display: block; font-size: 32px; font-weight: 700;
+      color: var(--blue); letter-spacing: -0.5px;
     }
-    .ss-l { font-size: 11.5px; color: var(--muted); font-weight: 500; }
+    .ss-l { font-size: 12px; color: var(--muted); font-weight: 400; }
 
     /* ── CARDS ──────────────────────────────────────────────── */
-    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
     @media (max-width: 700px) { .g2, .g3 { grid-template-columns: 1fr; } }
     @media (min-width: 701px) and (max-width: 900px) { .g3 { grid-template-columns: 1fr 1fr; } }
 
     .card {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 24px;
-      box-shadow: 0 1px 4px oklch(0% 0 0 / 0.04);
+      border-radius: 16px; padding: 28px;
       transition: box-shadow 0.18s ease-out, transform 0.18s ease-out;
     }
     .card:hover {
-      box-shadow: 0 6px 24px oklch(0% 0 0 / 0.09);
-      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transform: translateY(-3px);
     }
-    .card h3 { font-size: 14.5px; font-weight: 800; margin-bottom: 8px; }
-    .card p, .card li { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+    .card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; color: var(--text); }
+    .card p, .card li { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
     .card ul { padding-left: 17px; }
-    .card ul li { margin-bottom: 4px; }
+    .card ul li { margin-bottom: 5px; }
 
     /* ── LOGO IMG WITHIN CARDS ──────────────────────────────── */
     .card-logo { height: 32px; width: auto; object-fit: contain; margin-bottom: 14px; display: block; }
     .card-logo-sm { height: 24px; width: auto; object-fit: contain; }
 
     /* ── GRADIENT WAVE TRANSITIONS ──────────────────────────── */
-    .wave-transition {
-      display: block; line-height: 0; margin: 0; padding: 0;
-      overflow: hidden;
-    }
-    .wave-transition svg { display: block; width: 100%; }
+    .wave-transition { display: none; }
 
     /* ── HIGHLIGHT BLOCKS ───────────────────────────────────── */
     .hl {
-      border-radius: 0; padding: 52px 0; color: #fff;
+      border-radius: 0; padding: 64px 0; color: var(--text);
       position: relative; overflow: hidden;
+      background: #f8f9fa;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
     .hl-inner { max-width: 980px; margin: 0 auto; padding: 0 28px; }
-    .hl-purple { background: linear-gradient(135deg, #1a0b2e 0%, #3b1a6b 40%, #7c3aed 100%); }
-    .hl-green  { background: linear-gradient(135deg, #0e1a09 0%, #2a4a18 40%, #4F772D 100%); }
-    .hl-teal   { background: linear-gradient(135deg, #071216 0%, #0a3344 40%, #0891b2 100%); }
-    .hl-amber  { background: linear-gradient(135deg, #1c0a00 0%, #7c2d12 40%, #c2410c 100%); }
+    .hl-purple { background: #f8f9fa; border-left: 4px solid #6200ea; }
+    .hl-green  { background: #f8f9fa; border-left: 4px solid #137333; }
+    .hl-teal   { background: #f8f9fa; border-left: 4px solid #1a73e8; }
+    .hl-amber  { background: #f8f9fa; border-left: 4px solid #b45309; }
 
-    .hl .sl { color: rgba(255,255,255,0.5); letter-spacing: 2px; }
-    .hl .st { color: #fff; }
-    .hl .ss { color: rgba(255,255,255,0.76); max-width: 680px; }
+    .hl .sl { color: var(--blue); letter-spacing: 2px; }
+    .hl .st { color: var(--text); }
+    .hl .ss { color: var(--muted); max-width: 680px; }
     .hl .corner {
       position: absolute; right: 40px; top: 20px;
-      font-size: 90px; opacity: 0.07; pointer-events: none;
+      font-size: 90px; opacity: 0.04; pointer-events: none;
     }
 
     /* logo in highlight */
-    .hl-logo { height: 36px; width: auto; object-fit: contain; margin-bottom: 18px; display: block; }
+    .hl-logo { height: 36px; width: auto; object-fit: contain; margin-bottom: 18px; display: block; filter: none !important; opacity: 1 !important; }
 
     /* stats in hl */
     .srow { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 20px; }
-    .srow .s .n { font-family: 'Barlow Condensed', sans-serif; font-size: 34px; font-weight: 900; display: block; letter-spacing: -1px; }
-    .hl-purple .srow .s .n { color: #c4b5fd; }
-    .hl-green  .srow .s .n { color: #86efac; }
-    .hl-teal   .srow .s .n { color: #67e8f9; }
-    .hl-amber  .srow .s .n { color: #fde68a; }
-    .srow .s .l { font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.5px; }
+    .srow .s .n { font-family: 'Google Sans', 'Roboto', sans-serif; font-size: 34px; font-weight: 700; display: block; letter-spacing: -0.5px; }
+    .hl-purple .srow .s .n { color: #6200ea; }
+    .hl-green  .srow .s .n { color: #137333; }
+    .hl-teal   .srow .s .n { color: var(--blue); }
+    .hl-amber  .srow .s .n { color: #b45309; }
+    .srow .s .l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; }
 
     /* award box */
     .abox {
       display: flex; align-items: center; gap: 14px;
-      background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.18);
-      border-radius: 11px; padding: 13px 18px; margin-top: 18px; max-width: 580px;
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 20px; margin-top: 18px; max-width: 580px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
     .abox .ic { font-size: 30px; }
-    .abox .tx { font-size: 13px; color: rgba(255,255,255,0.8); }
-    .abox .tx strong { display: block; font-size: 14px; margin-bottom: 2px; }
-    .hl-purple .abox .tx strong { color: #c4b5fd; }
-    .hl-green  .abox .tx strong { color: #fbbf24; }
-    .hl-amber  .abox .tx strong { color: #fde68a; }
+    .abox .tx { font-size: 13px; color: var(--muted); }
+    .abox .tx strong { display: block; font-size: 14px; margin-bottom: 2px; color: var(--text); }
+    .hl-purple .abox .tx strong { color: #6200ea; }
+    .hl-green  .abox .tx strong { color: #137333; }
+    .hl-amber  .abox .tx strong { color: #b45309; }
 
     /* ── PM PROJECT CARDS ───────────────────────────────────── */
     .pm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; }
     @media (max-width: 680px) { .pm-grid { grid-template-columns: 1fr; } }
     .pm-card {
-      background: rgba(255,255,255,0.08);
-      border: 1.5px solid rgba(255,255,255,0.15);
-      border-radius: 13px; padding: 22px;
-      transition: background 0.2s;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r); padding: 22px;
+      transition: box-shadow 0.2s, transform 0.2s;
     }
-    .pm-card:hover { background: rgba(255,255,255,0.13); }
+    .pm-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
     .pm-card .pm-tag {
       display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,0.15);
+      background: var(--blue-lt);
       border-radius: 20px; padding: 3px 11px;
-      font-size: 11px; font-weight: 700; color: #fde68a;
+      font-size: 11px; font-weight: 500; color: var(--blue);
       text-transform: uppercase; letter-spacing: 1px;
       margin-bottom: 10px;
     }
-    .pm-card h4 { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .pm-card h4 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
     .pm-card .pm-budget {
-      font-size: 26px; font-weight: 900; color: #fde68a;
+      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-size: 28px; font-weight: 700; color: var(--blue);
       display: block; margin-bottom: 8px; letter-spacing: -0.5px;
     }
-    .pm-card p { font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.65; }
+    .pm-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
     .pm-card ul { padding-left: 16px; margin-top: 8px; }
-    .pm-card ul li { font-size: 12.5px; color: rgba(255,255,255,0.68); line-height: 1.6; margin-bottom: 3px; }
+    .pm-card ul li { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin-bottom: 3px; }
 
     .pm-total-bar {
       display: flex; align-items: center;
-      border-top: 1.5px solid rgba(255,255,255,0.2);
-      border-bottom: 1.5px solid rgba(255,255,255,0.2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       padding: 22px 0; gap: 32px; flex-wrap: wrap;
       margin-bottom: 26px;
     }
     .pm-total-bar .total-num {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 52px; font-weight: 900; color: #fde68a; letter-spacing: -2px;
+      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-size: 52px; font-weight: 700; color: var(--blue); letter-spacing: -2px;
     }
-    .pm-total-bar .total-label { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5; }
-    .pm-total-bar .total-label strong { display: block; font-size: 15px; color: #fff; }
+    .pm-total-bar .total-label { font-size: 14px; color: var(--muted); line-height: 1.5; }
+    .pm-total-bar .total-label strong { display: block; font-size: 15px; color: var(--text); }
 
     .learning-section-title {
-      font-size: 11px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 2px; color: rgba(255,255,255,0.45); margin: 28px 0 12px;
+      font-size: 11px; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--muted); margin: 28px 0 12px;
     }
     .learning-section-title:first-of-type { margin-top: 32px; }
     .learning-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; }
     @media (max-width: 700px) { .learning-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 440px) { .learning-grid { grid-template-columns: 1fr; } }
     .learning-card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 10px; padding: 15px;
-      transition: background 0.18s;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px;
+      transition: box-shadow 0.18s;
     }
-    .learning-card:hover { background: rgba(255,255,255,0.12); }
+    .learning-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
     .learning-card .lc-icon { font-size: 20px; margin-bottom: 7px; }
-    .learning-card .lc-title { font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 5px; line-height: 1.3; }
-    .learning-card .lc-text  { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .learning-card .lc-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 5px; line-height: 1.3; }
+    .learning-card .lc-text  { font-size: 12px; color: var(--muted); line-height: 1.6; }
 
     /* chips */
     .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0; }
     .chip {
-      padding: 4px 11px; border-radius: 20px;
-      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
-      font-size: 12px; color: rgba(255,255,255,0.85); font-weight: 500;
+      padding: 4px 12px; border-radius: 20px;
+      background: #fff; border: 1px solid var(--border);
+      font-size: 12px; color: var(--muted); font-weight: 400;
     }
 
     /* hl buttons */
     .hl-btns { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 22px; }
     .hl-bw {
       display: inline-flex; align-items: center; gap: 7px;
-      background: #fff; padding: 9px 18px; border-radius: 8px;
-      font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.18s;
+      background: var(--blue); color: #fff;
+      padding: 9px 20px; border-radius: 100px;
+      font-size: 13px; font-weight: 500; text-decoration: none; transition: all 0.18s;
     }
-    .hl-purple .hl-bw { color: var(--purple-dk); }
-    .hl-green  .hl-bw { color: var(--green-dk); }
-    .hl-teal   .hl-bw { color: #075985; }
-    .hl-bw:hover { opacity: 0.9; transform: translateY(-1px); }
+    .hl-purple .hl-bw { background: #6200ea; }
+    .hl-green  .hl-bw { background: #137333; }
+    .hl-amber  .hl-bw { background: #b45309; }
+    .hl-bw:hover { opacity: 0.9; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
     .hl-bo {
       display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(255,255,255,0.13); color: #fff;
-      border: 1.5px solid rgba(255,255,255,0.3);
-      padding: 9px 18px; border-radius: 8px;
-      font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.18s;
+      background: transparent; color: var(--text);
+      border: 1.5px solid var(--border);
+      padding: 9px 20px; border-radius: 100px;
+      font-size: 13px; font-weight: 500; text-decoration: none; transition: all 0.18s;
     }
-    .hl-bo:hover { background: rgba(255,255,255,0.22); transform: translateY(-1px); }
+    .hl-bo:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); }
 
     /* ── PARTNER LOGO STRIP ─────────────────────────────────── */
     .logo-strip {
@@ -459,14 +445,14 @@
     }
     .logo-strip-label {
       font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
-      color: rgba(255,255,255,0.45); font-weight: 700; flex-basis: 100%; margin-bottom: 4px;
+      color: var(--muted); font-weight: 500; flex-basis: 100%; margin-bottom: 4px;
     }
     .logo-strip img {
       height: 28px; width: auto; object-fit: contain;
-      filter: brightness(0) invert(1); opacity: 0.65;
-      transition: opacity 0.18s;
+      filter: grayscale(30%); opacity: 0.75;
+      transition: opacity 0.18s, filter 0.18s;
     }
-    .logo-strip img:hover { opacity: 1; }
+    .logo-strip img:hover { opacity: 1; filter: grayscale(0); }
 
     /* partner logos on white bg */
     .logo-strip-light { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 16px; }
@@ -484,8 +470,8 @@
     .timeline { margin-top: 28px; position: relative; padding-left: 32px; }
     .timeline::before {
       content: ''; position: absolute; left: 10px; top: 6px; bottom: 6px;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--blue), var(--purple), var(--green), var(--teal));
+      width: 1px;
+      background: var(--border);
       border-radius: 1px;
     }
     .tli { position: relative; margin-bottom: 26px; }
@@ -581,62 +567,49 @@
 
     /* ── LINKEDIN BIG CTA ───────────────────────────────────── */
     .li-cta {
-      background: linear-gradient(135deg, #0a1628 0%, #0e4f7b 40%, #0a66c2 100%);
-      padding: 64px 24px; text-align: center; position: relative; overflow: hidden;
+      background: #f8f9fa;
+      border-top: 1px solid var(--border);
+      padding: 80px 24px; text-align: center; position: relative; overflow: hidden;
     }
-    .li-cta::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(10,102,194,0.3), transparent);
-      pointer-events: none;
-    }
+    .li-cta::before { display: none; }
     .li-cta-inner { position: relative; z-index: 1; }
     .li-icon {
-      width: 60px; height: 60px; background: #0a66c2; border-radius: 14px;
+      width: 56px; height: 56px; background: #0a66c2; border-radius: 14px;
       display: inline-flex; align-items: center; justify-content: center;
-      margin-bottom: 22px; box-shadow: 0 4px 24px rgba(10,102,194,0.5);
+      margin-bottom: 24px;
     }
-    .li-icon svg { width: 34px; height: 34px; fill: #fff; }
+    .li-icon svg { width: 32px; height: 32px; fill: #fff; }
     .li-cta h2 {
-      font-size: clamp(24px, 4vw, 42px); font-weight: 900; color: #fff;
-      letter-spacing: -0.5px; margin-bottom: 14px;
+      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-size: clamp(24px, 4vw, 40px); font-weight: 700; color: var(--text);
+      letter-spacing: -0.5px; margin-bottom: 12px;
     }
-    .li-cta p { font-size: 15px; color: rgba(255,255,255,0.72); max-width: 520px; margin: 0 auto 36px; }
+    .li-cta p { font-size: 15px; color: var(--muted); max-width: 520px; margin: 0 auto 32px; }
     .li-cta-btn {
       display: inline-flex; align-items: center; gap: 10px;
-      background: #fff; color: #0a66c2;
-      padding: 16px 40px; border-radius: 50px;
-      font-size: 17px; font-weight: 900; text-decoration: none;
+      background: #0a66c2; color: #fff;
+      padding: 14px 36px; border-radius: 100px;
+      font-size: 15px; font-weight: 500; text-decoration: none;
       transition: all 0.2s;
-      box-shadow: 0 4px 30px rgba(255,255,255,0.2);
-      animation: pulse-li 2.5s ease-in-out infinite;
     }
-    @keyframes pulse-li {
-      0%,100% { box-shadow: 0 4px 30px rgba(255,255,255,0.2), 0 0 0 0 rgba(255,255,255,0.25); }
-      50%      { box-shadow: 0 4px 30px rgba(255,255,255,0.2), 0 0 0 14px rgba(255,255,255,0); }
-    }
-    .li-cta-btn:hover { background: #e0efff; transform: scale(1.04); }
-    .li-proof { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.5); }
-    .li-proof strong { color: rgba(255,255,255,0.82); }
+    @keyframes pulse-li { 0%,100%,50% {} }
+    .li-cta-btn:hover { background: #004182; box-shadow: 0 2px 12px rgba(10,102,194,0.3); }
+    .li-proof { margin-top: 16px; font-size: 13px; color: var(--muted); }
+    .li-proof strong { color: var(--text); font-weight: 500; }
 
     /* ── DISPLAY FONT for section headings ─────────────────── */
     .st {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(26px, 4vw, 40px); font-weight: 900; color: var(--text);
-      margin-bottom: 10px; letter-spacing: -0.5px; line-height: 1.1;
+      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; color: var(--text);
+      margin-bottom: 10px; letter-spacing: -0.5px; line-height: 1.15;
     }
-    .hl .st { color: #fff; }
+    .hl .st { color: var(--text); }
 
     /* ── FOCUS STYLES ───────────────────────────────────────── */
     :focus-visible {
-      outline: 2.5px solid var(--blue);
+      outline: 2px solid var(--blue);
       outline-offset: 3px;
       border-radius: 4px;
-    }
-    .hl :focus-visible,
-    .li-top-bar :focus-visible,
-    .li-cta :focus-visible,
-    footer :focus-visible {
-      outline-color: #fff;
     }
     .btn:focus-visible,
     .hl-bw:focus-visible,
@@ -657,22 +630,18 @@
     /* ── PRESENTATION MODE ──────────────────────────────────── */
     [id^="slide-"] { scroll-margin-top: 0; }
 
-    /* Hide sticky top bar so slides start at true viewport top */
     body.pres-mode .li-top-bar { display: none; }
 
-    /* Each slide fills exactly the viewport */
     body.pres-mode [id^="slide-"] {
       min-height: 100dvh;
       padding-bottom: 64px !important;
       box-sizing: border-box;
     }
 
-    /* Award hero image fills the locked viewport */
     body.pres-mode .award-hero-img {
       height: calc(100dvh - 64px);
     }
 
-    /* Hide inter-slide filler */
     body.pres-mode .divider,
     body.pres-mode .wave-transition,
     body.pres-mode .ticker-wrap,
@@ -680,37 +649,34 @@
       display: none !important;
     }
 
-    /* Progress bar — thin line at top of screen */
     #pres-progress {
       position: fixed; top: 0; left: 0; height: 3px; z-index: 1100;
-      background: oklch(70% 0.18 218);
+      background: var(--blue);
       width: 0%; transition: width 0.28s ease-out;
       pointer-events: none;
     }
 
-    /* Floating "▶ Präsentation" button */
     .pres-fab {
       position: fixed; bottom: 28px; right: 28px; z-index: 900;
-      background: oklch(14% 0.018 258); color: #fff;
-      border: 1.5px solid oklch(30% 0.02 258);
+      background: #fff; color: var(--text);
+      border: 1px solid var(--border);
       cursor: pointer; padding: 11px 18px;
-      border-radius: 50px;
-      font-family: 'Barlow', sans-serif;
-      font-size: 13px; font-weight: 700;
+      border-radius: 100px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 13px; font-weight: 500;
       display: inline-flex; align-items: center; gap: 8px;
-      box-shadow: 0 4px 24px oklch(0% 0 0 / 0.35);
-      transition: transform 0.18s ease-out, background 0.15s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      transition: transform 0.18s ease-out, box-shadow 0.15s;
       white-space: nowrap;
     }
-    .pres-fab:hover { background: oklch(22% 0.025 258); transform: translateY(-2px); }
-    body.pres-mode .pres-fab { background: oklch(32% 0.022 258); }
+    .pres-fab:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.16); transform: translateY(-1px); }
+    body.pres-mode .pres-fab { background: var(--blue-lt); color: var(--blue); border-color: var(--blue); }
 
-    /* Bottom control bar */
     .pres-bar {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
-      background: oklch(11% 0.016 258 / 0.97);
+      background: rgba(255,255,255,0.97);
       backdrop-filter: blur(14px);
-      border-top: 1px solid oklch(28% 0.016 258);
+      border-top: 1px solid var(--border);
       padding: 12px 24px;
       display: flex; align-items: center;
       justify-content: space-between; gap: 16px;
@@ -724,29 +690,29 @@
     }
     .pres-btn {
       width: 38px; height: 38px; border-radius: 8px;
-      background: oklch(22% 0.02 258);
-      border: 1px solid oklch(30% 0.016 258);
-      color: #fff; cursor: pointer; font-size: 15px;
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      color: var(--text); cursor: pointer; font-size: 15px;
       display: flex; align-items: center; justify-content: center;
       transition: background 0.14s;
       flex-shrink: 0;
     }
-    .pres-btn:hover:not(:disabled) { background: oklch(32% 0.022 258); }
+    .pres-btn:hover:not(:disabled) { background: var(--blue-lt); color: var(--blue); border-color: var(--blue); }
     .pres-btn:disabled { opacity: 0.28; cursor: not-allowed; }
 
     .pres-counter {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 22px; font-weight: 900; color: #fff;
+      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-size: 18px; font-weight: 700; color: var(--text);
       letter-spacing: -0.5px; min-width: 56px; text-align: center;
     }
     .pres-counter .pc-total {
       font-size: 13px; font-weight: 400;
-      color: oklch(52% 0.01 258);
+      color: var(--muted);
     }
 
     .pres-title {
-      font-size: 12.5px; font-weight: 600;
-      color: oklch(60% 0.012 258);
+      font-size: 12.5px; font-weight: 500;
+      color: var(--muted);
       flex: 1; text-align: center;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
       padding: 0 16px;
@@ -760,58 +726,58 @@
     @media (max-width: 768px) { .pres-dots { display: none; } }
     .pres-dot {
       width: 6px; height: 6px; border-radius: 50%;
-      background: oklch(32% 0.016 258);
+      background: var(--border);
       cursor: pointer; transition: all 0.15s; flex-shrink: 0;
     }
     .pres-dot.active {
-      background: #fff; transform: scale(1.4);
+      background: var(--blue); transform: scale(1.4);
     }
-    .pres-dot:hover { background: oklch(55% 0.015 258); }
+    .pres-dot:hover { background: var(--muted); }
 
     .pres-exit {
       background: transparent;
-      border: 1px solid oklch(28% 0.015 258);
-      color: oklch(52% 0.01 258);
+      border: 1px solid var(--border);
+      color: var(--muted);
       padding: 7px 13px; border-radius: 6px;
-      font-size: 12px; font-weight: 600; cursor: pointer;
-      font-family: 'Barlow', sans-serif;
+      font-size: 12px; font-weight: 500; cursor: pointer;
+      font-family: 'Roboto', sans-serif;
       transition: all 0.15s; white-space: nowrap;
       flex-shrink: 0;
     }
-    .pres-exit:hover { background: oklch(22% 0.018 258); color: #fff; }
+    .pres-exit:hover { border-color: var(--text); color: var(--text); }
 
-    /* Keyboard hint that fades in briefly on entry */
     .pres-hint {
       position: fixed; top: 50%; left: 50%;
       transform: translate(-50%, -50%) scale(0.9);
-      background: oklch(11% 0.016 258 / 0.92);
-      border: 1px solid oklch(30% 0.016 258);
-      border-radius: 14px; padding: 24px 36px; z-index: 1100;
-      text-align: center; color: #fff;
-      font-family: 'Barlow', sans-serif;
+      background: rgba(255,255,255,0.98);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px 40px; z-index: 1100;
+      text-align: center; color: var(--text);
+      font-family: 'Roboto', sans-serif;
       pointer-events: none;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
       opacity: 0; transition: opacity 0.3s, transform 0.3s;
     }
     .pres-hint.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    .pres-hint .ph-title { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+    .pres-hint .ph-title { font-size: 15px; font-weight: 500; margin-bottom: 10px; color: var(--text); }
     .pres-hint .ph-keys {
       display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 8px;
     }
     .ph-key {
-      background: oklch(22% 0.02 258); border: 1px solid oklch(34% 0.018 258);
+      background: #f8f9fa; border: 1px solid var(--border);
       border-radius: 6px; padding: 4px 10px;
-      font-size: 12px; font-weight: 600; color: oklch(78% 0.012 258);
+      font-size: 12px; font-weight: 500; color: var(--muted);
     }
 
     /* ── FOOTER ─────────────────────────────────────────────── */
     footer {
       text-align: center; padding: 36px 24px;
-      background: #030712; color: rgba(255,255,255,0.4); font-size: 12.5px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      background: #fff; color: var(--muted); font-size: 12.5px;
+      border-top: 1px solid var(--border);
     }
-    footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
-    footer a:hover { color: #fff; }
-    footer .d { margin: 0 8px; opacity: 0.2; }
+    footer a { color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    footer a:hover { color: var(--blue); }
+    footer .d { margin: 0 8px; opacity: 0.4; }
   </style>
 </head>
 <body>
@@ -838,10 +804,30 @@
 <header class="hero" id="slide-hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <p class="hero-kicker">Course Introduction · Vienna, Austria</p>
+      <p class="hero-kicker">Vienna, Austria · PhD · Claude Code Enthusiast</p>
       <h1>Dr. Stefan<br>Bauer</h1>
-      <p class="tagline">PhD · CEO Sustainista · EdTech Innovator<br>Hackathon Organizer · Lecturer at 10+ Universities</p>
-      <div style="margin-bottom:24px;">
+      <p class="tagline">Managing Director &amp; AI Innovator 🤖 · Co-Founder of Sustainista 🌱 &amp; Skills-UP! 🎓<br>ESG · Digital Product Passport · University Lecturer</p>
+
+      <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:28px; margin-top:4px;">
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <span style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); min-width:14px;">01</span>
+          <span style="font-size:14px; color:var(--text); font-weight:400;">Stiftungsprofessor der Stadt Wien — Finance, ESG &amp; KI</span>
+        </div>
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <span style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); min-width:14px;">02</span>
+          <span style="font-size:14px; color:var(--text); font-weight:400;">Geschäftsführer und Gesellschafter, Sustainista GmbH</span>
+        </div>
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <span style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); min-width:14px;">03</span>
+          <span style="font-size:14px; color:var(--text); font-weight:400;">Obfrau-Stv., Verein zur Entwicklung der digitalen Zukunftsbildung</span>
+        </div>
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <span style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); min-width:14px;">04</span>
+          <span style="font-size:14px; color:var(--text); font-weight:400;">Geschäftsführer, Bäckerei Karl Bauer GmbH</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom:28px;">
         <span class="fpill"><span class="live"></span>6,333 LinkedIn Followers</span>
       </div>
       <div class="hero-links">
@@ -894,14 +880,14 @@
        alt="Skills-UP! gewinnt TOP 3 bei der MEGA Education Million 2025 — Dr. Stefan Bauers Team auf der Bühne mit €200.000-Schecks"
        class="award-hero-img" />
   <div class="award-overlay">
-    <span class="aw-eyebrow">🏆 TOP 3 Award</span>
+    <span class="aw-eyebrow">🏆 TOP 3 Award · €200.000 Funding</span>
     <h2 class="aw-headline">MEGA Education<br>Million 2025</h2>
-    <p class="aw-sub">Austria's most prestigious education award — Skills-UP! selected from over 80 national initiatives. A peer-to-peer financial literacy platform that reached 200+ apprentices with 90% lasting behavioral change.</p>
+    <p class="aw-sub">Österreichs prestigiösester Bildungspreis — Skills-UP! ausgewählt aus über 80 nationalen Initiativen. Eine Peer-to-Peer Finanzbildungsplattform, die 200+ Lehrlinge erreichte und bei 90% nachhaltige Verhaltensänderungen bewirkte.</p>
     <div class="aw-stats">
-      <div class="aw-stat"><span class="aw-n">TOP 3</span><span class="aw-l">National Award</span></div>
-      <div class="aw-stat"><span class="aw-n">80+</span><span class="aw-l">Initiatives Defeated</span></div>
-      <div class="aw-stat"><span class="aw-n">200+</span><span class="aw-l">Apprentices Reached</span></div>
-      <div class="aw-stat"><span class="aw-n">90%</span><span class="aw-l">Behavioral Change</span></div>
+      <div class="aw-stat"><span class="aw-n">€200k</span><span class="aw-l">Funding erhalten</span></div>
+      <div class="aw-stat"><span class="aw-n">80+</span><span class="aw-l">Initiativen besiegt</span></div>
+      <div class="aw-stat"><span class="aw-n">200+</span><span class="aw-l">Lehrlinge erreicht</span></div>
+      <div class="aw-stat"><span class="aw-n">90%</span><span class="aw-l">Verhaltensänderung</span></div>
     </div>
   </div>
 </div>
@@ -919,34 +905,50 @@
 
   <!-- ── WHO AM I ────────────────────────────────────────────── -->
   <section>
-    <h2 class="st">Who am I?</h2>
-    <p class="ss" style="max-width:800px;">
-      I build practical solutions at the intersection of <strong>AI, sustainability, digital education and entrepreneurship</strong>.
-      With a PhD in Information Systems from WU Wien and 15+ years across academia, banking, and corporate innovation,
-      I bridge research and real-world impact.
-      At <strong>Sustainista</strong> I lead AI-powered ESG automation and Digital Product Passport solutions.
-      Through <strong>Skills-UP!</strong> I've helped 200+ apprentices take control of their financial futures —
-      recognised as <strong>TOP 3 at the MEGA Education Million 2025</strong>.
-      I teach at 10+ universities — from Vienna to Reykjavik —
-      and organise the <strong>Europe Tech Hackathon</strong> at ViennaUP.
-      My mission: turn complex technology into practical tools that actually change how people live and work.
-      <br><br>
-      <strong>In my courses:</strong> I don't teach from a textbook. I teach from real projects with real budgets, real failures, and real wins. You'll leave with things you can use the next day.
-    </p>
+    <h2 class="st">Über mich</h2>
+
+    <!-- Intro zwei Spalten -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-bottom:32px;">
+      <div>
+        <p style="font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--blue); margin-bottom:10px;">Forschung &amp; Lehre</p>
+        <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:8px;">
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> PhD Wirtschaftsinformatik, WU Wien</li>
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> Stiftungsprofessor der Stadt Wien — Finance, ESG &amp; KI</li>
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> Lehrbeauftragter an 10+ Universitäten weltweit</li>
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> 620+ akademische Zitierungen</li>
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> WU Outstanding Research Award (2× vergeben)</li>
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> ERSTE Bank Research Prize CEE 2012 — €17.880</li>
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> #1 Business-Absolvent, Universität Wien 2010</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--blue); margin-bottom:10px;">Unternehmertum &amp; Innovation</p>
+        <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:8px;">
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> Geschäftsführer &amp; Gesellschafter, Sustainista GmbH</li>
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> Obfrau-Stv., Verein zur Entwicklung digitaler Zukunftsbildung</li>
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> Geschäftsführer, Bäckerei Karl Bauer GmbH</li>
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> Veranstalter Europe Tech Hackathon @ ViennaUP</li>
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> Work Package Lead — Erasmus+ L2BGreen (€1,5M)</li>
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> Work Package Lead — FFG Flagship PACE-DPP</li>
+          <li style="display:flex; gap:10px; font-size:14px; color:var(--text);"><span style="color:var(--blue); flex-shrink:0;">→</span> IPMA Level D zertifiziert · OekoBusiness Wien</li>
+        </ul>
+      </div>
+    </div>
 
     <div class="g2">
       <div class="card">
         <img src="logos/sustainista-logo.png" alt="Sustainista" class="card-logo" style="height:28px;" />
-        <h3>Sustainista — CEO &amp; Co-Founder</h3>
+        <h3>Sustainista — Geschäftsführer &amp; Co-Founder</h3>
         <ul>
-          <li>Sustainability as a Service — AI-powered ESG automation</li>
+          <li>KI-gestützte ESG-Automatisierung für Unternehmen</li>
           <li>Digital Product Passport (EU Battery &amp; Ecodesign Regulation)</li>
           <li>Product Carbon Footprint (Scope 1, 2 &amp; 3)</li>
-          <li>FFG Flagship Project PACE-DPP — Work Package Lead</li>
-          <li>OekoBusiness Wien certified ESG &amp; SDG Consultant</li>
+          <li>FFG Flagship PACE-DPP — Work Package Lead</li>
+          <li>Partner von dpp-austria.at</li>
+          <li>OekoBusiness Wien — ESG &amp; SDG Consultant</li>
         </ul>
         <div class="logo-strip-light" style="margin-top:14px;">
-          <span class="lsl">Partners &amp; Clients</span>
+          <span class="lsl">Partner &amp; Kunden</span>
           <img src="logos/partner-oebb.jpeg" alt="ÖBB" />
           <img src="logos/partner-microsoft.jpg" alt="Microsoft" />
           <img src="logos/partner-google.png" alt="Google" />
@@ -955,26 +957,27 @@
         </div>
       </div>
       <div class="card">
-        <h3>Lecturer — 10+ Universities</h3>
+        <h3>Lehre — 10+ Universitäten</h3>
         <ul>
           <li>WU Wien · TU Wien · Modul University Vienna</li>
           <li>FH Technikum · FH WKW · FH Wiener Neustadt</li>
           <li>Reykjavik University 🇮🇸 · Aarhus University 🇩🇰</li>
-          <li>HSE Moscow · IDC Herzliya · Lauder Business School</li>
-          <li>Innovation, Entrepreneurship, Data Literacy &amp; AI, UX, IT Management</li>
+          <li>HSE Moskau · IDC Herzliya · Lauder Business School</li>
+          <li>Themen: Innovation, KI, UX, Entrepreneurship, Projektmanagement</li>
+          <li>Lehrsprachen: 🇦🇹 Deutsch (Muttersprache) · 🇬🇧 Englisch (fließend)</li>
         </ul>
-        <p style="font-size:12px; color:var(--muted); margin-top:10px; font-style:italic;">Languages: 🇦🇹 German (native) · 🇬🇧 English (fluent)</p>
       </div>
       <div class="card">
-        <h3>Europe Tech Hackathon — Organizer</h3>
+        <h3>Europe Tech Hackathon — Veranstalter</h3>
         <ul>
-          <li>48h innovation sprint · ViennaUP, Vienna</li>
+          <li>48h Innovations-Sprint · ViennaUP, Wien</li>
           <li>ÖBB Open Innovation Factory</li>
-          <li>200+ participants · 4 Challenges · 8+ Partner orgs</li>
-          <li>Partners: Anthropic, OpenAI, Google, AWS, WU Wien, TU Wien</li>
+          <li>200+ Teilnehmer · 4 Challenges · 8+ Partnerorganisationen</li>
+          <li>Partner: Anthropic, OpenAI, Google, AWS</li>
+          <li>Universitäten: WU Wien, TU Wien</li>
         </ul>
         <div class="logo-strip-light" style="margin-top:14px;">
-          <span class="lsl">Event Partners</span>
+          <span class="lsl">Event-Partner</span>
           <img src="logos/partner-viennaup.png" alt="ViennaUP" />
           <img src="logos/bij-logo.png" alt="BEJ" />
           <img src="logos/partner-oegig.png" alt="ÖGIG" />
@@ -982,13 +985,14 @@
       </div>
       <div class="card">
         <img src="logos/skillsup-logo-new.png" alt="Skills-UP!" class="card-logo" />
-        <h3>Skills-UP! — Co-Founder &amp; VP</h3>
+        <h3>Skills-UP! — Obfrau-Stv. &amp; Co-Founder</h3>
         <ul>
-          <li>Peer-to-peer financial education for apprentices (14–20)</li>
-          <li>Gamification, quiz battles, podcasts, peer videos</li>
-          <li>90% behavior change · 200+ apprentices</li>
-          <li><strong>TOP 3 — MEGA Education Million 2025</strong></li>
-          <li>ERASMUS+ Work Package Lead (AI &amp; Entrepreneurship)</li>
+          <li>Peer-to-Peer Finanzbildung für Lehrlinge (14–20 Jahre)</li>
+          <li>Gamification, Quiz-Battles, Podcasts, Peer-Videos</li>
+          <li>90% nachhaltige Verhaltensänderung · 200+ Lehrlinge erreicht</li>
+          <li><strong>🏆 TOP 3 — MEGA Education Million 2025 · €200.000</strong></li>
+          <li>ERASMUS+ Work Package Lead (KI &amp; Entrepreneurship)</li>
+          <li>Ausgewählt aus 80+ nationalen Initiativen</li>
         </ul>
       </div>
     </div>
@@ -1077,9 +1081,6 @@
       <div class="s"><span class="n">80+</span><span class="l">Initiatives defeated</span></div>
       <div class="s"><span class="n">2021</span><span class="l">Partnership start</span></div>
     </div>
-    <div style="margin-top:26px; border-radius:14px; overflow:hidden; max-width:620px; border:1px solid rgba(255,255,255,0.12);">
-      <img src="skillsup-wirkung.png" alt="Skills-UP! Impact Visualization" style="width:100%; display:block;" />
-    </div>
     <div class="hl-btns" style="margin-top:20px;">
       <a href="https://www.digitale-zukunftsbildung.eu" target="_blank" rel="noopener" class="hl-bw">🎓 digitale-zukunftsbildung.eu</a>
     </div>
@@ -1112,35 +1113,28 @@
   </svg>
 </div>
 
-<!-- ── SUSTAINISTA HIGHLIGHT (GREEN) ─────────────────────────── -->
-<section class="hl hl-green" id="slide-sustainista">
-  <span class="corner">✦</span>
-  <div class="hl-inner">
-    <img src="logos/sustainista-logo-white.png" alt="Sustainista" class="hl-logo" />
-    <p class="sl">CEO &amp; Co-Founder</p>
-    <h2 class="st">Sustainability as a Service</h2>
-    <p class="ss">Sustainista helps companies automate ESG reporting, build EU-compliant Digital Product Passports, and measure their full Product Carbon Footprint (Scope 1, 2 &amp; 3). As Work Package Lead in the <strong style="color:#fff;">FFG Flagship Project PACE-DPP</strong> and partner of dpp-austria.at, we're at the forefront of Austria's circular economy transition — powered by AI.</p>
-    <div class="chips">
-      <span class="chip">ESG Reporting Automation</span>
-      <span class="chip">Digital Product Passport</span>
-      <span class="chip">Carbon Footprint (Scope 1–3)</span>
-      <span class="chip">AI Agents</span>
-      <span class="chip">FFG PACE-DPP — WP Lead</span>
-      <span class="chip">OekoBusiness Wien certified</span>
+<!-- ── SUSTAINISTA HIGHLIGHT (PHOTO BACKGROUND) ───────────────── -->
+<div class="award-hero" id="slide-sustainista" style="position:relative;">
+  <img src="sustainista-hackathon.jpg"
+       alt="Dr. Stefan Bauer at Europe Tech Hackathon — Sustainista"
+       class="award-hero-img" style="object-position: center 25%;" />
+  <div class="award-overlay" style="background: linear-gradient(to top, rgba(5,30,15,0.97) 0%, rgba(5,30,15,0.70) 42%, rgba(5,30,15,0.20) 75%, transparent 100%);">
+    <span class="aw-eyebrow" style="background:#4ade80; color:#052e16;">✦ CEO &amp; Co-Founder</span>
+    <h2 class="aw-headline">Sustainability<br>as a Service</h2>
+    <p class="aw-sub">Sustainista hilft Unternehmen bei ESG-Automatisierung, EU-konformen Digital Product Passports und Product Carbon Footprint (Scope 1–3). Als Work Package Lead im FFG Flagship PACE-DPP und Partner von dpp-austria.at treiben wir Österreichs Kreislaufwirtschaft voran — KI-gestützt.</p>
+    <div class="aw-stats">
+      <div class="aw-stat"><span class="aw-n" style="color:#4ade80;">DPP</span><span class="aw-l">Digital Product Passport</span></div>
+      <div class="aw-stat"><span class="aw-n" style="color:#4ade80;">ESG</span><span class="aw-l">Reporting Automation</span></div>
+      <div class="aw-stat"><span class="aw-n" style="color:#4ade80;">FFG</span><span class="aw-l">Flagship PACE-DPP</span></div>
     </div>
-    <div class="logo-strip">
-      <span class="logo-strip-label">Partners &amp; Clients</span>
-      <img src="logos/partner-oebb.jpeg" alt="ÖBB" />
-      <img src="logos/partner-microsoft.jpg" alt="Microsoft" />
-      <img src="logos/partner-google.png" alt="Google" />
-      <img src="logos/partner-infineon.png" alt="Infineon" />
-    </div>
-    <div class="hl-btns">
-      <a href="https://www.sustainista.net" target="_blank" rel="noopener" class="hl-bw">✦ sustainista.net</a>
-      <a href="https://dpp-austria.at" target="_blank" rel="noopener" class="hl-bo">🔄 dpp-austria.at</a>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
+      <a href="https://www.sustainista.net" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#052e16;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:600;text-decoration:none;">✦ sustainista.net</a>
+      <a href="https://dpp-austria.at" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.3);padding:9px 22px;border-radius:100px;font-size:13px;font-weight:500;text-decoration:none;">🔄 dpp-austria.at</a>
     </div>
   </div>
-</section>
+</div>
 
 <!-- ════════════════════════════════════════════════════════════
      WAVE TRANSITION: green → teal (Sustainista → L2BGreen)
