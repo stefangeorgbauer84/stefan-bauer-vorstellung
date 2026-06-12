@@ -605,6 +605,40 @@
     }
     .hl .st { color: var(--text); }
 
+    /* ── SLIDE MOTTO ────────────────────────────────────────── */
+    .slide-motto {
+      display: flex; gap: 6px; align-items: center;
+      margin-bottom: 18px;
+    }
+    .slide-motto span {
+      font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .slide-motto .sm-dot { opacity: 0.3; }
+
+    /* Hero slogan */
+    .hero-slogan {
+      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-size: clamp(17px, 2.2vw, 22px);
+      font-weight: 700; letter-spacing: -0.3px;
+      color: var(--text); margin-bottom: 16px;
+      border-left: 3px solid var(--blue);
+      padding-left: 14px;
+    }
+
+    /* Inline logo badge next to text */
+    .logo-inline {
+      height: 20px; width: auto; vertical-align: middle;
+      object-fit: contain; margin-left: 6px;
+      border-radius: 4px; position: relative; top: -1px;
+      max-width: 90px;
+    }
+    .logo-inline-lg {
+      height: 22px; width: auto; vertical-align: middle;
+      object-fit: contain; border-radius: 5px; position: relative; top: -2px;
+      max-width: 110px;
+    }
+
     /* ── HERO PRESENTATION BUTTON ──────────────────────────── */
     #hero-pres-btn {
       display: inline-flex; align-items: center; gap: 10px;
@@ -838,26 +872,37 @@
 <header class="hero" id="slide-hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <p class="hero-kicker">Vienna, Austria · PhD · Claude Code Enthusiast</p>
+      <p class="hero-kicker">
+        Vienna, Austria · PhD ·
+        Claude Code Enthusiast <img src="logos/anthropic-logo.svg" alt="Anthropic" class="logo-inline" />
+      </p>
       <h1>Dr. Stefan<br>Bauer</h1>
-      <p class="tagline">Managing Director &amp; AI Innovator 🤖 · Co-Founder of Sustainista 🌱 &amp; Skills-UP! 🎓<br>ESG · Digital Product Passport · University Lecturer</p>
+      <p class="hero-slogan">Discipline Builds Innovation.</p>
+      <p class="tagline">Managing Director &amp; AI Innovator · Co-Founder of
+        <img src="logos/sustainista-logo.png" alt="Sustainista" class="logo-inline-lg" />
+        &amp; <img src="logos/skillsup-logo-new.png" alt="Skills-UP!" class="logo-inline-lg" /><br>
+        ESG · Digital Product Passport · University Lecturer</p>
 
-      <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:28px; margin-top:4px;">
-        <div style="display:flex; align-items:baseline; gap:10px;">
-          <span style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); min-width:14px;">01</span>
+      <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:28px; margin-top:4px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); min-width:14px; flex-shrink:0;">01</span>
           <span style="font-size:14px; color:var(--text); font-weight:400;">Stiftungsprofessor der Stadt Wien — Finance, ESG &amp; KI</span>
+          <img src="logos/stadt-wien-logo.svg" alt="Stadt Wien" class="logo-inline" />
         </div>
-        <div style="display:flex; align-items:baseline; gap:10px;">
-          <span style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); min-width:14px;">02</span>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); min-width:14px; flex-shrink:0;">02</span>
           <span style="font-size:14px; color:var(--text); font-weight:400;">Geschäftsführer und Gesellschafter, Sustainista GmbH</span>
+          <img src="logos/sustainista-logo.png" alt="Sustainista" class="logo-inline" />
         </div>
-        <div style="display:flex; align-items:baseline; gap:10px;">
-          <span style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); min-width:14px;">03</span>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); min-width:14px; flex-shrink:0;">03</span>
           <span style="font-size:14px; color:var(--text); font-weight:400;">Obfrau-Stv., Verein zur Entwicklung der digitalen Zukunftsbildung</span>
+          <img src="logos/skillsup-logo-new.png" alt="Skills-UP!" class="logo-inline" />
         </div>
-        <div style="display:flex; align-items:baseline; gap:10px;">
-          <span style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); min-width:14px;">04</span>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); min-width:14px; flex-shrink:0;">04</span>
           <span style="font-size:14px; color:var(--text); font-weight:400;">Geschäftsführer, Bäckerei Karl Bauer GmbH</span>
+          <img src="logos/baeckerei-bauer-logo.png" alt="Bäckerei Karl Bauer" class="logo-inline" />
         </div>
       </div>
 
@@ -939,6 +984,9 @@
 <main id="slide-about">
 
   <!-- ── STATS ─────────────────────────────────────────────── -->
+  <div class="slide-motto" style="margin-top:32px;">
+    <span>Research</span><span class="sm-dot">·</span><span>Practice</span><span class="sm-dot">·</span><span>Leadership</span>
+  </div>
   <div class="stat-strip">
     <div class="ss-item"><span class="ss-n">620+</span><span class="ss-l">academic citations</span></div>
     <div class="ss-item"><span class="ss-n">10+</span><span class="ss-l">universities</span></div>
@@ -1045,6 +1093,9 @@
 
   <!-- ── CAREER TIMELINE ──────────────────────────────────── -->
   <section id="slide-career">
+  <div class="slide-motto">
+    <span>Build</span><span class="sm-dot">·</span><span>Teach</span><span class="sm-dot">·</span><span>Scale</span>
+  </div>
     <h2 class="st">15+ Years of Experience</h2>
     <p class="ss">From academic research and banking UX to corporate innovation and entrepreneurship.</p>
     <div class="timeline">
@@ -1107,7 +1158,8 @@
 <section class="hl hl-purple" id="slide-skillsup">
   <span class="corner">🎓</span>
   <div class="hl-inner">
-    <img src="logos/skillsup-logo-new.png" alt="Skills-UP!" class="hl-logo" style="filter:brightness(0) invert(1); opacity:0.9;" />
+    <div class="slide-motto"><span>Finance</span><span class="sm-dot">·</span><span>Peers</span><span class="sm-dot">·</span><span>Change</span></div>
+    <img src="logos/skillsup-logo-new.png" alt="Skills-UP!" class="hl-logo" />
     <p class="sl">Featured Project · Financial Education</p>
     <h2 class="st">Skills-UP! — Financial Literacy for Apprentices</h2>
     <p class="ss">Skills-UP! brings financial education where it's needed most: directly into Austrian vocational schools. Instead of textbooks, real apprentices guide their peers through savings goals, debt traps, crypto basics, and emergency budgets — using gamification, quiz battles, podcasts, and peer-made videos. 90% of participants report lasting behavioral change.</p>
@@ -1162,6 +1214,8 @@
        alt="Dr. Stefan Bauer at Europe Tech Hackathon — Sustainista"
        class="award-hero-img" style="object-position: center 25%;" />
   <div class="award-overlay" style="background: linear-gradient(to top, rgba(5,30,15,0.97) 0%, rgba(5,30,15,0.70) 42%, rgba(5,30,15,0.20) 75%, transparent 100%);">
+    <div class="slide-motto" style="margin-bottom:12px;"><span style="color:rgba(255,255,255,0.5);">Sustain</span><span class="sm-dot" style="color:rgba(255,255,255,0.3);">·</span><span style="color:rgba(255,255,255,0.5);">Automate</span><span class="sm-dot" style="color:rgba(255,255,255,0.3);">·</span><span style="color:rgba(255,255,255,0.5);">Scale</span></div>
+    <img src="logos/sustainista-logo-white.png" alt="Sustainista" style="height:36px; width:auto; object-fit:contain; margin-bottom:16px; display:block; opacity:0.95;" />
     <span class="aw-eyebrow" style="background:#4ade80; color:#052e16;">✦ CEO &amp; Co-Founder</span>
     <h2 class="aw-headline">Sustainability<br>as a Service</h2>
     <p class="aw-sub">Sustainista hilft Unternehmen bei ESG-Automatisierung, EU-konformen Digital Product Passports und Product Carbon Footprint (Scope 1–3). Als Work Package Lead im FFG Flagship PACE-DPP und Partner von dpp-austria.at treiben wir Österreichs Kreislaufwirtschaft voran — KI-gestützt.</p>
@@ -1200,6 +1254,7 @@
 <section class="hl hl-teal" id="slide-l2bgreen">
   <span class="corner">🌱</span>
   <div class="hl-inner">
+    <div class="slide-motto"><span>Europe</span><span class="sm-dot">·</span><span>Green</span><span class="sm-dot">·</span><span>Learn</span></div>
     <img src="logos/l2bgreen-logo.png" alt="L2BGreen" class="hl-logo" style="filter:brightness(0) invert(1); opacity:0.9;" />
     <p class="sl">ERASMUS+ Project · EU Funded</p>
     <h2 class="st">L2BGreen — Green Entrepreneurship for Europe</h2>
@@ -1257,6 +1312,7 @@
 <section class="hl hl-amber" id="slide-pm">
   <span class="corner">📐</span>
   <div class="hl-inner">
+    <div class="slide-motto"><span>Lead</span><span class="sm-dot">·</span><span>Deliver</span><span class="sm-dot">·</span><span>Teach</span></div>
     <p class="sl" style="color:rgba(255,255,255,0.5);">Real-World Project Leadership &amp; Teaching</p>
     <h2 class="st">Project Management — ~€3M Managed</h2>
     <p class="ss">I don't just teach project management — I live it. As Work Package Lead on major EU and national research projects, I manage multi-million euro budgets, international consortia, regulatory complexity, and stakeholder alignment across academia, government, and industry. These real-world experiences feed directly back into my courses — so students learn what actually matters in practice.</p>
@@ -1406,6 +1462,7 @@
 <div style="max-width:980px;margin:0 auto;padding:0 28px 88px;">
 
   <section id="slide-hackathon">
+    <div class="slide-motto"><span>48h</span><span class="sm-dot">·</span><span>Prototype</span><span class="sm-dot">·</span><span>Ship</span></div>
     <h2 class="st">Europe Tech Hackathon — Watch the Highlights</h2>
     <p class="ss">48 hours, real sustainability problems, real prototypes — at ViennaUP in the ÖBB Open Innovation Factory, Vienna.</p>
 
@@ -1486,8 +1543,15 @@
 
   <!-- ── TEACHING ───────────────────────────────────────────── -->
   <section id="slide-teaching">
+    <div class="slide-motto"><span>Inspire</span><span class="sm-dot">·</span><span>Educate</span><span class="sm-dot">·</span><span>Grow</span></div>
     <h2 class="st">Courses &amp; Institutions</h2>
     <p class="ss">Teaching Innovation, Entrepreneurship, AI, UX, and Management since 2011 — across Austria, Iceland, Denmark, Russia, and Israel.</p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:20px;">
+      <img src="logos/wu-wien-logo.svg" alt="WU Wien" style="height:30px; width:auto; border-radius:5px;" />
+      <img src="logos/partner-microsoft.jpg" alt="Microsoft" style="height:26px; width:auto; opacity:0.7;" />
+      <img src="logos/partner-google.png" alt="Google" style="height:26px; width:auto; opacity:0.7;" />
+      <img src="logos/anthropic-logo.svg" alt="Anthropic" style="height:26px; width:auto; border-radius:4px;" />
+    </div>
     <div class="teach-list">
       <div class="teach-item"><p class="teach-uni">🇦🇹 WU Wien</p><p class="teach-course">IT Project Management · IS Accountability · B2C E-Commerce · Research Seminar</p></div>
       <div class="teach-item"><p class="teach-uni">🇦🇹 TU Wien Academy</p><p class="teach-course">Everyday AI (Data Literacy) · since 2023</p></div>
@@ -1547,10 +1611,15 @@
 
   <!-- ── ALL PROJECTS ──────────────────────────────────────── -->
   <section id="slide-projects">
+    <div class="slide-motto"><span>Ideas</span><span class="sm-dot">·</span><span>Code</span><span class="sm-dot">·</span><span>Impact</span></div>
     <h2 class="st">What I've Built</h2>
     <div class="proj-grid">
-      <div class="proj-card"><span class="proj-ico">✦</span><p class="proj-name">Sustainista</p><p class="proj-desc">ESG automation, Digital Product Passport &amp; Carbon Footprint. FFG PACE-DPP flagship.</p><a href="https://www.sustainista.net" target="_blank" rel="noopener" class="proj-link">sustainista.net →</a></div>
-      <div class="proj-card"><span class="proj-ico">📱</span><p class="proj-name">Skills-UP!</p><p class="proj-desc">Peer-to-peer financial literacy for Austrian apprentices. TOP 3 MEGA Education Million 2025.</p><a href="https://www.digitale-zukunftsbildung.eu" target="_blank" rel="noopener" class="proj-link">digitale-zukunftsbildung.eu →</a></div>
+      <div class="proj-card">
+        <img src="logos/sustainista-logo.png" alt="Sustainista" style="height:28px;width:auto;object-fit:contain;margin-bottom:8px;" />
+        <p class="proj-name">Sustainista</p><p class="proj-desc">ESG automation, Digital Product Passport &amp; Carbon Footprint. FFG PACE-DPP flagship.</p><a href="https://www.sustainista.net" target="_blank" rel="noopener" class="proj-link">sustainista.net →</a></div>
+      <div class="proj-card">
+        <img src="logos/skillsup-logo-new.png" alt="Skills-UP!" style="height:28px;width:auto;object-fit:contain;margin-bottom:8px;" />
+        <p class="proj-name">Skills-UP!</p><p class="proj-desc">Peer-to-peer financial literacy for Austrian apprentices. TOP 3 MEGA Education Million 2025.</p><a href="https://www.digitale-zukunftsbildung.eu" target="_blank" rel="noopener" class="proj-link">digitale-zukunftsbildung.eu →</a></div>
       <div class="proj-card"><span class="proj-ico">🌱</span><p class="proj-name">L2BGreen</p><p class="proj-desc">Erasmus+: Green entrepreneurship courses &amp; AI chatbot for 7 European countries. €1.5M EU funded.</p><a href="https://www.l2bgreen.com" target="_blank" rel="noopener" class="proj-link">l2bgreen.com →</a></div>
       <div class="proj-card"><span class="proj-ico">🔄</span><p class="proj-name">PACE-DPP / DPP Austria</p><p class="proj-desc">FFG Flagship: Digital Product Passport ecosystem for circular economy compliance.</p><a href="https://dpp-austria.at" target="_blank" rel="noopener" class="proj-link">dpp-austria.at →</a></div>
       <div class="proj-card"><span class="proj-ico">🏟</span><p class="proj-name">Europe Tech Hackathon</p><p class="proj-desc">48h innovation sprint at ViennaUP. 200+ participants, 4 challenges.</p><a href="https://www.sustainista.net/hackathon" target="_blank" rel="noopener" class="proj-link">sustainista.net/hackathon →</a></div>
