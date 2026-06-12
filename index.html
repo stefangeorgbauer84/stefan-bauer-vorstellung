@@ -605,6 +605,40 @@
     }
     .hl .st { color: var(--text); }
 
+    /* ── HERO PRESENTATION BUTTON ──────────────────────────── */
+    #hero-pres-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 32px;
+      background: transparent;
+      border: 2px solid var(--border);
+      border-radius: 100px;
+      padding: 13px 28px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 15px; font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    #hero-pres-btn:hover {
+      border-color: var(--blue); color: var(--blue);
+      background: var(--blue-lt);
+      box-shadow: 0 4px 20px rgba(26,115,232,0.15);
+    }
+    .hpb-arrow {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--blue); color: #fff;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, background 0.2s;
+    }
+    #hero-pres-btn:hover .hpb-arrow { transform: translateY(3px); background: var(--blue-dk); }
+    @keyframes bounce-down {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(5px); }
+    }
+    .hpb-arrow svg { animation: bounce-down 1.8s ease-in-out infinite; }
+    #hero-pres-btn:hover .hpb-arrow svg { animation: none; }
+
     /* ── FOCUS STYLES ───────────────────────────────────────── */
     :focus-visible {
       outline: 2px solid var(--blue);
@@ -838,6 +872,15 @@
         <a href="https://scholar.google.com/citations?user=iFu00qUAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-ghost">📚 620+ Citations</a>
         <a href="https://www.sustainista.net" target="_blank" rel="noopener" class="btn btn-green">✦ Sustainista</a>
       </div>
+
+      <button id="hero-pres-btn" onclick="window.enterPresMode && window.enterPresMode()" aria-label="Präsentation starten">
+        <span class="hpb-label">Präsentation starten</span>
+        <span class="hpb-arrow" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+          </svg>
+        </span>
+      </button>
     </div>
     <div class="hero-photo">
       <div class="avatar-ring">
@@ -1725,6 +1768,9 @@
   window.addEventListener('resize', () => {
     if (active) window.scrollTo({ top: slideTop(current), behavior: 'instant' });
   });
+
+  window.enterPresMode = enterMode;
+  window.exitPresMode  = exitMode;
 
   const toggle = () => active ? exitMode() : enterMode();
 
