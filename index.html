@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dr. Stefan Bauer — Course Introduction</title>
+  <title>Dr. Stefan Bauer — Professor, Founder &amp; AI Researcher</title>
   <meta name="description" content="Dr. Stefan Bauer — PhD, CEO Sustainista, EdTech Innovator, Hackathon Organizer, Lecturer at 10+ Universities. AI, sustainability &amp; innovation." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -66,25 +66,61 @@
     .hero {
       background: linear-gradient(160deg, #ffffff 0%, #f8f9fa 100%);
       color: var(--text);
-      padding: 88px 0 96px;
+      padding: 0;
       position: relative; overflow: hidden;
       border-bottom: 1px solid var(--border);
+      min-height: 88vh; display: flex; align-items: center;
     }
     .hero::before { display: none; }
     .hero::after { display: none; }
 
     .hero-inner {
       position: relative; z-index: 2;
-      max-width: 980px; margin: 0 auto; padding: 0 28px;
-      display: grid; grid-template-columns: 1fr auto;
-      gap: 64px; align-items: center;
+      max-width: 1100px; margin: 0 auto; padding: 60px 28px;
+      display: grid; grid-template-columns: 1fr 360px;
+      gap: 64px; align-items: start; width: 100%;
+    }
+    @media (max-width: 900px) {
+      .hero-cta-panel { display: none; }
+      .hero-inner { grid-template-columns: 1fr; }
     }
     @media (max-width: 680px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
-      .hero-photo { justify-self: start; }
-      .hero { padding: 56px 0 64px; }
+      .hero-inner { gap: 32px; padding: 40px 28px; }
     }
     .hero-photo { flex-shrink: 0; }
+
+    /* ── HERO CTA PANEL ──────────────────────────────────── */
+    .hero-cta-panel {
+      display: flex; flex-direction: column; align-items: stretch;
+      gap: 16px; padding: 32px; background: #f8f9fa;
+      border-radius: 20px; border: 1px solid var(--border);
+      position: sticky; top: 80px;
+    }
+    .hero-cta-title { font-family: 'Google Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+    .hero-cta-btn-primary {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--blue); color: #fff; border: none; cursor: pointer;
+      padding: 16px 24px; border-radius: 12px; font-size: 15px; font-weight: 600;
+      font-family: 'Google Sans', sans-serif; text-decoration: none; transition: background 0.18s;
+    }
+    .hero-cta-btn-primary:hover { background: var(--blue-dk); }
+    .hero-cta-btn-secondary {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: #fff; color: var(--text); border: 1.5px solid var(--border);
+      padding: 14px 24px; border-radius: 12px; font-size: 14px; font-weight: 500;
+      font-family: 'Google Sans', sans-serif; text-decoration: none; cursor: pointer; transition: all 0.18s;
+    }
+    .hero-cta-btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+    .hero-cta-divider { height: 1px; background: var(--border); margin: 4px 0; }
+    .hero-cta-links { display: flex; flex-direction: column; gap: 10px; }
+    .hero-cta-link {
+      display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+      border-radius: 8px; text-decoration: none; color: var(--text);
+      font-size: 13px; font-weight: 500; transition: background 0.15s;
+      border: 1px solid var(--border);
+    }
+    .hero-cta-link:hover { background: var(--blue-lt); border-color: var(--blue); }
+    .hero-cta-link img { height: 20px; width: auto; border-radius: 3px; }
 
     .avatar-ring {
       position: relative; display: inline-block; margin-bottom: 0;
@@ -890,6 +926,10 @@
     footer a:hover { color: var(--blue); }
     footer .d { margin: 0 8px; opacity: 0.4; }
 
+    /* ── SLIDE 3-SLOGANS ───────────────────────────────────── */
+    .slide-3slogan { font-size: 14px; font-style: italic; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 16px; border-left: 3px solid rgba(255,255,255,0.25); padding-left: 14px; }
+    .slide-3slogan-light { font-size: 14px; font-style: italic; color: rgba(0,0,0,0.5); line-height: 1.75; margin-bottom: 16px; border-left: 3px solid rgba(0,0,0,0.15); padding-left: 14px; }
+
     /* ── VIDEO BACKGROUND (award-hero style) ────────────────── */
     .award-overlay-light {
       position: absolute; inset: 0;
@@ -952,6 +992,12 @@
 <header class="hero" id="slide-hero">
   <div class="hero-inner">
     <div class="hero-text">
+      <div style="margin-bottom: 20px;">
+        <div class="avatar-ring">
+          <img src="stefan-bauer.jpeg" alt="Dr. Stefan Bauer" class="avatar" style="width:120px;height:120px;" onerror="this.style.display='none';document.getElementById('afb').style.display='flex';" />
+          <div id="afb" class="avatar-fb">SB</div>
+        </div>
+      </div>
       <p class="hero-kicker">
         Vienna, Austria · PhD · AI Innovator ·
         Claude Code Enthusiast <img src="logos/anthropic-logo.svg" alt="Anthropic" class="logo-inline" />
@@ -982,7 +1028,7 @@
         <div style="display:flex; align-items:center; gap:10px;">
           <span style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); min-width:14px; flex-shrink:0;">04</span>
           <span style="font-size:14px; color:var(--text); font-weight:400;">Managing Director, Bäckerei Karl Bauer GmbH</span>
-          <img src="logos/baeckerei-bauer-logo.png" alt="Bäckerei Karl Bauer" class="logo-inline" />
+          <img src="logos/baeckerei-bauer-logo.svg" alt="Bäckerei Karl Bauer" class="logo-inline" />
         </div>
       </div>
 
@@ -998,20 +1044,30 @@
         <a href="https://www.sustainista.net" target="_blank" rel="noopener" class="btn btn-green">✦ Sustainista</a>
       </div>
 
-      <button id="hero-pres-btn" onclick="window.enterPresMode && window.enterPresMode()" aria-label="Präsentation starten">
-        <span class="hpb-label">Präsentation starten</span>
-        <span class="hpb-arrow" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
-          </svg>
-        </span>
-      </button>
     </div>
-    <div class="hero-photo">
-      <div class="avatar-ring">
-        <img src="stefan-bauer.jpeg" alt="Dr. Stefan Bauer" class="avatar"
-             onerror="this.style.display='none';document.getElementById('afb').style.display='flex';" />
-        <div id="afb" class="avatar-fb">SB</div>
+    <div class="hero-cta-panel">
+      <p class="hero-cta-title">Quick Access</p>
+      <button class="hero-cta-btn-primary" onclick="window.enterPresMode && window.enterPresMode()">
+        ▶ Start Presentation
+      </button>
+      <a href="#slide-about" class="hero-cta-btn-secondary">
+        ↓ More Details
+      </a>
+      <div class="hero-cta-divider"></div>
+      <p class="hero-cta-title">Live Projects</p>
+      <div class="hero-cta-links">
+        <a href="https://www.sustainista.net" target="_blank" rel="noopener" class="hero-cta-link">
+          <img src="logos/sustainista-logo.png" alt="Sustainista" /> sustainista.net
+        </a>
+        <a href="https://elektro-beta.vercel.app" target="_blank" rel="noopener" class="hero-cta-link">
+          ⚡ elektro-beta.vercel.app
+        </a>
+        <a href="https://digitale-zukunftsbildung.eu" target="_blank" rel="noopener" class="hero-cta-link">
+          <img src="logos/skillsup-logo-new.png" alt="Skills-UP!" /> digitale-zukunftsbildung.eu
+        </a>
+        <a href="https://baeckerei-bauer.vercel.app" target="_blank" rel="noopener" class="hero-cta-link">
+          <img src="logos/baeckerei-bauer-logo.svg" alt="Bäckerei Bauer" /> baeckerei-bauer.vercel.app
+        </a>
       </div>
     </div>
   </div>
@@ -1052,6 +1108,7 @@
   <div class="award-overlay-light">
     <span class="aw-eyebrow">📽 Video Introduction</span>
     <h2 class="aw-headline">Dr. Stefan Bauer</h2>
+    <p class="slide-3slogan-light">Research without practice is just theory. Practice without research is just guessing. 15 years spent building the bridge between both.</p>
     <p class="aw-sub">PhD · CEO &amp; Co-Founder Sustainista · Endowed Professor · AI Builder · Hackathon Organizer</p>
   </div>
 </div>
@@ -1067,10 +1124,11 @@
   <div class="award-overlay">
     <span class="aw-eyebrow">🏆 TOP 3 Award · €200,000 Funding</span>
     <h2 class="aw-headline">MEGA Education<br>Million 2025</h2>
+    <p class="slide-3slogan">80 national initiatives competed for Austria's largest education prize. Three were selected by expert jury and public vote. Skills-UP! was one of them.</p>
     <p class="aw-sub">Austria's most prestigious education prize — Skills-UP! selected from 80+ national initiatives. A peer-to-peer financial literacy platform that reached 200+ apprentices and drove lasting behavioral change in 90% of participants.</p>
     <div class="aw-stats">
       <div class="aw-stat"><span class="aw-n">€200k</span><span class="aw-l">Funding received</span></div>
-      <div class="aw-stat"><span class="aw-n">80+</span><span class="aw-l">Initiatives defeated</span></div>
+      <div class="aw-stat"><span class="aw-n">80+</span><span class="aw-l">Initiatives competing</span></div>
       <div class="aw-stat"><span class="aw-n">200+</span><span class="aw-l">Apprentices reached</span></div>
       <div class="aw-stat"><span class="aw-n">90%</span><span class="aw-l">Behavior change</span></div>
     </div>
@@ -1109,7 +1167,7 @@
     </a>
     <a href="#slide-stiftung" class="chapter-item">
       <span class="ci-num">06</span><span class="ci-icon">🏛</span>
-      <span class="ci-title">Professorship</span><span class="ci-motto">KI · ESG · Finance</span>
+      <span class="ci-title">Professorship</span><span class="ci-motto">AI · ESG · Finance</span>
     </a>
     <a href="#slide-teaching" class="chapter-item">
       <span class="ci-num">07</span><span class="ci-icon">📚</span>
@@ -1305,7 +1363,7 @@
     <div class="srow">
       <div class="s"><span class="n">90%</span><span class="l">Behavior change</span></div>
       <div class="s"><span class="n">200+</span><span class="l">Apprentices reached</span></div>
-      <div class="s"><span class="n">80+</span><span class="l">Initiatives defeated</span></div>
+      <div class="s"><span class="n">80+</span><span class="l">Initiatives competing</span></div>
       <div class="s"><span class="n">2021</span><span class="l">Platform launched</span></div>
     </div>
     <div class="hl-btns" style="margin-top:20px;">
@@ -1350,6 +1408,7 @@
     <img src="logos/sustainista-logo-white.png" alt="Sustainista" style="height:36px; width:auto; object-fit:contain; margin-bottom:16px; display:block; opacity:0.95;" />
     <span class="aw-eyebrow" style="background:#4ade80; color:#052e16;">✦ CEO &amp; Co-Founder</span>
     <h2 class="aw-headline">Sustainability<br>as a Service</h2>
+    <p class="slide-3slogan">ESG reporting is broken — 80% manual, 20% guesswork. We automate it with AI and build EU-compliant Digital Product Passports. From carbon footprint to circular economy, all in one platform.</p>
     <p class="aw-sub">Sustainista helps companies automate ESG reporting, build EU-compliant Digital Product Passports, and measure their Product Carbon Footprint (Scope 1–3). As Work Package Lead in the FFG Flagship PACE-DPP and partner of dpp-austria.at, we drive Austria's circular economy — powered by AI.</p>
     <div class="aw-stats">
       <div class="aw-stat"><span class="aw-n" style="color:#4ade80;">DPP</span><span class="aw-l">Digital Product Passport</span></div>
@@ -1391,6 +1450,7 @@
     <img src="logos/l2bgreen-logo.png" alt="L2BGreen" class="hl-logo" style="filter:brightness(0) invert(1); opacity:0.9;" />
     <p class="sl">ERASMUS+ Project · EU Funded</p>
     <h2 class="st">L2BGreen — Green Entrepreneurship for Europe</h2>
+    <p class="slide-3slogan" style="color:rgba(255,255,255,0.65);">Green entrepreneurship needs people, not just policies. We built Europe's open curriculum for it across 7 countries. €1.5M, one shared mission, real-world impact by 2027.</p>
     <p class="ss">L2BGreen is an Erasmus+ initiative I co-lead — equipping people across Europe with the skills for green entrepreneurship. The project builds an interactive online course, an AI chatbot for real-world case studies, and a Europe-wide community network. I serve as Work Package Lead and co-founder of the technology partner building the AI chatbot component.</p>
     <div class="chips">
       <span class="chip">🇪🇺 Erasmus+ · €1,499,148 EU Funding</span>
@@ -1735,6 +1795,7 @@
     </div>
     <span class="aw-eyebrow" style="background:#f1f5f9; color:#0f172a;">🇮🇸 Reykjavik University · MBA / Master</span>
     <h2 class="aw-headline">Teaching<br>Internationally</h2>
+    <p class="slide-3slogan">Great teaching comes from practice, not theory. I bring EU projects, hackathons, and startup experience directly into every classroom. Students leave ready to build — not just to present.</p>
     <p class="aw-sub">Design Thinking: An Interdisciplinary Perspective — taught in English for MBA and Master students at Reykjavik University, Iceland. Live workshops, group work, rapid prototyping. Students build real solutions in intensive hands-on sessions. One of the few courses that connects Design Thinking directly with information security and AI — bridging academia and applied innovation.</p>
     <div class="aw-stats">
       <div class="aw-stat"><span class="aw-n" style="color:#93c5fd;">🇮🇸</span><span class="aw-l">Reykjavik, Iceland</span></div>
@@ -1761,6 +1822,7 @@
     </div>
     <span class="aw-eyebrow" style="background:#fde68a; color:#1c1400;">🎓 Lauder Business School · Vienna</span>
     <h2 class="aw-headline">Master Thesis<br>Defenses</h2>
+    <p class="slide-3slogan">Real academic accountability means defending your work in front of people who will challenge it. I supervise and examine Master theses at LBS Vienna. The moment where theory meets its test.</p>
     <p class="aw-sub">Thesis supervisor and examiner at Lauder Business School Vienna. Students present their research, defend methodology and results before the committee — challenged to the standard of real academic practice. Banking Simulation and applied management research at Master level. The moment where theory meets accountability.</p>
     <div class="aw-stats">
       <div class="aw-stat"><img src="logos/lbs-logo.png" alt="Lauder Business School" style="height:40px; width:auto; background:#fff; border-radius:6px; padding:3px 6px; display:block;" /><span class="aw-l">Lauder Business School</span></div>
@@ -1786,6 +1848,7 @@
     </div>
     <span class="aw-eyebrow" style="background:#bbf7d0; color:#052e16;">🚀 ViennaUP · European Tech Hackathon</span>
     <h2 class="aw-headline">Teaching Through<br>Hackathons</h2>
+    <p class="slide-3slogan">Real entrepreneurship cannot be taught from a textbook. 48 hours from idea to pitch, under real competitive pressure. The best learning happens when failure has consequences.</p>
     <p class="aw-sub">Real entrepreneurship cannot be taught from a textbook. At ViennaUP's European Tech Hackathon, students and founders work under pressure — 48 hours from idea to pitch. Best Team Spirit Award. Best European Idea Award. €1.000 prizes. This is where classroom theory collides with reality, and the best learning happens under pressure.</p>
     <div class="aw-stats">
       <div class="aw-stat"><span class="aw-n" style="color:#bbf7d0;">48h</span><span class="aw-l">Idea to pitch</span></div>
@@ -1798,17 +1861,50 @@
 <div class="award-caption">ViennaUP European Tech Hackathon — Best Team Spirit Award &amp; Best European Idea Award · Teaching Entrepreneurship in Practice 🚀</div>
 
 <!-- ════════════════════════════════════════════════════════════
-     STIFTUNGSPROFESSUR — KI, ESG & FINANCE
+     BÄCKEREI KARL BAUER — FAMILY BUSINESS SLIDE
+═════════════════════════════════════════════════════════════ -->
+<div class="award-hero" id="slide-baeckerei">
+  <img src="baeckerei-kaffeehaus-hero.jpg"
+       alt="Bäckerei Karl Bauer GmbH — Kaffeehaus Wien mit Therese Mayer"
+       class="award-hero-img" style="object-position: center 40%;" />
+  <div class="award-overlay" style="background: linear-gradient(to top, rgba(30,15,5,0.97) 0%, rgba(30,15,5,0.72) 42%, rgba(30,15,5,0.18) 78%, transparent 100%);">
+    <div class="slide-motto" style="margin-bottom:14px;">
+      <span style="color:rgba(255,255,255,0.5);">Family</span><span class="sm-dot" style="color:rgba(255,255,255,0.3);">·</span>
+      <span style="color:rgba(255,255,255,0.5);">Craft</span><span class="sm-dot" style="color:rgba(255,255,255,0.3);">·</span>
+      <span style="color:rgba(255,255,255,0.5);">Community</span>
+    </div>
+    <img src="logos/baeckerei-bauer-logo.svg" alt="Bäckerei Karl Bauer" style="height:44px; width:auto; margin-bottom:16px; display:block; filter: brightness(0) invert(1); opacity:0.9;" />
+    <span class="aw-eyebrow" style="background:#fef3c7; color:#78350f;">🥐 Bäckerei Karl Bauer GmbH · Vienna</span>
+    <h2 class="aw-headline">Family Business.<br>Viennese Craft.</h2>
+    <p class="slide-3slogan">A family business is not a business — it is a promise. Bäckerei Karl Bauer has kept that promise for over 30 years in Vienna. Quality ingredients, artisan craft, and community at the heart of everything.</p>
+    <p class="aw-sub">As Managing Director of Bäckerei Karl Bauer GmbH, I bridge traditional Viennese baking craftsmanship with modern business management. From Kaffeehaus culture to artisan bread — we serve Vienna's neighborhoods with quality and care. Led by a team that treats every customer like family.</p>
+    <div class="aw-stats">
+      <div class="aw-stat"><span class="aw-n" style="color:#fde68a;">30+</span><span class="aw-l">Years in Vienna</span></div>
+      <div class="aw-stat"><span class="aw-n" style="color:#fde68a;">🥐</span><span class="aw-l">Artisan Bakery</span></div>
+      <div class="aw-stat"><span class="aw-n" style="color:#fde68a;">Café</span><span class="aw-l">Kaffeehaus culture</span></div>
+      <div class="aw-stat"><span class="aw-n" style="color:#fde68a;">Wien</span><span class="aw-l">Vienna, Austria</span></div>
+    </div>
+    <div style="margin-top:20px;">
+      <a href="https://baeckerei-bauer.vercel.app" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#78350f;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:600;text-decoration:none;">🥖 baeckerei-bauer.vercel.app</a>
+    </div>
+  </div>
+</div>
+<div class="award-caption" style="background:#1c0d04; color:rgba(255,255,255,0.6);">Bäckerei Karl Bauer GmbH · Kaffeehaus Wien · Managing Director Dr. Stefan Bauer 🥐</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     STIFTUNGSPROFESSUR — AI, ESG & FINANCE
 ═════════════════════════════════════════════════════════════ -->
 <section class="hl hl-teal" id="slide-stiftung" style="border-left: 4px solid #ED1C24;">
   <div class="hl-inner">
-    <div class="slide-motto"><span>KI</span><span class="sm-dot">·</span><span>ESG</span><span class="sm-dot">·</span><span>Finance</span></div>
+    <div class="slide-motto"><span>AI</span><span class="sm-dot">·</span><span>ESG</span><span class="sm-dot">·</span><span>Finance</span></div>
     <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px; flex-wrap:wrap;">
       <img src="logos/stadt-wien-logo.svg" alt="Stadt Wien" style="height:40px; width:auto; border-radius:6px;" />
       <img src="logos/wu-wien-logo.svg" alt="WU Wien" style="height:36px; width:auto; border-radius:6px;" />
     </div>
     <p class="sl" style="color:#ED1C24;">Endowed Professorship · City of Vienna</p>
     <h2 class="st">Finance, ESG &amp; Artificial Intelligence</h2>
+    <p class="slide-3slogan" style="color:rgba(0,0,0,0.5);">The City of Vienna invests in people who bridge research, business, and society. As Endowed Professor, I bring AI-driven finance and ESG literacy to the next generation. This chair is not just an honor — it is a mandate to build what matters.</p>
     <p class="ss">The City of Vienna awards endowed professorships to individuals who bridge research, business, and societal relevance. As Endowed Professor, I bring together my experience in ESG automation (Sustainista), financial literacy (Skills-UP!), and 15+ years of university teaching — with a clear focus on AI-driven financial analysis and sustainable corporate governance.</p>
     <div class="srow">
       <div class="s"><span class="n" style="color:#ED1C24;">Vienna</span><span class="l">City of Vienna Endowment</span></div>
@@ -1966,6 +2062,7 @@
     { id: 'slide-pm',           label: 'Projektmanagement — ~€3M verwaltet' },
     { id: 'slide-hackathon-video', label: 'Hackathon — Live' },
     { id: 'slide-hackathon',       label: 'Europe Tech Hackathon' },
+    { id: 'slide-baeckerei',       label: 'Bäckerei Karl Bauer' },
     { id: 'slide-awards',       label: 'Auszeichnungen & Preise' },
     { id: 'slide-teaching',     label: 'Lehre an 10+ Universitäten' },
     { id: 'slide-publications', label: 'Publikationen — 620+ Zitierungen' },
@@ -2169,6 +2266,7 @@
     { id: 'slide-pm',         name: 'Project Management' },
     { id: 'slide-reykjavik',  name: 'International Teaching' },
     { id: 'slide-lauder',     name: 'Lauder Business School' },
+    { id: 'slide-baeckerei',  name: 'Bäckerei Karl Bauer' },
     { id: 'slide-stiftung',   name: 'Endowed Professorship' },
     { id: 'slide-hackathon',  name: 'Hackathon' },
     { id: 'slide-awards',     name: 'Awards' },
