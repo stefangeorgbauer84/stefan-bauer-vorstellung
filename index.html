@@ -889,6 +889,43 @@
     footer a { color: var(--muted); text-decoration: none; transition: color 0.15s; }
     footer a:hover { color: var(--blue); }
     footer .d { margin: 0 8px; opacity: 0.4; }
+
+    /* ── VIDEO BACKGROUND (award-hero style) ────────────────── */
+    .award-overlay-light {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(255,255,255,0.97) 0%,
+        rgba(255,255,255,0.82) 32%,
+        rgba(255,255,255,0.18) 62%,
+        transparent 100%
+      );
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 52px 46px;
+    }
+    @media (max-width: 700px) { .award-overlay-light { padding: 0 22px 28px; } }
+    .award-overlay-light .aw-eyebrow {
+      background: var(--blue); color: #fff;
+    }
+    .award-overlay-light .aw-headline { color: var(--text); }
+    .award-overlay-light .aw-sub { color: var(--muted); }
+    .award-overlay-light .aw-stat .aw-n { color: var(--blue); }
+    .award-overlay-light .aw-stat .aw-l { color: var(--muted); }
+
+    .vbg-wrap {
+      width: 100%; height: 580px;
+      position: relative; overflow: hidden; background: #000;
+    }
+    @media (max-width: 700px) { .vbg-wrap { height: 340px; } }
+    .vbg-inner {
+      position: absolute; top: 50%; left: 50%;
+      width: 177.78vh; height: 100vh;
+      min-width: 100%; min-height: 100%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .vbg-inner iframe { width: 100%; height: 100%; border: none; }
   </style>
 </head>
 <body>
@@ -1006,6 +1043,19 @@
     <span class="tick-item">🌱 Endowed Professor · City of Vienna</span><span class="tick-item tick-sep">✦</span>
   </div>
 </div>
+
+<!-- ── INTRO VIDEO BACKGROUND ──────────────────────────────── -->
+<div class="award-hero" id="slide-intro-video">
+  <div class="vbg-wrap">
+    <div class="vbg-inner"><div id="yt-intro-bg"></div></div>
+  </div>
+  <div class="award-overlay-light">
+    <span class="aw-eyebrow">📽 Video Introduction</span>
+    <h2 class="aw-headline">Dr. Stefan Bauer</h2>
+    <p class="aw-sub">PhD · CEO &amp; Co-Founder Sustainista · Endowed Professor · AI Builder · Hackathon Organizer</p>
+  </div>
+</div>
+<p class="award-caption">Dr. Stefan Bauer — Course Introduction · Vienna, Austria</p>
 
 <!-- ══════════════════════════════════════════════════════════════
      AWARD MOMENT — TOP 3 MEGA Education Million 2025
@@ -1541,6 +1591,24 @@
   </svg>
 </div>
 
+<!-- ── HACKATHON VIDEO BACKGROUND ───────────────────────────── -->
+<div class="award-hero" id="slide-hackathon-video">
+  <div class="vbg-wrap">
+    <div class="vbg-inner"><div id="yt-hack-bg"></div></div>
+  </div>
+  <div class="award-overlay-light">
+    <span class="aw-eyebrow">🏟 Europe Tech Hackathon · ViennaUP</span>
+    <h2 class="aw-headline">48 Hours.<br>Real Problems.<br>Real Prototypes.</h2>
+    <p class="aw-sub">ÖBB Open Innovation Factory, Vienna · 200+ participants · 4 sustainability challenges</p>
+    <div class="aw-stats">
+      <div class="aw-stat"><span class="aw-n">200+</span><span class="aw-l">Participants</span></div>
+      <div class="aw-stat"><span class="aw-n">48h</span><span class="aw-l">Sprint</span></div>
+      <div class="aw-stat"><span class="aw-n">4</span><span class="aw-l">Challenges</span></div>
+    </div>
+  </div>
+</div>
+<p class="award-caption">Europe Tech Hackathon — ViennaUP · ÖBB Open Innovation Factory · Vienna</p>
+
 <!-- ── HACKATHON VIDEOS ─────────────────────────────────────── -->
 <div style="max-width:980px;margin:0 auto;padding:0 28px 88px;">
 
@@ -1695,13 +1763,39 @@
     <h2 class="aw-headline">Master Thesis<br>Defenses</h2>
     <p class="aw-sub">Thesis supervisor and examiner at Lauder Business School Vienna. Students present their research, defend methodology and results before the committee — challenged to the standard of real academic practice. Banking Simulation and applied management research at Master level. The moment where theory meets accountability.</p>
     <div class="aw-stats">
-      <div class="aw-stat"><span class="aw-n" style="color:#fde68a;">LBS</span><span class="aw-l">Lauder Business School</span></div>
+      <div class="aw-stat"><img src="logos/lbs-logo.png" alt="Lauder Business School" style="height:40px; width:auto; background:#fff; border-radius:6px; padding:3px 6px; display:block;" /><span class="aw-l">Lauder Business School</span></div>
       <div class="aw-stat"><span class="aw-n" style="color:#fde68a;">Master</span><span class="aw-l">Thesis supervision</span></div>
       <div class="aw-stat"><span class="aw-n" style="color:#fde68a;">Vienna</span><span class="aw-l">Austria</span></div>
     </div>
   </div>
 </div>
 <div class="award-caption">Lauder Business School Vienna — Master Thesis Defense · Dr. Stefan Bauer als Prüfer &amp; Betreuer 🎓</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     VIENNAUP HACKATHON — TEACHING THROUGH INNOVATION SLIDE
+═════════════════════════════════════════════════════════════ -->
+<div class="award-hero" id="slide-viennaup">
+  <img src="viennaup-hackathon-group.jpg"
+       alt="ViennaUP Hackathon — Teaching Entrepreneurship & Innovation through real-world challenges"
+       class="award-hero-img" style="object-position: center 35%;" />
+  <div class="award-overlay" style="background: linear-gradient(to top, rgba(0,20,10,0.97) 0%, rgba(0,20,10,0.70) 42%, rgba(0,20,10,0.18) 75%, transparent 100%);">
+    <div class="slide-motto" style="margin-bottom:14px;">
+      <span style="color:rgba(255,255,255,0.5);">Challenge</span><span class="sm-dot" style="color:rgba(255,255,255,0.3);">·</span>
+      <span style="color:rgba(255,255,255,0.5);">Build</span><span class="sm-dot" style="color:rgba(255,255,255,0.3);">·</span>
+      <span style="color:rgba(255,255,255,0.5);">Ship</span>
+    </div>
+    <span class="aw-eyebrow" style="background:#bbf7d0; color:#052e16;">🚀 ViennaUP · European Tech Hackathon</span>
+    <h2 class="aw-headline">Teaching Through<br>Hackathons</h2>
+    <p class="aw-sub">Real entrepreneurship cannot be taught from a textbook. At ViennaUP's European Tech Hackathon, students and founders work under pressure — 48 hours from idea to pitch. Best Team Spirit Award. Best European Idea Award. €1.000 prizes. This is where classroom theory collides with reality, and the best learning happens under pressure.</p>
+    <div class="aw-stats">
+      <div class="aw-stat"><span class="aw-n" style="color:#bbf7d0;">48h</span><span class="aw-l">Idea to pitch</span></div>
+      <div class="aw-stat"><span class="aw-n" style="color:#bbf7d0;">🏆</span><span class="aw-l">Multiple awards</span></div>
+      <div class="aw-stat"><span class="aw-n" style="color:#bbf7d0;">EU</span><span class="aw-l">European teams</span></div>
+      <div class="aw-stat"><span class="aw-n" style="color:#bbf7d0;">Vienna</span><span class="aw-l">ViennaUP festival</span></div>
+    </div>
+  </div>
+</div>
+<div class="award-caption">ViennaUP European Tech Hackathon — Best Team Spirit Award &amp; Best European Idea Award · Teaching Entrepreneurship in Practice 🚀</div>
 
 <!-- ════════════════════════════════════════════════════════════
      STIFTUNGSPROFESSUR — KI, ESG & FINANCE
@@ -1861,15 +1955,17 @@
   'use strict';
 
   const SLIDES = [
-    { id: 'slide-hero',         label: 'Vorstellung' },
-    { id: 'slide-award',        label: 'TOP 3 — MEGA Education Million 2025' },
+    { id: 'slide-hero',           label: 'Vorstellung' },
+    { id: 'slide-intro-video',    label: 'Video Introduction' },
+    { id: 'slide-award',          label: 'TOP 3 — MEGA Education Million 2025' },
     { id: 'slide-about',        label: 'Wer bin ich?' },
     { id: 'slide-career',       label: 'Karriere-Überblick' },
     { id: 'slide-skillsup',     label: 'Skills-UP! — Finanzbildung' },
     { id: 'slide-sustainista',  label: 'Sustainista — Sustainability as a Service' },
     { id: 'slide-l2bgreen',     label: 'L2BGreen — Erasmus+ Projekt' },
     { id: 'slide-pm',           label: 'Projektmanagement — ~€3M verwaltet' },
-    { id: 'slide-hackathon',    label: 'Europe Tech Hackathon' },
+    { id: 'slide-hackathon-video', label: 'Hackathon — Live' },
+    { id: 'slide-hackathon',       label: 'Europe Tech Hackathon' },
     { id: 'slide-awards',       label: 'Auszeichnungen & Preise' },
     { id: 'slide-teaching',     label: 'Lehre an 10+ Universitäten' },
     { id: 'slide-publications', label: 'Publikationen — 620+ Zitierungen' },
@@ -2098,6 +2194,43 @@
   }
   window.addEventListener('scroll', update, { passive: true });
 })();
+</script>
+
+<!-- ── YOUTUBE LOOP BACKGROUNDS ────────────────────────────── -->
+<script>
+  var ytIntro, ytHack;
+
+  window.onYouTubeIframeAPIReady = function() {
+    ytIntro = new YT.Player('yt-intro-bg', {
+      videoId: 'x9qtzPvO21k',
+      playerVars: { start: 165, end: 170, autoplay: 1, mute: 1, controls: 0, rel: 0, modestbranding: 1, playsinline: 1 },
+      events: {
+        onReady: function(e) { e.target.playVideo(); },
+        onStateChange: function(e) {
+          if (e.data === YT.PlayerState.ENDED || e.data === YT.PlayerState.PAUSED) {
+            ytIntro.seekTo(165); ytIntro.playVideo();
+          }
+        }
+      }
+    });
+
+    ytHack = new YT.Player('yt-hack-bg', {
+      videoId: 'xFhZWABK_NI',
+      playerVars: { start: 51, end: 59, autoplay: 1, mute: 1, controls: 0, rel: 0, modestbranding: 1, playsinline: 1 },
+      events: {
+        onReady: function(e) { e.target.playVideo(); },
+        onStateChange: function(e) {
+          if (e.data === YT.PlayerState.ENDED || e.data === YT.PlayerState.PAUSED) {
+            ytHack.seekTo(51); ytHack.playVideo();
+          }
+        }
+      }
+    });
+  };
+
+  var ytTag = document.createElement('script');
+  ytTag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(ytTag);
 </script>
 
 </body>
