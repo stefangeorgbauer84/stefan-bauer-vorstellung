@@ -1188,6 +1188,35 @@
   .cta-btn-substack { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.15); }
   .cta-btn-substack:hover { background: rgba(255,255,255,0.12); }
 
+  /* ── DESIGN UPGRADES ─────────────────────────────────────────── */
+  .award-hero-img { height: clamp(600px, 88vh, 860px) !important; opacity: 0.78 !important; }
+  @media (max-width: 700px) { .award-hero-img { height: 460px !important; } }
+
+  .award-overlay {
+    background:
+      linear-gradient(to right, rgba(2,5,20,0.68) 0%, rgba(2,5,20,0.28) 50%, transparent 100%),
+      linear-gradient(to top, rgba(2,5,20,0.98) 0%, rgba(2,5,20,0.82) 28%, rgba(2,5,20,0.22) 62%, transparent 100%) !important;
+    padding: 0 64px 64px !important;
+  }
+  @media (max-width: 700px) { .award-overlay { padding: 0 24px 40px !important; } }
+
+  .aw-eyebrow { margin-bottom: 20px !important; }
+  .aw-headline { font-size: clamp(28px, 5.5vw, 68px) !important; line-height: 0.93 !important; margin-bottom: 18px !important; }
+  .aw-sub { font-size: clamp(13.5px, 1.65vw, 17px) !important; color: rgba(255,255,255,0.78) !important; max-width: 620px !important; margin-bottom: 28px !important; }
+
+  .aw-stats { gap: 32px !important; padding-top: 22px !important; border-top: 1px solid rgba(255,255,255,0.1) !important; flex-wrap: nowrap !important; }
+  @media (max-width: 700px) { .aw-stats { flex-wrap: wrap !important; gap: 20px !important; } }
+
+  .aw-stat { padding-left: 14px !important; border-left: 2px solid rgba(74,222,128,0.45) !important; }
+  .aw-stat .aw-n { font-size: clamp(28px, 3.2vw, 46px) !important; letter-spacing: -1.5px !important; line-height: 1 !important; }
+  .aw-stat .aw-l { font-size: 10.5px !important; color: rgba(255,255,255,0.52) !important; letter-spacing: 1.8px !important; margin-top: 3px !important; display: block !important; }
+
+  .slide-motto span { font-size: 11px !important; letter-spacing: 3.5px !important; color: rgba(255,255,255,0.55) !important; }
+  .slide-3slogan { border-left: 3px solid rgba(74,222,128,0.5) !important; color: rgba(255,255,255,0.72) !important; }
+
+  .award-caption { background: #020509 !important; border-top: 1px solid rgba(255,255,255,0.07) !important; padding: 13px 64px !important; font-size: 11.5px !important; color: rgba(255,255,255,0.38) !important; letter-spacing: 0.4px !important; }
+  @media (max-width: 700px) { .award-caption { padding: 10px 24px !important; } }
+
   /* ── GRADIENT OVERRIDES — green → violet brand ───────────────── */
   .aw-eyebrow {
     background: linear-gradient(135deg, rgba(22,163,74,0.22) 0%, rgba(124,58,237,0.22) 100%) !important;
