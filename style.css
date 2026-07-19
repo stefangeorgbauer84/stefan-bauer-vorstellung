@@ -21,6 +21,12 @@
     }
 
     html { scroll-behavior: smooth; }
+    .skip-link {
+      position: absolute; left: -9999px; top: 0; z-index: 300;
+      background: var(--blue); color: #fff; padding: 10px 18px;
+      border-radius: 0 0 8px 0; font-size: 14px; text-decoration: none;
+    }
+    .skip-link:focus { left: 0; }
     body {
       font-family: 'Roboto', 'Google Sans', system-ui, -apple-system, sans-serif;
       background: var(--bg); color: var(--text);
@@ -567,6 +573,7 @@
     /* ── PROJECT GRID ───────────────────────────────────────── */
     .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
     @media (max-width: 700px) { .proj-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .proj-grid { grid-template-columns: 1fr; } }
     .proj-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 11px; padding: 18px;
@@ -716,6 +723,7 @@
     /* ── REDUCED MOTION ─────────────────────────────────────── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
       .avatar-ring::before { animation: none; }
       .ticker-inner { animation: none; }
     }
@@ -943,6 +951,7 @@
     .award-overlay-light .aw-stat .aw-l { color: var(--muted); }
 
     .vbg-wrap {
+      background: linear-gradient(160deg, #0b1220 0%, #16233a 100%);
       width: 100%; height: 580px;
       position: relative; overflow: hidden; background: #000;
     }
@@ -1111,25 +1120,6 @@
     .hcl-text { display: flex; flex-direction: column; gap: 1px; }
     .hero .hero-cta-link img { height: 20px; width: auto; border-radius: 3px; flex-shrink: 0; }
 
-  /* ── HIDE OLD SLIDES ─────────────────────────────────────────── */
-  #slide-intro-video,
-  #slide-about,
-  #slide-skillsup,
-  #slide-l2bgreen,
-  #slide-pm,
-  #slide-hackathon-video,
-  #slide-hackathon,
-  #slide-awards,
-  #slide-teaching,
-  #slide-reykjavik,
-  #slide-lauder,
-  #slide-viennaup,
-  #slide-stiftung,
-  #slide-publications,
-  #slide-follow,
-  .li-cta,
-  .wave-transition { display: none !important; }
-
   /* ── CTA SLIDE ───────────────────────────────────────────────── */
   .cta-hero {
     background: radial-gradient(ellipse at 25% 60%, rgba(22,163,74,0.28) 0%, transparent 52%),
@@ -1199,8 +1189,8 @@
   .aw-stat .aw-n { font-size: clamp(28px, 3.2vw, 46px) !important; letter-spacing: -1.5px !important; line-height: 1 !important; }
   .aw-stat .aw-l { font-size: 10.5px !important; color: rgba(255,255,255,0.52) !important; letter-spacing: 1.8px !important; margin-top: 3px !important; display: block !important; }
 
-  .slide-motto span { font-size: 11px !important; letter-spacing: 3.5px !important; color: rgba(255,255,255,0.55) !important; }
-  .slide-3slogan { border-left: 3px solid rgba(74,222,128,0.5) !important; color: rgba(255,255,255,0.72) !important; }
+  .award-overlay .slide-motto span { font-size: 11px !important; letter-spacing: 3.5px !important; color: rgba(255,255,255,0.55) !important; }
+  .award-overlay .slide-3slogan { border-left: 3px solid rgba(74,222,128,0.5) !important; color: rgba(255,255,255,0.72) !important; }
 
   .award-caption { background: #020509 !important; border-top: 1px solid rgba(255,255,255,0.07) !important; padding: 13px 64px !important; font-size: 11.5px !important; color: rgba(255,255,255,0.38) !important; letter-spacing: 0.4px !important; }
   @media (max-width: 700px) { .award-caption { padding: 10px 24px !important; } }
