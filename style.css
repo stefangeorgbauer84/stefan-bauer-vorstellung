@@ -973,17 +973,56 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* Photo background — right 42%, fading in from left so text stays clean */
+    /* Photo background — Sustainista team at ViennaUP, full bleed.
+       Same treatment as the Sustainista website hero: the photo carries the
+       section, a canvas scrim keeps the text readable on top of it. */
     .hero::before {
       content: '' !important;
       display: block !important;
-      position: absolute;
-      top: 0; right: 0; bottom: 0;
-      width: 42%;
-      background: url('stefan-bauer.jpeg') center 12% / cover no-repeat;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.55) 28%, rgba(0,0,0,0.92) 100%);
-      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.55) 28%, rgba(0,0,0,0.92) 100%);
+      position: absolute; inset: 0;
+      background: url('sustainista-team-viennaup.jpg') center center / cover no-repeat;
+      opacity: 0.78;
+      filter: saturate(1.4) contrast(1.08);
+      transition: opacity 0.7s ease-out, filter 0.7s ease-out;
       z-index: 0;
+    }
+    .hero:hover::before { opacity: 0.95; filter: saturate(1.7) contrast(1.08); }
+
+    /* Scrim: brightens the text column, softens top and bottom edges */
+    .hero::after {
+      content: '' !important;
+      display: block !important;
+      position: absolute; inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 58% 70% at 30% 50%,
+          rgba(255,255,255,0.96) 34%,
+          rgba(255,255,255,0.60) 70%,
+          rgba(255,255,255,0) 100%),
+        linear-gradient(to bottom,
+          #ffffff 0%,
+          rgba(255,255,255,0) 18%,
+          rgba(255,255,255,0) 82%,
+          #ffffff 100%);
+      z-index: 1;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero::before, .hero:hover::before { transition: none; }
+    }
+    @media (max-width: 900px) {
+      /* One column: pull the scrim to the middle so it sits behind the text */
+      .hero::after {
+        background:
+          radial-gradient(ellipse 92% 68% at 50% 50%,
+            rgba(255,255,255,0.96) 38%,
+            rgba(255,255,255,0.66) 74%,
+            rgba(255,255,255,0) 100%),
+          linear-gradient(to bottom,
+            #ffffff 0%,
+            rgba(255,255,255,0) 18%,
+            rgba(255,255,255,0) 82%,
+            #ffffff 100%);
+      }
     }
 
     /* Color smears — Sustainista green + Skills-UP violet, small and soft */
