@@ -733,14 +733,69 @@
 
     body.pres-mode .li-top-bar { display: none; }
 
+    /* The control bar is fixed over the bottom of every slide. Its height is
+       not constant — it wraps on narrow screens — so JS measures it into
+       --pres-bar-h and every slide reserves exactly that much plus a gap.
+       An .award-overlay is position:absolute, so the slide's own padding does
+       not push it: those overlays carry the reserve in their own padding. */
     body.pres-mode [id^="slide-"] {
       min-height: 100dvh;
-      padding-bottom: 64px !important;
       box-sizing: border-box;
     }
 
-    body.pres-mode .award-hero-img {
-      height: calc(100dvh - 64px);
+    /* beats the clamp(600px, 88vh, 860px) in the design-upgrades block */
+    body.pres-mode .award-hero-img { height: 100dvh !important; }
+
+    body.pres-mode .award-hero:not(.cta-hero):not(.dzb-hero) .award-overlay {
+      padding-bottom: calc(var(--pres-bar-h, 64px) + 34px) !important;
+    }
+
+    /* Slides that centre their content in flow reserve it on the slide itself */
+    body.pres-mode .hero,
+    body.pres-mode .cta-hero,
+    body.pres-mode .dzb-hero {
+      padding-bottom: calc(var(--pres-bar-h, 64px) + 16px);
+    }
+
+    /* The bar already carries an exit button — a floating one on top of it
+       only collides with it (it used to overlap by 35px at 720p). */
+    body.pres-mode .pres-fab { display: none; }
+
+    /* Short screens (beamers, 720p laptops): tighten the type so a slide
+       never has to choose between clipping its top and hiding under the bar. */
+    @media (max-height: 800px) {
+      body.pres-mode .aw-headline { font-size: clamp(26px, 4.2vw, 46px) !important; margin-bottom: 12px !important; }
+      body.pres-mode .aw-eyebrow { margin-bottom: 12px !important; }
+      body.pres-mode .aw-sub { font-size: 13.5px !important; margin-bottom: 18px !important; }
+      body.pres-mode .slide-3slogan { font-size: 13px !important; margin-bottom: 14px !important; }
+      body.pres-mode .aw-stats { gap: 24px !important; padding-top: 15px !important; }
+      body.pres-mode .aw-stat .aw-n { font-size: clamp(22px, 2.5vw, 32px) !important; }
+      body.pres-mode .slide-links { margin-top: 16px; }
+      body.pres-mode .dzb-hero .award-overlay { padding-top: 40px !important; padding-bottom: 40px !important; }
+      body.pres-mode .dzb-logo { height: 44px; width: 44px; margin-bottom: 12px; }
+      body.pres-mode .hero-inner { padding: 24px 28px !important; }
+      body.pres-mode .hero-identity { margin-bottom: 16px !important; }
+      body.pres-mode .hero .avatar { width: 84px !important; height: 84px !important; }
+      body.pres-mode .role-card { padding: 11px 14px !important; }
+      body.pres-mode .hero-cta-panel { padding: 22px !important; gap: 12px !important; }
+    }
+
+    /* Narrow screens: the same slides have to survive a phone in
+       presentation mode, where the copy wraps to many more lines. */
+    @media (max-width: 700px) {
+      body.pres-mode .aw-headline { font-size: clamp(23px, 7vw, 33px) !important; margin-bottom: 10px !important; }
+      body.pres-mode .aw-eyebrow { margin-bottom: 10px !important; font-size: 9.5px !important; padding: 4px 12px !important; }
+      body.pres-mode .aw-sub { font-size: 12.5px !important; margin-bottom: 14px !important; }
+      body.pres-mode .slide-3slogan { font-size: 12px !important; margin-bottom: 12px !important; }
+      body.pres-mode .aw-stats { gap: 14px !important; padding-top: 12px !important; }
+      body.pres-mode .aw-stat { padding-left: 10px !important; }
+      body.pres-mode .aw-stat .aw-n { font-size: 21px !important; }
+      body.pres-mode .aw-stat .aw-l { font-size: 9px !important; letter-spacing: 1.2px !important; }
+      body.pres-mode .slide-motto { margin-bottom: 8px !important; }
+      body.pres-mode .slide-links { margin-top: 12px; gap: 8px; }
+      body.pres-mode .slide-link { padding: 9px 16px; font-size: 12px; }
+      body.pres-mode .dzb-hero .award-overlay { padding: 26px 24px !important; }
+      body.pres-mode .dzb-logo { height: 36px; width: 36px; margin-bottom: 10px; }
     }
 
     body.pres-mode .divider,
@@ -1257,3 +1312,69 @@
     box-shadow: 0 4px 24px rgba(124,58,237,0.35) !important;
   }
   .cta-btn-linkedin:hover { box-shadow: 0 8px 32px rgba(124,58,237,0.55) !important; }
+
+  /* ══════════════════════════════════════════════════════════════
+     SLIDE 3 — DIGITALE ZUKUNFTSBILDUNG (gradient slide, no photo)
+     Brand tokens of the association: violet #4a2d8a / #6b4db0, teal #2A8A76.
+     Built like .cta-hero: the overlay is in flow, so the slide keeps an
+     intrinsic height outside presentation mode.
+  ══════════════════════════════════════════════════════════════ */
+  .dzb-hero {
+    background:
+      radial-gradient(ellipse at 20% 26%, rgba(107, 77, 176, 0.58) 0%, transparent 56%),
+      radial-gradient(ellipse at 80% 80%, rgba(42, 138, 118, 0.40) 0%, transparent 54%),
+      #1d1038 !important;
+    display: flex;
+    align-items: center;
+  }
+  .dzb-hero .award-overlay {
+    position: relative;
+    background: none !important;
+    width: 100%; max-width: 1180px; margin: 0 auto;
+    padding: 76px 64px !important;
+  }
+  @media (max-width: 700px) { .dzb-hero .award-overlay { padding: 56px 24px !important; } }
+
+  /* .award-overlay is a column flex container, so a bare img would be
+     stretched to the full column width — pin the cross axis instead. */
+  .dzb-logo {
+    height: 54px; width: 54px; align-self: flex-start;
+    object-fit: cover; display: block; margin-bottom: 18px;
+    border-radius: 14px;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.22), 0 8px 24px rgba(0,0,0,0.34);
+  }
+  .dzb-hero .aw-stat { border-left-color: rgba(122, 209, 190, 0.55) !important; }
+  .dzb-hero .aw-eyebrow {
+    background: linear-gradient(135deg, rgba(42,138,118,0.30) 0%, rgba(124,58,237,0.30) 100%) !important;
+    border-color: rgba(167, 139, 250, 0.55) !important;
+  }
+
+  /* ── Slide link buttons (shared by Sustainista and DZB) ──────── */
+  .slide-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .slide-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 22px; border-radius: 100px;
+    font-size: 13px; font-weight: 600; text-decoration: none;
+    transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, background 0.18s;
+  }
+  .slide-link-solid { background: #ffffff; color: #14121f; }
+  .slide-link-ghost {
+    background: rgba(255,255,255,0.12); color: #ffffff;
+    border: 1.5px solid rgba(255,255,255,0.34); font-weight: 500;
+  }
+  .slide-link:hover { transform: translateY(-2px); }
+  .slide-link-solid:hover { box-shadow: 0 6px 22px rgba(255,255,255,0.28); }
+  .slide-link-ghost:hover { background: rgba(255,255,255,0.20); }
+  @media (prefers-reduced-motion: reduce) { .slide-link:hover { transform: none; } }
+
+  /* ── FIX: the hero side panel never actually hid on narrow screens ────
+     The @media (max-width:900px){.hero-cta-panel{display:none}} near the top
+     of this file is followed by the base .hero-cta-panel{display:flex} rule,
+     which has equal specificity and therefore wins at every width. The panel
+     stayed on below 900px and pushed the hero to ~1040px tall, so in
+     presentation mode it ran straight under the control bar.
+     Re-stating it here, after the base rule, makes it take effect. */
+  @media (max-width: 900px) {
+    .hero-cta-panel { display: none; }
+    .hero-inner { grid-template-columns: 1fr; }
+  }
