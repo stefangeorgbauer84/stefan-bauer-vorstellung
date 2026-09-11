@@ -746,16 +746,36 @@
     /* beats the clamp(600px, 88vh, 860px) in the design-upgrades block */
     body.pres-mode .award-hero-img { height: 100dvh !important; }
 
+    /* ── PROJECTOR SAFE AREA ───────────────────────────────────
+       Classroom beamers are often 4:3 (1024x768, still 800x600) and most
+       crop a few percent at every edge. Nothing may sit at the rim, so the
+       whole deck keeps a margin that scales with the projected surface
+       rather than a fixed pixel value. */
     body.pres-mode .award-hero:not(.cta-hero):not(.dzb-hero) .award-overlay {
-      padding-bottom: calc(var(--pres-bar-h, 64px) + 34px) !important;
+      padding-left: clamp(40px, 5.5vw, 96px) !important;
+      padding-right: clamp(40px, 5.5vw, 96px) !important;
+      padding-top: clamp(28px, 4vh, 64px) !important;
+      padding-bottom: calc(var(--pres-bar-h, 64px) + clamp(22px, 3.4vh, 40px)) !important;
     }
 
     /* Slides that centre their content in flow reserve it on the slide itself */
     body.pres-mode .hero,
     body.pres-mode .cta-hero,
     body.pres-mode .dzb-hero {
-      padding-bottom: calc(var(--pres-bar-h, 64px) + 16px);
+      padding-bottom: calc(var(--pres-bar-h, 64px) + clamp(16px, 3vh, 32px));
     }
+    body.pres-mode .hero-inner,
+    body.pres-mode .cta-hero .award-overlay,
+    body.pres-mode .dzb-hero .award-overlay {
+      padding-left: clamp(40px, 5.5vw, 96px) !important;
+      padding-right: clamp(40px, 5.5vw, 96px) !important;
+    }
+
+    /* A line that runs to both rims reads as broken on a projector. Cap the
+       measure so the right side simply stays empty. */
+    body.pres-mode .aw-sub { max-width: min(62ch, 100%) !important; }
+    body.pres-mode .slide-3slogan { max-width: min(74ch, 100%) !important; }
+    body.pres-mode .aw-headline { max-width: 20ch; }
 
     /* The bar already carries an exit button — a floating one on top of it
        only collides with it (it used to overlap by 35px at 720p). */
@@ -773,7 +793,9 @@
       body.pres-mode .slide-links { margin-top: 16px; }
       body.pres-mode .dzb-hero .award-overlay { padding-top: 40px !important; padding-bottom: 40px !important; }
       body.pres-mode .dzb-logo { height: 44px; width: 44px; margin-bottom: 12px; }
-      body.pres-mode .hero-inner { padding: 24px 28px !important; }
+      body.pres-mode .hero-inner {
+        padding-top: 24px !important; padding-bottom: 24px !important;
+      }
       body.pres-mode .hero-identity { margin-bottom: 16px !important; }
       body.pres-mode .hero .avatar { width: 84px !important; height: 84px !important; }
       body.pres-mode .role-card { padding: 11px 14px !important; }
@@ -782,7 +804,40 @@
 
     /* Narrow screens: the same slides have to survive a phone in
        presentation mode, where the copy wraps to many more lines. */
+    /* Classic 4:3 beamers (800x600 and shorter) leave ~480px of usable
+       height once the bar and the safe area are reserved. Everything has to
+       come down another step so no slide overflows its top edge. */
+    @media (max-height: 680px) {
+      body.pres-mode .aw-headline { font-size: clamp(24px, 3.6vw, 38px) !important; margin-bottom: 8px !important; line-height: 1 !important; }
+      body.pres-mode .aw-eyebrow { margin-bottom: 8px !important; font-size: 9.5px !important; padding: 4px 12px !important; }
+      body.pres-mode .aw-sub { font-size: 12.5px !important; margin-bottom: 12px !important; line-height: 1.5 !important; }
+      body.pres-mode .slide-3slogan { font-size: 12px !important; margin-bottom: 10px !important; }
+      body.pres-mode .slide-motto { margin-bottom: 6px !important; }
+      body.pres-mode .award-overlay .slide-motto span { font-size: 9.5px !important; letter-spacing: 2.4px !important; }
+      body.pres-mode .aw-stats { gap: 18px !important; padding-top: 10px !important; }
+      body.pres-mode .aw-stat .aw-n { font-size: clamp(20px, 2.4vw, 28px) !important; }
+      body.pres-mode .aw-stat .aw-l { font-size: 9px !important; letter-spacing: 1.1px !important; }
+      body.pres-mode .slide-links { margin-top: 10px; }
+      body.pres-mode .slide-link { padding: 8px 16px; font-size: 12px; }
+      /* the Sustainista wordmark carries an inline height */
+      body.pres-mode .award-overlay > img { height: 24px !important; margin-bottom: 8px !important; }
+      body.pres-mode .dzb-hero .award-overlay { padding-top: 24px !important; padding-bottom: 24px !important; }
+      body.pres-mode .dzb-logo { height: 36px; width: 36px; margin-bottom: 8px; }
+      body.pres-mode .hero-inner { padding-top: 16px !important; padding-bottom: 16px !important; }
+      body.pres-mode .hero-identity { margin-bottom: 12px !important; }
+      body.pres-mode .hero .avatar { width: 68px !important; height: 68px !important; }
+      body.pres-mode .role-card { padding: 9px 12px !important; }
+      body.pres-mode .hero-cta-panel { padding: 18px !important; }
+    }
+
     @media (max-width: 700px) {
+      /* A phone is not a projector — the safe area would only eat the line
+         length here and push the hero under the bar. */
+      body.pres-mode .award-hero .award-overlay,
+      body.pres-mode .hero-inner {
+        padding-left: 22px !important; padding-right: 22px !important;
+      }
+      body.pres-mode .hero-inner { padding-top: 14px !important; padding-bottom: 14px !important; }
       body.pres-mode .aw-headline { font-size: clamp(23px, 7vw, 33px) !important; margin-bottom: 10px !important; }
       body.pres-mode .aw-eyebrow { margin-bottom: 10px !important; font-size: 9.5px !important; padding: 4px 12px !important; }
       body.pres-mode .aw-sub { font-size: 12.5px !important; margin-bottom: 14px !important; }
