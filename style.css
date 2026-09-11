@@ -1329,10 +1329,39 @@
   }
   .dzb-hero .award-overlay {
     position: relative;
+    z-index: 2;
     background: none !important;
     width: 100%; max-width: 1180px; margin: 0 auto;
     padding: 76px 64px !important;
   }
+
+  /* Mascot fills the right half, which the text column never reaches.
+     Decorative only — the slide's content is entirely in the text. */
+  .dzb-mascot {
+    position: absolute;
+    right: clamp(24px, 6vw, 130px);
+    bottom: 0;
+    height: clamp(240px, 42vh, 480px);
+    width: auto;
+    object-fit: contain;
+    pointer-events: none;
+    filter: drop-shadow(0 18px 44px rgba(0, 0, 0, 0.45));
+    z-index: 1;
+  }
+  /* Below this the text column claims the full width */
+  @media (max-width: 1080px) { .dzb-mascot { display: none; } }
+
+  /* While the mascot is on screen the text column has to stop short of it.
+     Prose stops earlier than the stats row, which needs the width for its
+     four labels. */
+  @media (min-width: 1081px) {
+    .dzb-hero .aw-headline,
+    .dzb-hero .slide-3slogan,
+    .dzb-hero .aw-sub { max-width: 640px !important; }
+    .dzb-hero .aw-stats,
+    .dzb-hero .slide-links { max-width: 760px !important; }
+  }
+  body.pres-mode .dzb-mascot { bottom: calc(var(--pres-bar-h, 64px) + 12px); }
   @media (max-width: 700px) { .dzb-hero .award-overlay { padding: 56px 24px !important; } }
 
   /* .award-overlay is a column flex container, so a bare img would be
