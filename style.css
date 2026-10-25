@@ -1646,7 +1646,7 @@
     .hero .hero-cta-link:hover .hcl-url { color: var(--blue); }
     .hcl-text { display: flex; flex-direction: column; gap: 1px; }
     .hero-cta-sims-block { display: flex; flex-direction: column; gap: 8px; padding-top: 4px; border-top: 1px solid var(--border); }
-    .hero-cta-sim-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .hero-cta-sim-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .hero-cta-sim-pill {
       display: flex; align-items: center; justify-content: center; gap: 6px;
       padding: 8px 6px; border-radius: 9px; text-decoration: none;
