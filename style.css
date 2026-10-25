@@ -1645,6 +1645,73 @@
     .hcl-url { font-size: 11px; color: var(--muted); font-weight: 400; display: block; }
     .hero .hero-cta-link:hover .hcl-url { color: var(--blue); }
     .hcl-text { display: flex; flex-direction: column; gap: 1px; }
+    .hero-cta-sims-block { display: flex; flex-direction: column; gap: 8px; padding-top: 4px; border-top: 1px solid var(--border); }
+    .hero-cta-sim-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .hero-cta-sim-pill {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 8px 6px; border-radius: 9px; text-decoration: none;
+      background: #f8fafc; border: 1px solid rgba(15, 23, 42, 0.09);
+      color: #0f172a; font-size: 12px; font-weight: 600;
+      transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.18s ease-out;
+    }
+    .hero-cta-sim-pill:hover {
+      background: var(--blue-lt); border-color: var(--blue); color: var(--blue);
+      transform: translateY(-2px);
+    }
+    .hero-cta-sim-pill img { width: 17px; height: 17px; border-radius: 5px; flex-shrink: 0; }
+    .hero-slide-nav-hint { margin-top: 14px; display: flex; align-items: center; }
+    .hero-arrow-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 14px; border-radius: 100px; cursor: pointer;
+      background: rgba(26, 115, 232, 0.08); border: 1px solid rgba(26, 115, 232, 0.24);
+      color: #1e293b; font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-size: 12.5px; font-weight: 500;
+      transition: background 0.18s, border-color 0.18s, transform 0.18s ease-out;
+    }
+    .hero-arrow-pill:hover {
+      background: rgba(26, 115, 232, 0.14); border-color: var(--blue);
+      transform: translateY(-1px);
+    }
+    .hap-kbd {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 24px; height: 22px; padding: 0 6px;
+      border-radius: 6px; background: var(--blue); color: #ffffff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px; font-weight: 700; line-height: 1;
+      box-shadow: 0 2px 0 rgba(15, 23, 42, 0.22);
+    }
+    .hero-key-hint {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 8px 12px; border-radius: 10px; cursor: pointer;
+      background: #f1f5f9; border: 1px dashed rgba(26, 115, 232, 0.35);
+      color: #334155; font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-size: 12px; font-weight: 600;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+    .hero-key-hint:hover {
+      background: var(--blue-lt); border-color: var(--blue); color: var(--blue);
+    }
+    .hkh-keys { display: inline-flex; align-items: center; gap: 4px; }
+    .hkh-keys kbd {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 5px;
+      background: #ffffff; border: 1px solid #cbd5e1;
+      box-shadow: 0 1.5px 0 #94a3b8;
+      color: #475569; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px; font-weight: 700; line-height: 1;
+    }
+    .hkh-keys kbd.hkh-key-primary {
+      background: var(--blue); border-color: var(--blue);
+      box-shadow: 0 1.5px 0 #1557b0; color: #ffffff;
+    }
+    @media (max-height: 760px) {
+      body.pres-mode .hero-cta-sims-block { display: none; }
+      body.pres-mode .hero-slide-nav-hint { margin-top: 8px; }
+      body.pres-mode .hero-arrow-pill { padding: 4px 10px; font-size: 11px; }
+    }
+    @media (max-height: 680px) {
+      body.pres-mode .hero-slide-nav-hint { display: none; }
+    }
 
     /* ══════════════════════════════════════════════════════════════
        SLIDE 3 — DIGITALE ZUKUNFTSBILDUNG (gradient slide + mascot)
