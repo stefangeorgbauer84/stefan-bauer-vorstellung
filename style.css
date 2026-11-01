@@ -28,7 +28,7 @@
     }
     .skip-link:focus { left: 0; }
     body {
-      font-family: 'Roboto', 'Google Sans', system-ui, -apple-system, sans-serif;
+      font-family: 'Disrupt Sans', 'Disrupt Display', system-ui, -apple-system, sans-serif;
       background: var(--bg); color: var(--text);
       line-height: 1.65; -webkit-font-smoothing: antialiased;
     }
@@ -91,19 +91,19 @@
       border-radius: 20px; border: 1px solid var(--border);
       position: sticky; top: 80px;
     }
-    .hero-cta-title { font-family: 'Google Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+    .hero-cta-title { font-family: 'Disrupt Display', sans-serif; font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
     .hero-cta-btn-primary {
       display: flex; align-items: center; justify-content: center; gap: 10px;
       background: var(--blue); color: #fff; border: none; cursor: pointer;
       padding: 16px 24px; border-radius: 12px; font-size: 15px; font-weight: 600;
-      font-family: 'Google Sans', sans-serif; text-decoration: none; transition: background 0.18s;
+      font-family: 'Disrupt Display', sans-serif; text-decoration: none; transition: background 0.18s;
     }
     .hero-cta-btn-primary:hover { background: var(--blue-dk); }
     .hero-cta-btn-secondary {
       display: flex; align-items: center; justify-content: center; gap: 10px;
       background: #fff; color: var(--text); border: 1.5px solid var(--border);
       padding: 14px 24px; border-radius: 12px; font-size: 14px; font-weight: 500;
-      font-family: 'Google Sans', sans-serif; text-decoration: none; cursor: pointer; transition: all 0.18s;
+      font-family: 'Disrupt Display', sans-serif; text-decoration: none; cursor: pointer; transition: all 0.18s;
     }
     .hero-cta-btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
     .hero-cta-divider { height: 1px; background: var(--border); margin: 4px 0; }
@@ -139,7 +139,7 @@
     }
 
     .hero h1 {
-      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: clamp(44px, 6vw, 76px); font-weight: 700;
       letter-spacing: -2px; line-height: 0.97;
       color: var(--text);
@@ -298,7 +298,7 @@
       .ss-item:last-child, .ss-item:nth-last-child(2):nth-child(odd) { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
     }
     .ss-n {
-      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       display: block; font-size: 32px; font-weight: 700;
       color: var(--blue); letter-spacing: -0.5px;
     }
@@ -358,7 +358,7 @@
 
     /* stats in hl */
     .srow { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 20px; }
-    .srow .s .n { font-family: 'Google Sans', 'Roboto', sans-serif; font-size: 34px; font-weight: 700; display: block; letter-spacing: -0.5px; }
+    .srow .s .n { font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif; font-size: 34px; font-weight: 700; display: block; letter-spacing: -0.5px; }
     .hl-purple .srow .s .n { color: #6200ea; }
     .hl-green  .srow .s .n { color: #137333; }
     .hl-teal   .srow .s .n { color: var(--blue); }
@@ -399,7 +399,7 @@
     }
     .pm-card h4 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
     .pm-card .pm-budget {
-      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: 28px; font-weight: 700; color: var(--blue);
       display: block; margin-bottom: 8px; letter-spacing: -0.5px;
     }
@@ -415,7 +415,7 @@
       margin-bottom: 26px;
     }
     .pm-total-bar .total-num {
-      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: 52px; font-weight: 700; color: var(--blue); letter-spacing: -2px;
     }
     .pm-total-bar .total-label { font-size: 14px; color: var(--muted); line-height: 1.5; }
@@ -612,7 +612,7 @@
     }
     .li-icon svg { width: 32px; height: 32px; fill: #fff; }
     .li-cta h2 {
-      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: clamp(24px, 4vw, 40px); font-weight: 700; color: var(--text);
       letter-spacing: -0.5px; margin-bottom: 12px;
     }
@@ -631,7 +631,7 @@
 
     /* ── DISPLAY FONT for section headings ─────────────────── */
     .st {
-      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; color: var(--text);
       margin-bottom: 10px; letter-spacing: -0.5px; line-height: 1.15;
     }
@@ -650,7 +650,7 @@
 
     /* Hero slogan */
     .hero-slogan {
-      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: clamp(17px, 2.2vw, 22px);
       font-weight: 700; letter-spacing: -0.3px;
       color: var(--text); margin-bottom: 16px;
@@ -679,7 +679,7 @@
       border: 2px solid var(--border);
       border-radius: 100px;
       padding: 13px 28px;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Disrupt Sans', sans-serif;
       font-size: 15px; font-weight: 500;
       color: var(--text);
       cursor: pointer;
@@ -865,7 +865,7 @@
 
     /* High contrast text guarantees readability on washed-out classroom beamers */
     .aw-headline {
-      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: clamp(30px, 5.2vw, 66px) !important;
       font-weight: 900 !important;
       line-height: 0.96 !important;
@@ -952,7 +952,7 @@
       border-left: 2.5px solid var(--slide-accent) !important;
     }
     .aw-stat .aw-n {
-      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: clamp(26px, 3vw, 42px) !important;
       font-weight: 800 !important;
       letter-spacing: -1.2px !important;
@@ -1223,7 +1223,7 @@
       border: 1px solid rgba(255, 255, 255, 0.16);
       cursor: pointer; padding: 12px 20px;
       border-radius: 100px;
-      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: 13.5px; font-weight: 600;
       display: inline-flex; align-items: center; gap: 8px;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.28);
@@ -1273,7 +1273,7 @@
     .pres-btn:disabled { opacity: 0.25; cursor: not-allowed; }
 
     .pres-counter {
-      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: 16px; font-weight: 700; color: #ffffff;
       letter-spacing: -0.3px; min-width: 52px; text-align: center;
     }
@@ -1325,7 +1325,7 @@
       color: rgba(255, 255, 255, 0.9);
       padding: 6px 12px; border-radius: 7px;
       font-size: 12px; font-weight: 500; cursor: pointer;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Disrupt Sans', sans-serif;
       display: inline-flex; align-items: center; gap: 6px;
       transition: all 0.15s; white-space: nowrap;
       flex-shrink: 0;
@@ -1484,7 +1484,7 @@
     }
 
     .hero h1.hero-name-sm {
-      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: clamp(28px, 3.6vw, 44px) !important;
       font-weight: 800 !important;
       letter-spacing: -1px !important;
@@ -1591,7 +1591,7 @@
     .role-card-amber  { border-left: 3.5px solid #d97706; }
 
     .role-title {
-      font-family: 'Google Sans', 'Roboto', sans-serif;
+      font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: 15px;
       font-weight: 700;
       color: #0f172a;
@@ -1664,7 +1664,7 @@
       display: inline-flex; align-items: center; gap: 8px;
       padding: 7px 14px; border-radius: 100px; cursor: pointer;
       background: rgba(26, 115, 232, 0.08); border: 1px solid rgba(26, 115, 232, 0.24);
-      color: #1e293b; font-family: 'Google Sans', 'Roboto', sans-serif;
+      color: #1e293b; font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: 12.5px; font-weight: 500;
       transition: background 0.18s, border-color 0.18s, transform 0.18s ease-out;
     }
@@ -1684,7 +1684,7 @@
       display: flex; align-items: center; justify-content: center; gap: 10px;
       padding: 8px 12px; border-radius: 10px; cursor: pointer;
       background: #f1f5f9; border: 1px dashed rgba(26, 115, 232, 0.35);
-      color: #334155; font-family: 'Google Sans', 'Roboto', sans-serif;
+      color: #334155; font-family: 'Disrupt Display', 'Disrupt Sans', sans-serif;
       font-size: 12px; font-weight: 600;
       transition: background 0.18s, border-color 0.18s, color 0.18s;
     }
